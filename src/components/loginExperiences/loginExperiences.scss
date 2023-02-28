@@ -1,0 +1,124 @@
+.collapse {
+  padding: 13px;
+  width: 100%;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+  }
+  .ant-collapse > .ant-collapse-item:last-child {
+    border-radius: 0;
+  }
+  .ant-collapse {
+    border-radius: 0;
+    border: 0;
+    background: #111c44;
+  }
+  .ant-collapse-header {
+    align-items: center !important;
+    height: 64px;
+    @media only screen and (max-width: 600px) {
+      padding: 0 !important;
+    }
+  }
+  .ant-collapse-content {
+    border-radius: 0 !important;
+    background: #d9d5de !important;
+    padding-bottom: 30px;
+  }
+  .ant-collapse-header-text {
+    /* padding: 11px 7rem; */
+    text-align: left;
+    color: #ffffff;
+    font-size: 18px;
+
+    @media only screen and (max-width: 600px) {
+      padding: 11px 1rem;
+    }
+  }
+  .ant-collapse-arrow {
+    font-size: 16px !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+  }
+  .panel-title {
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    color: #170a2c;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+    margin-bottom: 18px;
+    padding: 3px 22px;
+    @media only screen and (max-width: 600px) {
+      padding: 16px 0rem;
+      padding-bottom: 22px;
+    }
+    @media only screen and (min-width: 600px) and (max-width: 900px) {
+      padding: 28px 2rem;
+    }
+  }
+  .tab-main-container {
+    background: #111c44;
+    border-radius: 15px;
+    padding: 0rem 1rem;
+    margin: auto;
+    // width: 100%;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
+    @media only screen and (min-width: 600px) and (max-width: 900px) {
+      width: 100%;
+    }
+  }
+
+  .ant-tabs-tab-btn:hover {
+    color: white;
+  }
+  .ant-tabs .ant-tabs-tab {
+    padding: 0px 0;
+    font-size: 17px;
+  }
+
+  .ant-tabs-tab {
+    // font-size: 30px !important;
+    line-height: 46px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .ant-tabs-top > .ant-tabs-nav {
+    margin: 0;
+  }
+
+  .flow-content,
+  .flow-content-right {
+    font-size: 16px;
+    line-height: 24px;
+    color: #c6c6cb;
+  }
+  .flow-content-right {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 5rem;
+    margin-top: 6rem;
+    @media only screen and (max-width: 600px) {
+      margin-top: 5rem;
+      margin-bottom: 4rem;
+      padding: 1rem;
+    }
+  }
+  .right-tab {
+    flex: 1;
+  }
+  @media only screen and (max-width: 600px) {
+    .ant-collapse-expand-icon {
+      padding-inline-end: 17px !important;
+    }
+  }
+}

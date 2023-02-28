@@ -1,0 +1,306 @@
+.carddata-space {
+  display: flex;
+  justify-content: space-between;
+
+  .ant-space-item {
+    width: 100%;
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  .ant-space-item {
+    @media screen and (max-width: 600px) {
+      padding: 0;
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+      padding: 16px 20px;
+    }
+  }
+}
+.space2 {
+  margin: 20px 0px;
+  @media screen and (max-width: 600px) {
+    margin: 15px 0px;
+  }
+}
+
+.card-section {
+  background: white;
+  padding: 14px 26px;
+  border-radius: 23px;
+
+  .card-container {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    .card-icon {
+      background: #f4f7fe;
+      padding: 18px;
+      border-radius: 30px;
+      color: blue;
+      font-size: 18px;
+    }
+
+    .card-name {
+      font-size: 14px;
+      color: #b0bad7;
+    }
+    .card-value {
+      font-size: 24px;
+      color: #454d77;
+    }
+  }
+}
+.third-row {
+  width: 100%;
+  .ant-space-item {
+    width: 100%;
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+//TotalSpent start
+.total-spent-container {
+  border-radius: 23px;
+  // width: 506px;
+
+  @media screen and (max-width: 600px) {
+    // width: 336px;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1200px) {
+    // width: 381px;
+  }
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .ant-btn-default {
+      background-color: #f4f7fe;
+      border: none;
+      box-shadow: none;
+    }
+    .ant-btn-default:not(:disabled):hover {
+      border: none;
+      background-color: #eff1f5;
+    }
+    .icon-signal {
+      color: #422afb;
+    }
+  }
+  .data-details {
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    @media screen and (min-width: 600px) and (max-width: 1200px) {
+      flex-direction: column;
+    }
+
+    .ant-col-8 {
+      @media screen and (max-width: 600px) {
+        max-width: 100%;
+      }
+      @media screen and (min-width: 600px) and (max-width: 1200px) {
+        max-width: 100%;
+      }
+    }
+  }
+  .icon-spent {
+    color: #03b375;
+  }
+  .spent-value {
+    font-size: 42px;
+  }
+  .total-details {
+    display: flex;
+    gap: 9px;
+  }
+  .on-track {
+    font-size: 16px;
+    color: #03b375;
+  }
+  .line-chart-container {
+    min-height: 260px;
+    margin-top: auto;
+  }
+}
+//TotalSpent end
+// Weekly Revenu start
+.bar-container {
+  min-height: 260px;
+  width: 100%;
+  margin-top: auto;
+  @media screen and (min-height: 850px) and (max-width: 1200px) {
+    margin-top: 115px;
+  }
+}
+
+// Weekly Revenu end
+
+.forth-row {
+  width: 100%;
+  margin: 20px 0;
+  .ant-space-item {
+    width: 100%;
+  }
+  .ant-card-bordered {
+    border-radius: 23px;
+  }
+
+  .forth-row-container {
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    //Product Revenu
+    .revenue-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .revenue-dropdown {
+        gap: 8px;
+        background: #f4f7fe;
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+      }
+    }
+    //Product Revenu end
+
+    //Daily Traffic container start
+
+    .daily-traffic-container {
+      border-radius: 23px;
+      min-width: 245px;
+
+      @media screen and (max-width: 600px) {
+        width: 337px;
+      }
+      .icon-spent {
+        color: #03b375;
+      }
+    }
+    //Daily Traffic container end
+
+    //PiChart start
+    .space-chart {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+
+      .pi-wrapper {
+        border-radius: 23px;
+        min-width: 245px;
+        height: 100%;
+        width: 100%;
+
+        @media screen and (max-width: 600px) {
+          width: 337px;
+        }
+
+        .chart-detail {
+          display: flex;
+          gap: 4px;
+          justify-content: space-between;
+          align-items: center;
+
+          .abc {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .flex-place {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+          }
+          .chart-series {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+          }
+          .us-col {
+            background: #4318ff;
+          }
+          .canada-col {
+            background: #6ad2ff;
+          }
+          .other-col {
+            background: #eff4fb;
+          }
+        }
+
+        .pie-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .select-container {
+            border: none;
+            color: #a2add0;
+          }
+        }
+      }
+    }
+  }
+  //PiChart end
+}
+
+.fifth-row {
+  width: 100%;
+  .ant-space-item {
+    width: 100%;
+  }
+  .ant-card-bordered {
+    border-radius: 23px;
+    // width: 50%;
+  }
+  //Task
+  .task-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .revenue-dropdown {
+      gap: 8px;
+      background: #f4f7fe;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+    }
+  }
+  .task-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .task-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  //Task end
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    .ant-card-bordered {
+      width: 50%;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+    }
+  }
+}
