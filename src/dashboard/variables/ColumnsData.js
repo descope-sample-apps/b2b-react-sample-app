@@ -1,36 +1,65 @@
+import { Progress } from "antd";
+import {
+  CheckCircleFilled,
+  CloseCircleFilled,
+  InfoCircleFilled,
+} from "@ant-design/icons";
+
 export const columnsDataCheck = [
   {
-    Header: "NAME",
-    accessor: "name",
+    title: "NAME",
+    dataIndex: "name",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    title: "PROGRESS",
+    dataIndex: "progress",
+    render: (progress) => <Progress percent={progress} status="active" />,
   },
   {
-    Header: "CUSTOMERS",
-    accessor: "quantity",
+    title: "CUSTOMERS",
+    dataIndex: "quantity",
   },
   {
-    Header: "MOST RECENT DEAL",
-    accessor: "date",
+    title: "MOST RECENT DEAL",
+    dataIndex: "date",
   },
 ];
 export const columnsDataComplex = [
   {
-    Header: "NAME",
-    accessor: "name",
+    title: "NAME",
+    dataIndex: "name",
+    key: "name",
   },
   {
-    Header: "STATUS",
-    accessor: "status",
+    title: "STATUS",
+    dataIndex: "status",
+    key: "status",
+    render: (status) =>
+      status === "Signed" ? (
+        <>
+          <CheckCircleFilled className="check-circle" />
+          {status}
+        </>
+      ) : status === "At Risk" ? (
+        <>
+          <CloseCircleFilled className="close-circle" />
+          {status}
+        </>
+      ) : (
+        <>
+          <InfoCircleFilled className="info-circle" /> {status}
+        </>
+      ),
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    title: "DATE",
+    dataIndex: "date",
+    key: "date",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    title: "PROGRESS",
+    dataIndex: "progress",
+    render: (progress) => <Progress percent={progress} status="active" />,
+    key: "progress",
   },
 ];

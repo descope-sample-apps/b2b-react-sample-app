@@ -1,14 +1,10 @@
-import { Card, Table, theme, Typography } from "antd";
-import { useState } from "react";
-import MainMenus from "../../components/menu/MainMenus";
+import { Card, Table, Typography } from "antd";
+import React, { useState } from "react";
+import MainMenus from "../../../components/menu/MainMenus";
 
 const CheckTable = (props) => {
   const { columnsDataCheck, tableDataCheck } = props;
   const [selectionType] = useState("checkbox");
-
-  const { useToken } = theme;
-  const { token } = useToken();
-
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       console.log(
@@ -24,12 +20,11 @@ const CheckTable = (props) => {
     }),
   };
   return (
-    <Card>
-      <div className="revenue-container">
+    <Card className="product-data-revenue">
+      <div className="dev-table-container">
         <Typography.Title level={3}>Revenue by Product</Typography.Title>
         <MainMenus />
       </div>
-
       <Table
         rowKey={(record) => record.uid}
         rowSelection={{
@@ -39,9 +34,7 @@ const CheckTable = (props) => {
         columns={columnsDataCheck}
         dataSource={tableDataCheck}
         pagination={false}
-        size="large"
-        style={{ background: token.colorBgContainer }}
-      ></Table>
+      />
     </Card>
   );
 };

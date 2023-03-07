@@ -39,7 +39,10 @@ const TotalSpent = () => {
           </div>
         </Col>
         <Col span={16} className="line-chart-container">
-          <LineChart />
+          <LineChart
+            chartData={lineChartDataTotalSpent}
+            chartOptions={lineChartOptionsTotalSpent}
+          />
         </Col>
       </Row>
     </Card>

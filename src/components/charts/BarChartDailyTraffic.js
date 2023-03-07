@@ -2,7 +2,7 @@ import { useState } from "react";
 import Chart from "react-apexcharts";
 
 const BarChartDailyTraffic = () => {
-  const [state, setState] = useState({
+  const [state] = useState({
     chartData: [
       {
         name: "Deal Traffic",

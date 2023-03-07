@@ -1,6 +1,5 @@
 .header-section {
   width: 75%;
-  border: 1px solid #e2e8f0;
   position: fixed;
   background: rgba(244, 247, 254, 0.2);
   backdrop-filter: blur(20px);
@@ -40,11 +39,14 @@
       @media screen and (max-width: 600px) {
         padding: 0 11px;
       }
+      @media screen and (min-width: 600px) and (max-width: 1200px) {
+        padding: 0;
+      }
     }
   }
 
   .search-section {
-    background: white;
+    // background: white;
     padding: 10px;
     border-radius: 30px;
     box-shadow: 14px 17px 40px 4px rgb(112 144 176 / 18%);
@@ -83,7 +85,7 @@
     }
 
     .search-input {
-      background: #f4f7fe;
+      // background: #f4f7fe;
       border-radius: 30px;
       border: none;
       font-weight: 500;
@@ -111,6 +113,13 @@
       font-size: 25px;
     }
   }
+  .avtar {
+  }
+}
+.ant-popover {
+  left: 1070px !important;
+  top: 100px !important;
+  width: 18%;
 }
 // ant drawer style start
 .ant-drawer .ant-drawer-header {

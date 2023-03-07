@@ -9,6 +9,7 @@ export const barChartDataDailyTraffic = [
 
 export const barChartOptionsDailyTraffic = {
   chart: {
+    type: "line",
     toolbar: {
       show: false,
     },

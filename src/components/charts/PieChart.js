@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 const PieChart = () => {
-  const [state, setState] = useState({
+  const [state] = useState({
     chartData: [63, 25, 12],
     chartOptions: {
       labels: ["US", "Canada", "Other Markets"],

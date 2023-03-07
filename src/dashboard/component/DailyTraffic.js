@@ -16,7 +16,7 @@ const DailyTraffic = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="bar-chart">
         <BarChartDailyTraffic />
       </div>
     </Card>

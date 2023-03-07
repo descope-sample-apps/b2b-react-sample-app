@@ -13,10 +13,6 @@
     @media screen and (max-width: 600px) {
       padding: 0;
     }
-
-    @media screen and (min-width: 600px) and (max-width: 900px) {
-      padding: 16px 20px;
-    }
   }
 }
 .space2 {
@@ -27,13 +23,13 @@
 }
 
 .card-section {
-  background: white;
-  padding: 14px 26px;
+  // background: white;
+  padding: 14px 11px;
   border-radius: 23px;
 
   .card-container {
     display: flex;
-    gap: 30px;
+    gap: 9px;
     align-items: center;
 
     .card-icon {
@@ -41,7 +37,7 @@
       padding: 18px;
       border-radius: 30px;
       color: blue;
-      font-size: 18px;
+      font-size: 11px;
     }
 
     .card-name {
@@ -49,13 +45,15 @@
       color: #b0bad7;
     }
     .card-value {
-      font-size: 24px;
+      font-size: 23px;
       color: #454d77;
     }
   }
 }
 .third-row {
   width: 100%;
+  margin-top: 14px;
+
   .ant-space-item {
     width: 100%;
   }
@@ -66,6 +64,7 @@
 //TotalSpent start
 .total-spent-container {
   border-radius: 23px;
+  height: 100%;
   // width: 506px;
 
   @media screen and (max-width: 600px) {
@@ -142,7 +141,8 @@
 
 .forth-row {
   width: 100%;
-  margin: 20px 0;
+  margin-top: 14px;
+
   .ant-space-item {
     width: 100%;
   }
@@ -155,19 +155,23 @@
       flex-direction: column;
     }
     //Product Revenu
+    .col-one {
+      border-radius: 23px;
+      .ant-card-bordered {
+        @media screen and (max-width: 600px) {
+          overflow-x: scroll;
+        }
+        // @media screen and (min-width: 600px) and (max-width: 1200px) {
+        //   overflow-x: scroll;
+        // }
+      }
+    }
     .revenue-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      .revenue-dropdown {
-        gap: 8px;
-        background: #f4f7fe;
-        width: 30px;
-        height: 30px;
-        border-radius: 9px;
-      }
     }
+
     //Product Revenu end
 
     //Daily Traffic container start
@@ -179,8 +183,15 @@
       @media screen and (max-width: 600px) {
         width: 337px;
       }
+      @media screen and (min-width: 600px) and (max-width: 1200px) {
+        width: 100%;
+      }
       .icon-spent {
         color: #03b375;
+      }
+
+      .bar-chart {
+        height: 318px;
       }
     }
     //Daily Traffic container end
@@ -210,6 +221,7 @@
           gap: 4px;
           justify-content: space-between;
           align-items: center;
+          height: 234px;
 
           .abc {
             display: flex;
@@ -247,6 +259,9 @@
             color: #a2add0;
           }
         }
+        .pie-chart {
+          height: 234px;
+        }
       }
     }
   }
@@ -255,12 +270,27 @@
 
 .fifth-row {
   width: 100%;
+  margin-top: 14px;
+  margin-bottom: 37px;
+
   .ant-space-item {
     width: 100%;
   }
   .ant-card-bordered {
     border-radius: 23px;
     // width: 50%;
+  }
+  .col-one {
+    .ant-card-bordered {
+      border-radius: 23px;
+      @media screen and (max-width: 600px) {
+        overflow-x: scroll;
+      }
+    }
+  }
+  .priority-container {
+    display: flex;
+    justify-content: space-between;
   }
   //Task
   .task-container {
@@ -273,6 +303,11 @@
       width: 30px;
       height: 30px;
       border-radius: 9px;
+      padding: 4px;
+      padding-top: -15px;
+      font-size: 32px;
+      padding-bottom: 23px;
+      color: #422afb;
     }
   }
   .task-wrapper {
@@ -303,4 +338,21 @@
       }
     }
   }
+}
+
+.my-progress {
+  word-break: normal;
+}
+
+.check-circle {
+  font-size: 24px;
+  color: #01b574;
+}
+.close-circle {
+  font-size: 24px;
+  color: #ee5d50;
+}
+.info-circle {
+  font-size: 24px;
+  color: #ffb547;
 }

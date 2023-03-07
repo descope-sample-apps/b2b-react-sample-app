@@ -1,9 +1,14 @@
-import { Card, Col, Row, Typography } from "antd";
-import { SignalFilled } from "@ant-design/icons";
+import { theme, Typography } from "antd";
 
 const CardData = ({ icon, name, value }) => {
+  const { useToken } = theme;
+  const { token } = useToken();
+
   return (
-    <section className="card-section">
+    <section
+      className="card-section"
+      style={{ background: token.colorBgContainer }}
+    >
       <div className="card-container">
         <div className="card-icon">{icon}</div>
         <div>

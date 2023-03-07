@@ -20,6 +20,7 @@
     height: 64px;
     @media only screen and (max-width: 600px) {
       padding: 0 !important;
+      height: 100px;
     }
   }
   .ant-collapse-content {

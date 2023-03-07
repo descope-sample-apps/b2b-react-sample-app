@@ -21,13 +21,16 @@ import {
 import tableDataCheck from "../dashboard/variables/tableDataCheck.json";
 import tableDataComplex from "../dashboard/variables/tableDataComplex.json";
 import PriorityDeals from "./component/PriorityDeals";
+import { useSession } from "@descope/react-sdk";
+import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 const Dashboard = () => {
   return (
     <>
       <Space size="large" className="carddata-space">
         <Row gutter={[14, 14]}>
-          <Col xs={24} sm={12} lg={8}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
             <CardData
               icon={<SignalFilled />}
               name="Revenu"
@@ -35,7 +38,7 @@ const Dashboard = () => {
               className="data-style"
             />
           </Col>
-          <Col xs={24} sm={12} lg={8}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
             <CardData
               icon={<DollarCircleFilled />}
               name="Pipleline"
@@ -43,25 +46,20 @@ const Dashboard = () => {
               className="data-style"
             />
           </Col>
-          <Col xs={24} sm={12} lg={8}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
             <DataTable
               name="Pipleline"
               value="$642.39"
               className="data-style"
             />
           </Col>
-        </Row>
-      </Space>
-
-      <Space size="middle" className="carddata-space space2">
-        <Row gutter={[14, 14]}>
-          <Col xs={24} sm={12} lg={8}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
             <CardData name="Top Market" value="$1,000" className="data-style" />
           </Col>
-          <Col xs={24} sm={12} lg={8}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
             <CardData name="New Deals" value="154" className="data-style" />
           </Col>
-          <Col xs={24} sm={12} lg={8}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
             <CardData
               icon={<FileFilled />}
               name="Total Deals"
@@ -71,6 +69,7 @@ const Dashboard = () => {
           </Col>
         </Row>
       </Space>
+
       <Space size="large" className="third-row">
         <Row gutter={[14, 14]}>
           <Col xs={24} sm={12}>
@@ -81,12 +80,13 @@ const Dashboard = () => {
           </Col>
         </Row>
       </Space>
+
       <Space size="middle" className="forth-row">
         <Row className="forth-row-container" gutter={[14, 14]}>
-          <Col sm={24} md={24} lg={12} style={{ borderRadius: "23px" }}>
+          <Col sm={24} md={24} lg={12} className="col-one">
             <CheckTable
-              columnsData={columnsDataCheck}
-              tableData={tableDataCheck}
+              columnsDataCheck={columnsDataCheck}
+              tableDataCheck={tableDataCheck}
             />
           </Col>
           <Col sm={24} md={24} lg={12} className="space-chart">
@@ -95,9 +95,10 @@ const Dashboard = () => {
           </Col>
         </Row>
       </Space>
+
       <Space size="middle" className="fifth-row">
         <Row gutter={[14, 14]}>
-          <Col sm={24} md={24} lg={12}>
+          <Col sm={24} md={24} lg={12} className="col-one">
             <PriorityDeals
               columnsData={columnsDataComplex}
               tableData={tableDataComplex}

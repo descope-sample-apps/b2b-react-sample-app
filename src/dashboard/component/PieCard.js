@@ -13,7 +13,7 @@ const PieCard = () => {
           <option value="yearly">Yearly</option>
         </select>
       </div>
-      <div>
+      <div className="pie-chart">
         <PieChart />
       </div>
       <div className="chart-detail">
