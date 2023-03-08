@@ -1,0 +1,445 @@
+.carddata-space {
+  display: flex;
+  justify-content: space-between;
+
+  .ant-space-item {
+    width: 100%;
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  .ant-space-item {
+    @media screen and (max-width: 600px) {
+      padding: 0;
+    }
+  }
+}
+.space2 {
+  margin: 20px 0px;
+  @media screen and (max-width: 600px) {
+    margin: 15px 0px;
+  }
+}
+
+.card-section {
+  height: 100%;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 23px;
+  @media screen and (min-width: 1600px) and (max-width: 2000px) {
+    padding: 18px 10px;
+  }
+
+  .newDealsIcon {
+    background: linear-gradient(
+      90deg,
+      rgb(68, 129, 235) 0%,
+      rgb(4, 190, 254) 100%
+    );
+  }
+  .card-container {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+
+    .card-icon {
+      background: #f4f7fe;
+      padding: 9px 11px;
+      border-radius: 30px;
+      color: blue;
+      font-size: 2em;
+      height: 49px;
+      width: 49px;
+
+      @media screen and (min-width: 1600px) and (max-width: 2000px) {
+        padding: 5px 8px;
+
+        height: 44px;
+        width: 44px;
+      }
+    }
+
+    .card-name {
+      font-size: 14px;
+      color: #a3aed0;
+      font-weight: 500;
+    }
+    .card-value {
+      font-size: 24px;
+      color: #1b2559;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+  }
+}
+.deal-section {
+  height: 100%;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 23px;
+  .card-container {
+    display: flex;
+    gap: 9px;
+  }
+  .card-icon {
+    background: linear-gradient(90deg, #4481eb 0%, #04befe 100%);
+    padding: 9px 11px;
+    border-radius: 30px;
+    color: white;
+    font-size: 2em;
+    height: 49px;
+    width: 49px;
+  }
+  .card-name {
+    font-size: 14px;
+    color: #a3aed0;
+    font-weight: 500;
+  }
+  .card-value {
+    font-size: 24px;
+    color: #1b2559;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+.market-section {
+  height: 100%;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 23px;
+  .card-container {
+    display: flex;
+    gap: 9px;
+    justify-content: space-between;
+  }
+  .card-name {
+    font-size: 14px;
+    color: #a3aed0;
+    font-weight: 500;
+  }
+  .card-value {
+    font-size: 24px;
+    color: #1b2559;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .select {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.third-row {
+  width: 100%;
+  margin-top: 14px;
+
+  .ant-space-item {
+    width: 100%;
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+//TotalSpent start
+.total-spent-container {
+  border-radius: 23px;
+  height: 100%;
+  // width: 506px;
+
+  @media screen and (max-width: 600px) {
+    // width: 336px;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1200px) {
+    // width: 381px;
+  }
+  .btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .ant-btn-default {
+      background-color: #f4f7fe;
+      border: none;
+      box-shadow: none;
+    }
+    .ant-btn-default:not(:disabled):hover {
+      border: none;
+      background-color: #eff1f5;
+    }
+    .icon-signal {
+      color: #422afb;
+    }
+  }
+  .data-details {
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    @media screen and (min-width: 600px) and (max-width: 1200px) {
+      flex-direction: column;
+    }
+    .font {
+      color: rgb(27, 37, 89);
+      margin-top: 23px;
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .ant-col-8 {
+      @media screen and (max-width: 600px) {
+        max-width: 100%;
+      }
+      @media screen and (min-width: 600px) and (max-width: 1200px) {
+        max-width: 100%;
+      }
+    }
+  }
+  .icon-spent {
+    color: "#01b574";
+    font-weight: 700;
+  }
+  .spent-value {
+    font-size: 42px;
+  }
+  .total-details {
+    display: flex;
+    gap: 9px;
+  }
+  .on-track {
+    font-size: 16px;
+    color: #01b574;
+    font-weight: 700;
+  }
+  .line-chart-container {
+    min-height: 260px;
+    margin-top: auto;
+  }
+}
+//TotalSpent end
+// Weekly Revenu start
+.bar-container {
+  min-height: 260px;
+  width: 100%;
+  margin-top: auto;
+  @media screen and (min-height: 850px) and (max-width: 1200px) {
+    margin-top: 115px;
+  }
+}
+
+// Weekly Revenu end
+
+.forth-row {
+  width: 100%;
+  margin-top: 14px;
+
+  .ant-space-item {
+    width: 100%;
+  }
+  .ant-card-bordered {
+    border-radius: 23px;
+  }
+
+  .forth-row-container {
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    //Product Revenu
+    .col-one {
+      border-radius: 23px;
+      .ant-card-bordered {
+        @media screen and (max-width: 600px) {
+          overflow-x: scroll;
+        }
+        // @media screen and (min-width: 600px) and (max-width: 1200px) {
+        //   overflow-x: scroll;
+        // }
+      }
+    }
+    .revenue-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    //Product Revenu end
+
+    //Daily Traffic container start
+
+    .daily-traffic-container {
+      border-radius: 23px;
+      min-width: 245px;
+
+      @media screen and (max-width: 600px) {
+        width: 337px;
+      }
+      @media screen and (min-width: 600px) and (max-width: 1200px) {
+        width: 100%;
+      }
+      .icon-spent {
+        color: #03b375;
+      }
+
+      .bar-chart {
+        height: 318px;
+      }
+    }
+    //Daily Traffic container end
+
+    //PiChart start
+    .space-chart {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+
+      .pi-wrapper {
+        border-radius: 23px;
+        min-width: 245px;
+        height: 100%;
+        width: 100%;
+
+        @media screen and (max-width: 600px) {
+          width: 337px;
+        }
+
+        .chart-detail {
+          display: flex;
+          gap: 4px;
+          justify-content: space-between;
+          align-items: center;
+          height: 234px;
+
+          .abc {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .flex-place {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+          }
+          .chart-series {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+          }
+          .us-col {
+            background: #4318ff;
+          }
+          .canada-col {
+            background: #6ad2ff;
+          }
+          .other-col {
+            background: #eff4fb;
+          }
+        }
+
+        .pie-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .select-container {
+            border: none;
+            color: #a2add0;
+          }
+        }
+        .pie-chart {
+          height: 234px;
+        }
+      }
+    }
+  }
+  //PiChart end
+}
+
+.fifth-row {
+  width: 100%;
+  margin-top: 14px;
+  margin-bottom: 37px;
+
+  .ant-space-item {
+    width: 100%;
+  }
+  .ant-card-bordered {
+    border-radius: 23px;
+    // width: 50%;
+  }
+  .col-one {
+    .ant-card-bordered {
+      border-radius: 23px;
+      @media screen and (max-width: 600px) {
+        overflow-x: scroll;
+      }
+    }
+  }
+  .priority-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  //Task
+  .task-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .revenue-dropdown {
+      gap: 8px;
+      background: #f4f7fe;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      padding: 4px;
+      padding-top: -15px;
+      font-size: 32px;
+      padding-bottom: 23px;
+      color: #422afb;
+    }
+  }
+  .task-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .task-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  //Task end
+  .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+    .ant-card-bordered {
+      width: 50%;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.my-progress {
+  word-break: normal;
+}
+
+.check-circle {
+  font-size: 24px;
+  color: #01b574;
+}
+.close-circle {
+  font-size: 24px;
+  color: #ee5d50;
+}
+.info-circle {
+  font-size: 24px;
+  color: #ffb547;
+}

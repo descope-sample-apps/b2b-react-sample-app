@@ -1,0 +1,41 @@
+.siderbar-style {
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+}
+.header-style {
+  text-align: center;
+  color: black;
+  margin-left: 300px;
+
+  @media screen and (max-width: 600px) {
+    margin-left: 0px;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1200px) {
+    margin-left: 0px;
+  }
+}
+.content-style {
+  margin-top: 41px;
+  padding: 0 19px;
+  margin-left: 300px;
+
+  @media screen and (max-width: 600px) {
+    padding-top: 98px;
+    margin-left: 0;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1200px) {
+    margin-left: 0px;
+  }
+}
+.ant-layout .ant-layout-header {
+  padding-inline: 19px;
+  background: #f2f6fd;
+
+  @media screen and (max-width: 600px) {
+    padding-inline: 11px;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1200px) {
+    padding-inline: 34px;
+  }
+}
