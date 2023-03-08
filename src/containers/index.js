@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SignIn from "../auth/signIn/SignIn";
-import WelcomeModal from "../components/welcomeModal/WelcomeModal";
 import Dashboard from "../dashboard/Dashboard";
 import DataTables from "../dashboard/dataTables/DataTables";
+import SsoSetup from "../dashboard/ssosetup/SsoSetup";
 
 import ProjectLayout from "../layout/ProjectLayout";
 
@@ -14,6 +14,7 @@ const Container = () => {
         <Routes>
           <Route path="admin" element={<Dashboard />} />
           <Route path="admin/data-tables" element={<DataTables />} />
+          <Route path="admin/sso-setup" element={<SsoSetup />} />
           <Route path="auth/sign-in" element={<SignIn />} />
         </Routes>
       </ProjectLayout>

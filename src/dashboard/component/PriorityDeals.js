@@ -7,7 +7,9 @@ const PriorityDeals = (props) => {
   return (
     <Card>
       <div className="priority-container">
-        <Typography.Title level={3}>Priority Deals</Typography.Title>
+        <Typography style={{ fontSize: 20, color: "#1b2559", fontWeight: 700 }}>
+          Priority Deals
+        </Typography>
         <MainMenus />
       </div>
       <Table

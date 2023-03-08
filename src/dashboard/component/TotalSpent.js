@@ -15,8 +15,8 @@ const TotalSpent = () => {
   return (
     <Card className="total-spent-container">
       <div className="btn-container">
-        <Button style={{ color: "#b0bad7" }}>
-          <CalendarOutlined />
+        <Button style={{ color: "#a3aed0" }}>
+          <CalendarOutlined style={{ color: "#a3aed0" }} />
           <span> This month</span>
         </Button>
         <Button>
@@ -25,16 +25,22 @@ const TotalSpent = () => {
       </div>
       <Row className="data-details">
         <Col span={8}>
-          <Typography.Title level={2}>$37.5K</Typography.Title>
+          <Typography.Title
+            level={2}
+            style={{ color: "#1b2559" }}
+            className="font"
+          >
+            $37.5K
+          </Typography.Title>
           <div className="total-details">
-            <Typography>Total Spent</Typography>
+            <Typography style={{ color: "#a3aed0" }}>Total Spent</Typography>
             <div className="icon-spent">
-              <CaretUpOutlined />
-              <span> +2.45%</span>
+              <CaretUpOutlined style={{ color: "#01b574", fontWeight: 700 }} />
+              <span style={{ color: "#01b574", fontWeight: 700 }}> +2.45%</span>
             </div>
           </div>
           <div className="on-track">
-            <CheckCircleFilled />
+            <CheckCircleFilled style={{ color: "#01b574", fontWeight: 700 }} />
             <span> On track</span>
           </div>
         </Col>

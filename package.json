@@ -16,6 +16,7 @@
     "react-apexcharts": "^1.4.0",
     "react-calendar": "^4.0.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-table": "^7.8.0",

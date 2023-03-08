@@ -1,12 +1,12 @@
 import { theme, Typography } from "antd";
 
-const CardData = ({ icon, name, value, endContent }) => {
+const NewDeal = ({ icon, name, value }) => {
   const { useToken } = theme;
   const { token } = useToken();
 
   return (
     <section
-      className="card-section"
+      className="deal-section"
       style={{ background: token.colorBgContainer }}
     >
       <div className="card-container">
@@ -15,10 +15,9 @@ const CardData = ({ icon, name, value, endContent }) => {
           <Typography className="card-name">{name}</Typography>
           <Typography className="card-value">{value}</Typography>
         </div>
-        <div>{endContent}</div>
       </div>
     </section>
   );
 };
 
-export default CardData;
+export default NewDeal;

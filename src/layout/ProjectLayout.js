@@ -1,27 +1,25 @@
-import { Layout, ConfigProvider, Space, theme, Card } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Layout, ConfigProvider, Space } from "antd";
 import NavBar from "../components/header/NavBar";
 import Sidebar from "../components/sidebar/Sidebar";
 import { darkTheme, lightTheme } from "../theme/Theme";
 import "./projectLayout.scss";
-import { useEffect, useState } from "react";
-import getItem from "../components/sidebar/Sidebar";
+import { useState } from "react";
 import { useSession } from "@descope/react-sdk";
 import SignIn from "../auth/signIn/SignIn";
 
 const { Header, Sider, Content } = Layout;
 
 const ProjectLayout = ({ children }) => {
-  const location = useLocation();
+  // const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const { useToken } = theme;
-  const { token } = useToken();
+  // const { useToken } = theme;
+  // const { token } = useToken();
   const { isAuthenticated } = useSession();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleClick = () => {
     setIsDarkMode(!isDarkMode);
   };
-  const url = ["auth/sign-in"];
+  // const url = ["auth/sign-in"];
 
   // useEffect(() => {
   //   if (!isAuthenticated) {

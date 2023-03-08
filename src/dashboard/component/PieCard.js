@@ -6,7 +6,9 @@ const PieCard = () => {
   return (
     <Card className="pi-wrapper">
       <div className="pie-container">
-        <Typography.Title level={5}>Market Breakdown</Typography.Title>
+        <Typography style={{ fontSize: 16, color: "#1b2559", fontWeight: 700 }}>
+          Market Breakdown
+        </Typography>
         <select className="select-container">
           <option value="daily">Daily</option>
           <option value="monthly">Monthly</option>
@@ -20,23 +22,35 @@ const PieCard = () => {
         <div className="abc">
           <div className="flex-place">
             <div className="chart-series us-col" />
-            <Typography>US</Typography>
+            <Typography style={{ color: "#a3aed0" }}>US</Typography>
           </div>
-          <Typography>63%</Typography>
+          <Typography
+            style={{ fontSize: 16, color: "#1b2559", fontWeight: 700 }}
+          >
+            63%
+          </Typography>
         </div>
         <div className="abc">
           <div className="flex-place">
             <div className="chart-series canada-col" />
-            <Typography>Canada</Typography>
+            <Typography style={{ color: "#a3aed0" }}>Canada</Typography>
           </div>
-          <Typography>25%</Typography>
+          <Typography
+            style={{ fontSize: 16, color: "#1b2559", fontWeight: 700 }}
+          >
+            25%
+          </Typography>
         </div>
         <div className="abc">
           <div className="flex-place">
             <div className="chart-series other-col" />
-            <Typography>Other Markets</Typography>
+            <Typography style={{ color: "#a3aed0" }}>Other Markets</Typography>
           </div>
-          <Typography>63%</Typography>
+          <Typography
+            style={{ fontSize: 16, color: "#1b2559", fontWeight: 700 }}
+          >
+            63%
+          </Typography>
         </div>
       </div>
     </Card>

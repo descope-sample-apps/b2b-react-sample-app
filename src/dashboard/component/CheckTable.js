@@ -26,7 +26,9 @@ const CheckTable = (props) => {
   return (
     <Card>
       <div className="revenue-container">
-        <Typography.Title level={3}>Revenue by Product</Typography.Title>
+        <Typography style={{ fontSize: 20, color: "#1b2559", fontWeight: 700 }}>
+          Revenue by Product
+        </Typography>
         <MainMenus />
       </div>
 

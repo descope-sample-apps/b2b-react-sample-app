@@ -6,7 +6,10 @@ const WeeklyRevenu = () => {
   return (
     <Card className="total-spent-container">
       <div className="btn-container">
-        <Typography style={{ fontSize: 20 }}> Weekly Revenue</Typography>
+        <Typography style={{ fontSize: 20, color: "#1b2559", fontWeight: 700 }}>
+          {" "}
+          Weekly Revenue
+        </Typography>
         <Button>
           <SignalFilled className="icon-signal" />
         </Button>

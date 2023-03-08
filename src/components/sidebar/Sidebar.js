@@ -1,8 +1,10 @@
 import { Divider, Menu } from "antd";
 import logo_Dolrr from "../../assets/logo_dolrr.svg";
 import { useNavigate } from "react-router-dom";
-import { HomeFilled, SignalFilled } from "@ant-design/icons";
 import "./sidebar.scss";
+import { useEffect } from "react";
+import { useSession } from "@descope/react-sdk";
+import { MdBarChart, MdHome, MdKey } from "react-icons/md";
 
 const getItem = (label, key, icon) => {
   return {
@@ -12,13 +14,21 @@ const getItem = (label, key, icon) => {
   };
 };
 const items = [
-  getItem("Your Rev Dashboard", "/admin", <HomeFilled />),
-  getItem("Admin Dashboard", "/admin/data-tables", <SignalFilled />),
+  getItem("Your Rev Dashboard", "/admin", <MdHome style={{fontSize:'1.2em'}}/>),
+  getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{fontSize:'1.5em'}}/>),
+  getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{fontSize:'1.5em'}}/>),
 ];
 
-console.log("items", items[0].label);
+
 const Sidebar = () => {
+  const { isAuthenticated } = useSession();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/admin");
+    }
+  }, [isAuthenticated]);
 
   return (
     <section className="sidebar-container">

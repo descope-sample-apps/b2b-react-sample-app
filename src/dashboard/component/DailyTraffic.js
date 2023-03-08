@@ -5,14 +5,18 @@ import BarChartDailyTraffic from "../../components/charts/BarChartDailyTraffic";
 const DailyTraffic = () => {
   return (
     <Card className="daily-traffic-container">
-      <Typography style={{ color: "#b0bad7" }}>Deal Traffic</Typography>
+      <Typography style={{ color: "#a3aed0", fontWeight: 500 }}>
+        Deal Traffic
+      </Typography>
       <div>
         <Typography.Title level={2}>2,579</Typography.Title>
         <div className="total-details">
-          <Typography style={{ color: "#b0bad7" }}>Active Deals</Typography>
+          <Typography style={{ color: "#a3aed0", fontWeight: 500 }}>
+            Active Deals
+          </Typography>
           <div className="icon-spent">
-            <CaretUpOutlined />
-            <span> +2.45%</span>
+            <CaretUpOutlined style={{ color: "#01b574", fontWeight: 700 }} />
+            <span style={{ color: "#01b574", fontWeight: 700 }}> +2.45%</span>
           </div>
         </div>
       </div>

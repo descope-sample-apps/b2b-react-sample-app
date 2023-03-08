@@ -1,9 +1,4 @@
-import { Col, Row, Space } from "antd";
-import {
-  SignalFilled,
-  DollarCircleFilled,
-  FileFilled,
-} from "@ant-design/icons";
+import { Avatar, Col, Row, Select, Space } from "antd";
 import CardData from "./component/CardData";
 import "./dashboard.scss";
 import DataTable from "./component/DataTable";
@@ -21,47 +16,75 @@ import {
 import tableDataCheck from "../dashboard/variables/tableDataCheck.json";
 import tableDataComplex from "../dashboard/variables/tableDataComplex.json";
 import PriorityDeals from "./component/PriorityDeals";
-import { useSession } from "@descope/react-sdk";
-import { useNavigate } from "react-router-dom";
-import { redirect } from "react-router-dom";
+import {
+  MdAddTask,
+  MdAttachMoney,
+  MdBarChart,
+  MdFileCopy,
+} from "react-icons/md";
+import Usa from "../assets/usa.png";
+import NewDeal from "./component/NewDeal";
+import TopMarket from "./component/TopMarket";
 
 const Dashboard = () => {
   return (
     <>
       <Space size="large" className="carddata-space">
         <Row gutter={[14, 14]}>
-          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
+          <Col sm={24} md={8} lg={8} xxl={4}>
             <CardData
-              icon={<SignalFilled />}
-              name="Revenu"
+              icon={<MdBarChart />}
+              name="Revenue"
               value="$350.4"
               className="data-style"
             />
           </Col>
-          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
+          <Col sm={24} md={8} lg={8} xxl={4}>
             <CardData
-              icon={<DollarCircleFilled />}
+              icon={<MdAttachMoney />}
               name="Pipleline"
               value="$642.39"
               className="data-style"
             />
           </Col>
-          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
+          <Col sm={24} md={8} lg={8} xxl={4}>
             <DataTable
-              name="Pipleline"
-              value="$642.39"
+              name="New Pipleline"
+              value="$574.34"
               className="data-style"
+              growth="+23%"
             />
           </Col>
-          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
-            <CardData name="Top Market" value="$1,000" className="data-style" />
+          <Col sm={24} md={8} lg={8} xxl={4}>
+            <TopMarket
+              name="Top Market"
+              value="$1,000"
+              className="data-style"
+              endContent={
+                <>
+                  {/* <FormLabel htmlFor='balance'> */}
+                  <Avatar src={Usa} style={{ height: "50px", width: "50px" }} />
+                  {/* </FormLabel> */}
+                  <Select id="balance" defaultValue="usd">
+                    <option value="usd">USD</option>
+                    <option value="eur">EUR</option>
+                    <option value="gba">GBA</option>
+                  </Select>
+                </>
+              }
+            />
           </Col>
-          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
-            <CardData name="New Deals" value="154" className="data-style" />
+          <Col sm={24} md={8} lg={8} xxl={4}>
+            <NewDeal
+              name="New Deals"
+              value="154"
+              className="data-style"
+              icon={<MdAddTask className="newDealsIcon" />}
+            />
           </Col>
-          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
+          <Col sm={24} md={8} lg={8} xxl={4}>
             <CardData
-              icon={<FileFilled />}
+              icon={<MdFileCopy />}
               name="Total Deals"
               value="2935"
               className="data-style"

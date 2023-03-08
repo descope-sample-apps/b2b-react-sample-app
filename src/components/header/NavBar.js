@@ -15,13 +15,14 @@ import Sidebar from "../sidebar/Sidebar";
 import {
   SearchOutlined,
   BellOutlined,
-  InfoCircleOutlined,
-  CloudUploadOutlined,
+  InfoCircleOutlined
 } from "@ant-design/icons";
 import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { getDisplayName } from "../../utils/user";
 import { useUser, useDescope } from "@descope/react-sdk";
+import InfoPopover from "../popupScreens/InfoPopover";
+import NotificationPopover from "../popupScreens/NotificationPopover";
 
 const NavBar = ({ handleClick, brandText }) => {
   const [open, setOpen] = useState(false);
@@ -29,37 +30,43 @@ const NavBar = ({ handleClick, brandText }) => {
   const { token } = useToken();
   const location = useLocation();
   const { user } = useUser();
-  const fullName = getDisplayName(user).split(' ');
-	const { logout } = useDescope();
+  const fullName = getDisplayName(user).split(" ");
+  const { logout } = useDescope();
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
   };
+  // const handleOpenChange = (newOpen) => {
+  //   setOpen(newOpen);
+  // };
+
   function logoutUser() {
-		logout();
-	}
+    logout();
+  }
 
   const getInitials = (fullName) => {
-      if (fullName.length > 1) {
-        const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
-        return initials.toUpperCase();
-      } else {
-        return "Profile"
-      }
-  }
+    if (fullName.length > 1) {
+      const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
+      return initials.toUpperCase();
+    } else {
+      return "Profile";
+    }
+  };
 
   const content = (
     <div>
       <Typography.Title level={5}>Hey, {getDisplayName(user)}</Typography.Title>
       <Divider />
       <Link>
-        <p style={{ color: "red" }} onClick={logoutUser}>Log out</p>
+        <p style={{ color: "red" }} onClick={logoutUser}>
+          Log out
+        </p>
       </Link>
     </div>
   );
-  
+
   return (
     <section>
       <div
@@ -108,21 +115,29 @@ const NavBar = ({ handleClick, brandText }) => {
                 <img src={hamburger} alt="hamburger" onClick={showDrawer} />
               </div>
               <div className="bell-icon">
-                <BellOutlined />
+                <Popover
+                  content={<NotificationPopover />}
+                  trigger="click"
+                  className="popover"
+                >
+                  <BellOutlined />
+                </Popover>
               </div>
               <div className="info-icon">
-                <InfoCircleOutlined />
+                <Popover content={<InfoPopover />} trigger="click">
+                  <InfoCircleOutlined />
+                </Popover>
               </div>
               {/* <div className="moon-icon">
                 <CloudUploadOutlined onClick={handleClick} />
               </div> */}
               <div className="avtar">
-                <Popover content={content} trigger="click" placement="right">
+                <Popover content={content} trigger="click">
                   <Avatar
                     style={{
                       backgroundColor: "#11047a",
                       verticalAlign: "middle",
-                      cursor: 'pointer'
+                      cursor: "pointer",
                     }}
                     size="large"
                   >
@@ -150,5 +165,3 @@ const NavBar = ({ handleClick, brandText }) => {
 };
 
 export default NavBar;
-
-

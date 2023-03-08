@@ -29,7 +29,12 @@ const Tasks = () => {
     <Card>
       <div className="task-container">
         <CheckSquareFilled style={{ fontSize: 23, color: "#4318ff" }} />
-        <Typography.Title level={4}>Your Tasks</Typography.Title>
+        <Typography.Title
+          level={4}
+          style={{ fontSize: 20, color: "#1b2559", fontWeight: 700 }}
+        >
+          Your Tasks
+        </Typography.Title>
         <Dropdown
           menu={{
             items,

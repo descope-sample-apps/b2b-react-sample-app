@@ -23,10 +23,21 @@
 }
 
 .card-section {
-  // background: white;
-  padding: 14px 11px;
+  height: 100%;
+  width: 100%;
+  padding: 14px 16px;
   border-radius: 23px;
+  @media screen and (min-width: 1600px) and (max-width: 2000px) {
+    padding: 18px 10px;
+  }
 
+  .newDealsIcon {
+    background: linear-gradient(
+      90deg,
+      rgb(68, 129, 235) 0%,
+      rgb(4, 190, 254) 100%
+    );
+  }
   .card-container {
     display: flex;
     gap: 9px;
@@ -34,20 +45,88 @@
 
     .card-icon {
       background: #f4f7fe;
-      padding: 18px;
+      padding: 9px 11px;
       border-radius: 30px;
       color: blue;
-      font-size: 11px;
+      font-size: 2em;
+      height: 49px;
+      width: 49px;
+
+      @media screen and (min-width: 1600px) and (max-width: 2000px) {
+        padding: 5px 8px;
+
+        height: 44px;
+        width: 44px;
+      }
     }
 
     .card-name {
       font-size: 14px;
-      color: #b0bad7;
+      color: #a3aed0;
+      font-weight: 500;
     }
     .card-value {
-      font-size: 23px;
-      color: #454d77;
+      font-size: 24px;
+      color: #1b2559;
+      font-weight: 600;
+      line-height: 1.2;
     }
+  }
+}
+.deal-section {
+  height: 100%;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 23px;
+  .card-container {
+    display: flex;
+    gap: 9px;
+  }
+  .card-icon {
+    background: linear-gradient(90deg, #4481eb 0%, #04befe 100%);
+    padding: 9px 11px;
+    border-radius: 30px;
+    color: white;
+    font-size: 2em;
+    height: 49px;
+    width: 49px;
+  }
+  .card-name {
+    font-size: 14px;
+    color: #a3aed0;
+    font-weight: 500;
+  }
+  .card-value {
+    font-size: 24px;
+    color: #1b2559;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+.market-section {
+  height: 100%;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 23px;
+  .card-container {
+    display: flex;
+    gap: 9px;
+    justify-content: space-between;
+  }
+  .card-name {
+    font-size: 14px;
+    color: #a3aed0;
+    font-weight: 500;
+  }
+  .card-value {
+    font-size: 24px;
+    color: #1b2559;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .select {
+    display: flex;
+    flex-direction: column;
   }
 }
 .third-row {
@@ -97,6 +176,12 @@
     @media screen and (min-width: 600px) and (max-width: 1200px) {
       flex-direction: column;
     }
+    .font {
+      color: rgb(27, 37, 89);
+      margin-top: 23px;
+      font-size: 34px;
+      font-weight: 700;
+    }
 
     .ant-col-8 {
       @media screen and (max-width: 600px) {
@@ -108,7 +193,8 @@
     }
   }
   .icon-spent {
-    color: #03b375;
+    color: "#01b574";
+    font-weight: 700;
   }
   .spent-value {
     font-size: 42px;
@@ -119,7 +205,8 @@
   }
   .on-track {
     font-size: 16px;
-    color: #03b375;
+    color: #01b574;
+    font-weight: 700;
   }
   .line-chart-container {
     min-height: 260px;
