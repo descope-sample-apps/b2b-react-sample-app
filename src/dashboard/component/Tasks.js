@@ -1,6 +1,7 @@
 import { Card, Checkbox, Dropdown, Space, Typography } from "antd";
 import { CheckSquareFilled, DragOutlined } from "@ant-design/icons";
 import { UserOutlined, BulbOutlined, SettingOutlined } from "@ant-design/icons";
+import { MdOutlineDragIndicator } from "react-icons/md";
 
 const Tasks = () => {
   const items = [
@@ -48,27 +49,27 @@ const Tasks = () => {
         <div className="task-data">
           <Checkbox />
           <Typography.Title level={5}>Sentrigo follow-up</Typography.Title>
-          <DragOutlined />
+          <MdOutlineDragIndicator style={{ color: "#a3aed0" }} />
         </div>
         <div className="task-data">
           <Checkbox />
           <Typography.Title level={5}>Descope onboarding</Typography.Title>
-          <DragOutlined />
+          <MdOutlineDragIndicator style={{ color: "#a3aed0" }} />
         </div>
         <div className="task-data">
           <Checkbox />
           <Typography.Title level={5}>Solidcore onboarding</Typography.Title>
-          <DragOutlined />
+          <MdOutlineDragIndicator style={{ color: "#a3aed0" }} />
         </div>
         <div className="task-data">
           <Checkbox />
           <Typography.Title level={5}>Quarterly update</Typography.Title>
-          <DragOutlined />
+          <MdOutlineDragIndicator style={{ color: "#a3aed0" }} />
         </div>
         <div className="task-data">
           <Checkbox defaultChecked />
           <Typography.Title level={5}>Swim in coffee</Typography.Title>
-          <DragOutlined />
+          <MdOutlineDragIndicator style={{ color: "#a3aed0" }} />
         </div>
       </Space>
     </Card>

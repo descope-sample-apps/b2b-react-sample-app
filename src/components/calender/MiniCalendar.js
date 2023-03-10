@@ -2,7 +2,7 @@ import { Card, Typography } from "antd";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { RightOutlined, LeftOutlined } from "@ant-design/icons";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "../calender/miniCalendar.scss";
 
 const MiniCalendar = (props) => {
@@ -16,8 +16,8 @@ const MiniCalendar = (props) => {
         selectRange={selectRange}
         view={"month"}
         tileContent={<Typography color="brand.500" />}
-        prevLabel={<LeftOutlined />}
-        nextLabel={<RightOutlined />}
+        prevLabel={<IoIosArrowBack style={{ fontSize: "22px" }} />}
+        nextLabel={<IoIosArrowForward style={{ fontSize: "22px" }} />}
       />
     </Card>
   );

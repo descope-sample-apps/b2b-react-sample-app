@@ -211,6 +211,7 @@
   .line-chart-container {
     min-height: 260px;
     margin-top: auto;
+    max-width: 100%;
   }
 }
 //TotalSpent end
@@ -235,6 +236,7 @@
   }
   .ant-card-bordered {
     border-radius: 23px;
+    height: 100%;
   }
 
   .forth-row-container {
@@ -268,11 +270,14 @@
       min-width: 245px;
 
       @media screen and (max-width: 600px) {
-        width: 337px;
+        width: 100%;
       }
       @media screen and (min-width: 600px) and (max-width: 1200px) {
         width: 100%;
       }
+      // @media screen and (min-width: 1600px) and (max-width: 1700px) {
+      //   min-width: 301px;
+      // }
       .icon-spent {
         color: #03b375;
       }
@@ -300,7 +305,7 @@
         width: 100%;
 
         @media screen and (max-width: 600px) {
-          width: 337px;
+          width: 100%;
         }
 
         .chart-detail {
