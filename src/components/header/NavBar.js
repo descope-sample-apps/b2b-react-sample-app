@@ -15,7 +15,7 @@ import Sidebar from "../sidebar/Sidebar";
 import {
   SearchOutlined,
   BellOutlined,
-  InfoCircleOutlined
+  InfoCircleOutlined,
 } from "@ant-design/icons";
 import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";
@@ -70,10 +70,10 @@ const NavBar = ({ handleClick, brandText }) => {
   return (
     <section>
       <div
-        style={{
-          background: token.colorPrimaryBg,
-          borderColor: token.colorBorder,
-        }}
+        // style={{
+        //   background: token.colorPrimaryBg,
+        //   borderColor: token.colorBorder,
+        // }}
         className="header-section"
       >
         <Row className="header-row">
@@ -120,12 +120,12 @@ const NavBar = ({ handleClick, brandText }) => {
                   trigger="click"
                   className="popover"
                 >
-                  <BellOutlined />
+                  <BellOutlined style={{ color: "#a3aed0" }} />
                 </Popover>
               </div>
               <div className="info-icon">
                 <Popover content={<InfoPopover />} trigger="click">
-                  <InfoCircleOutlined />
+                  <InfoCircleOutlined style={{ color: "#a3aed0" }} />
                 </Popover>
               </div>
               {/* <div className="moon-icon">

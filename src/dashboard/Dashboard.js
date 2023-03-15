@@ -31,7 +31,7 @@ const Dashboard = () => {
     <>
       <Space size="large" className="carddata-space">
         <Row gutter={[14, 14]}>
-          <Col sm={24} md={8} lg={8} xxl={4}>
+          <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <CardData
               icon={<MdBarChart />}
               name="Revenue"
@@ -39,7 +39,7 @@ const Dashboard = () => {
               className="data-style"
             />
           </Col>
-          <Col sm={24} md={8} lg={8} xxl={4}>
+          <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <CardData
               icon={<MdAttachMoney />}
               name="Pipleline"
@@ -47,7 +47,7 @@ const Dashboard = () => {
               className="data-style"
             />
           </Col>
-          <Col sm={24} md={8} lg={8} xxl={4}>
+          <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <DataTable
               name="New Pipleline"
               value="$574.34"
@@ -55,7 +55,7 @@ const Dashboard = () => {
               growth="+23%"
             />
           </Col>
-          <Col sm={24} md={8} lg={8} xxl={4}>
+          <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <TopMarket
               name="Top Market"
               value="$1,000"
@@ -74,7 +74,7 @@ const Dashboard = () => {
               }
             />
           </Col>
-          <Col sm={24} md={8} lg={8} xxl={4}>
+          <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <NewDeal
               name="New Deals"
               value="154"
@@ -82,7 +82,7 @@ const Dashboard = () => {
               icon={<MdAddTask className="newDealsIcon" />}
             />
           </Col>
-          <Col sm={24} md={8} lg={8} xxl={4}>
+          <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <CardData
               icon={<MdFileCopy />}
               name="Total Deals"

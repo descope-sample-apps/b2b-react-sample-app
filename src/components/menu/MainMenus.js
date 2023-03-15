@@ -33,7 +33,7 @@ const MainMenus = () => {
         menu={{
           items,
         }}
-        style={{ background: token.menuBgColor }}
+        // style={{ background: token.menuBgColor }}
         className="dropdown"
       >
         <Space>...</Space>
