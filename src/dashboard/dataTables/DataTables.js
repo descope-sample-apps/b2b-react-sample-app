@@ -80,13 +80,13 @@ const DataTables = () => {
                 <Col sm={24} md={12} lg={12}>
                   <DevelopmentTables
                     columnsDataDevelopment={columnsDataDevelopment}
-                    tableDataDevlopment={tableDataDevlopment}
+                    tableDataDevlopment={data.development}
                   />
                 </Col>
                 <Col sm={24} md={12} lg={12}>
                   <CheckTable
                     columnsDataCheck={columnsDataCheck}
-                    tableDataCheck={tableDataCheck}
+                    tableDataCheck={data.check}
                   />
                 </Col>
               </Row>
@@ -96,13 +96,13 @@ const DataTables = () => {
                 <Col sm={24} md={12} lg={12}>
                   <ColumnsTable
                     columnsDataColumns={columnsDataColumns}
-                    tableDataColumns={tableDataColumns}
+                    tableDataColumns={data.columns}
                   />
                 </Col>
                 <Col sm={24} md={12} lg={12}>
                   <ComplexTable
                     columnsDataComplex={columnsDataComplex}
-                    tableDataComplex={tableDataComplex}
+                    tableDataComplex={data.complex}
                   />
                 </Col>
               </Row>
