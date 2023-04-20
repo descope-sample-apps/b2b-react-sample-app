@@ -2,9 +2,6 @@
 
 ## Getting Started
 
-###  Run client
-2. Install the react-sdk: `npm i --save @descope/react-sdk`
-
 ## Set up
 In order to launch this app:
 
