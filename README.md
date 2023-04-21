@@ -10,28 +10,29 @@ In order to launch this app:
 git clone git@github.com:descope-sample-apps/b2c-retail-sample-app.git
 ```
 
-#### 2. Set up environment variables in `.env` file
-
-Create a .env file, in the main root directory, and include your project ID. This is mandatory.
-
+#### 2. Set up Descope environment variables in `.env` file
 ```
-REACT_APP_DESCOPE_PROJECT_ID="YOUR PROJECT ID"
+REACT_APP_DESCOPE_PROJECT_ID="YOUR PROJECT ID" // Required for Descope authentication
+REACT_APP_DESCOPE_SIGN_IN_FLOW_ID="sign-up-or-in" // Optional, if you would like to use a flow other than sign-up-or-in
+DESCOPE_BASE_URL="http://localhost:8000" // Optional, if you would like to use a different base URL
 ```
+_You can get your project-id [here](https://app.descope.com/settings/project)_.
+_You can get this flow-id from the Flows page [here](https://app.descope.com/flows)_.
 
-If you would like to use a different flow, other than sign-up-or-in, or a different base_url (**OPTIONAL**)
-
-```
-DESCOPE_BASE_URL="http://localhost:8000"
-REACT_APP_DESCOPE_SIGN_IN_FLOW_ID="sign-up-or-in" // You can get this flow-id from the Flows page in the Descope Console
-```
 
 #### 3. Install dependencies 
+
+You can use npm or yarn, but we recommend using yarn. If it isn't already installed on your machine, the instructions on how to do so can be found [here](https://classic.yarnpkg.com/lang/en/docs/install/). After yarn is installed, run this command:
 ```
-npm i
+yarn install
 ```
+
 #### 4. Start the app
+
+Run this command to start the app:
+
 ```
-npm run start
+yarn start
 ```
 
 #### 5. Open the app
