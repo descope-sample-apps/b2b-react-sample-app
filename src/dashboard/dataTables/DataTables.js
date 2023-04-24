@@ -7,16 +7,13 @@ import {
   columnsDataColumns,
   columnsDataComplex,
 } from "../../dashboard/dataTables/variables/DataColumns";
-import tableDataDevlopment from "../../dashboard/dataTables/variables/tableDataDevelopment.json";
-import tableDataCheck from "../../dashboard/dataTables/variables/tableDataCheck.json";
-import tableDataColumns from "../../dashboard/dataTables/variables/tableDataColumns.json";
-import tableDataComplex from "../../dashboard/dataTables/variables/tableDataComplex.json";
 import "./dataTables.scss";
 import CheckTable from "./component/CheckTable";
 import ColumnsTable from "./component/ColumnsTable";
 import ComplexTable from "./component/ComplexTable";
 import AdminExperiences from "../../components/adminExperiences/AdminExperiences";
 import { getSessionToken, Descope } from '@descope/react-sdk';
+import { useNavigate } from "react-router-dom";
 
 const DataTables = () => {
   const [data, setData] = useState({
@@ -27,6 +24,7 @@ const DataTables = () => {
     loaded: false,
   });
   const [authenticationFlow, setAuthenticationFlow] = useState(false);
+  const navigate = useNavigate();
 
   const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
   const sessionToken = getSessionToken();
@@ -60,7 +58,6 @@ const DataTables = () => {
   }
   return (
     <div className="data-table-wrapper">
-      {console.log('authenticationFlow', authenticationFlow)}
       {
         authenticationFlow ?
           <div style={{margin:'auto', width:'50%'}}>
@@ -68,6 +65,8 @@ const DataTables = () => {
               flowId="step-up"
               onSuccess={(e) => {
                 console.log('success => ', e)
+                navigate("admin/data-tables");
+              
               }}
               onError={(e) => console.log("Error!")}
               // theme={colorMode}

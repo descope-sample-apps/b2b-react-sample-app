@@ -10,24 +10,14 @@ import SignIn from "../auth/signIn/SignIn";
 const { Header, Sider, Content } = Layout;
 
 const ProjectLayout = ({ children }) => {
-  // const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState(true);
-  // const { useToken } = theme;
-  // const { token } = useToken();
+
   const { isAuthenticated } = useSession();
-  // const navigate = useNavigate();
   const handleClick = () => {
     setIsDarkMode(!isDarkMode);
   };
-  // const url = ["auth/sign-in"];
+ 
 
-  // useEffect(() => {
-  //   if (!isAuthenticated) {
-  //     navigate("/admin");
-  //   }
-  // }, [isAuthenticated]);
-
-  console.log("isAuthenticated", isAuthenticated);
   const siderStyle = {
     backgroundColor: "white",
     overflow: "auto",
