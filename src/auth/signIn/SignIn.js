@@ -15,7 +15,7 @@ const SignIn = () => {
     if (isAuthenticated) {
       navigate("/admin");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, navigate]);
   return (
     <div style={{ height: "99vh" }}>
       <WelcomeModal />
