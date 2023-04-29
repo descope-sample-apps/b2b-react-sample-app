@@ -23,6 +23,7 @@ import { getDisplayName } from "../../utils/user";
 import { useUser, useDescope } from "@descope/react-sdk";
 import InfoPopover from "../popupScreens/InfoPopover";
 import NotificationPopover from "../popupScreens/NotificationPopover";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ handleClick, brandText }) => {
   const [open, setOpen] = useState(false);
@@ -32,6 +33,8 @@ const NavBar = ({ handleClick, brandText }) => {
   const { user } = useUser();
   const fullName = getDisplayName(user).split(" ");
   const { logout } = useDescope();
+  const navigate = useNavigate();
+
   const showDrawer = () => {
     setOpen(true);
   };
@@ -42,8 +45,12 @@ const NavBar = ({ handleClick, brandText }) => {
   //   setOpen(newOpen);
   // };
 
-  function logoutUser() {
-    logout();
+  const  logoutUser = async () => {
+    let res = await logout();
+    if (res.ok) {
+      navigate("auth/sign-in");
+
+    }
   }
 
   const getInitials = (fullName) => {
@@ -59,7 +66,7 @@ const NavBar = ({ handleClick, brandText }) => {
     <div>
       <Typography.Title level={5}>Hey, {getDisplayName(user)}</Typography.Title>
       <Divider />
-      <Link>
+      <Link to="auth/sign-in">
         <p style={{ color: "red" }} onClick={logoutUser}>
           Log out
         </p>

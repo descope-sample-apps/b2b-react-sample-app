@@ -2,8 +2,6 @@ import { Divider, Menu } from "antd";
 import logo_Dolrr from "../../assets/logo_dolrr.svg";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.scss";
-import { useEffect } from "react";
-import { useSession } from "@descope/react-sdk";
 import { MdBarChart, MdHome, MdKey } from "react-icons/md";
 
 const getItem = (label, key, icon) => {
@@ -21,14 +19,7 @@ const items = [
 
 
 const Sidebar = () => {
-  const { isAuthenticated } = useSession();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/admin");
-    }
-  }, [isAuthenticated]);
 
   return (
     <section className="sidebar-container">
