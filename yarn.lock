@@ -2707,10 +2707,10 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-antd@^5.4.5:
-  version "5.4.5"
-  resolved "https://registry.yarnpkg.com/antd/-/antd-5.4.5.tgz#de16d55358d31a4c979c401c868dc361c706e47e"
-  integrity sha512-rQOrtVJvDKzlRNRlGL9xbd+tB83mkItvkqMU6+7SpGMLovV7GUJaGq9ZFTmn8Dd+eJb2LCNidkpV9pdDMm4cqg==
+antd@^5.4.6:
+  version "5.4.6"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-5.4.6.tgz#9a41b14687c570e5191609dfd5c8150293279fbe"
+  integrity sha512-va8fmtigdSoyO5BTrOQXRI2N22rWqtmd6FNGPlU4xV2S7Bi13/IJvm0BxO+WaNAVrcZuKIruZ+1EI3UHU80/vw==
   dependencies:
     "@ant-design/colors" "^7.0.0"
     "@ant-design/cssinjs" "^1.9.1"
@@ -2731,7 +2731,7 @@ antd@^5.4.5:
     rc-dialog "~9.1.0"
     rc-drawer "~6.1.1"
     rc-dropdown "~4.0.0"
-    rc-field-form "~1.29.0"
+    rc-field-form "~1.30.0"
     rc-image "~5.16.0"
     rc-input "~1.0.4"
     rc-input-number "~7.4.0"
@@ -7906,10 +7906,10 @@ rc-dropdown@~4.0.0:
     rc-trigger "^5.3.1"
     rc-util "^5.17.0"
 
-rc-field-form@~1.29.0:
-  version "1.29.2"
-  resolved "https://registry.yarnpkg.com/rc-field-form/-/rc-field-form-1.29.2.tgz#1c07f29eb88c13e2987fd0bd1e977dfea9e789a7"
-  integrity sha512-gXNkthHMUjJ7gDKYmD/lJWJrpMqAjiEPQE4QmlOuZoiHF51LybCL/y+iAmLXpdEjPfJ41WtZBH5hZMUEnEnHXA==
+rc-field-form@~1.30.0:
+  version "1.30.0"
+  resolved "https://registry.yarnpkg.com/rc-field-form/-/rc-field-form-1.30.0.tgz#f964bfbea820cc853a8ceb7b0b37a1dca5e64257"
+  integrity sha512-hCBa3/+m9SSuEPILSsxB/wd3ZFEmNTQfIhThhMaMp05fLwDDw+2K26lEZf5NuChQlx90VVNUOYmTslH6Ks4tpA==
   dependencies:
     "@babel/runtime" "^7.18.0"
     async-validator "^4.1.0"
