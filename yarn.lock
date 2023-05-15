@@ -1247,15 +1247,6 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.6.0.tgz#53fa5fe9c34faee89469e48f91d51a3766108bc8"
   integrity sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==
 
-"@descope/core-js-sdk@1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@descope/core-js-sdk/-/core-js-sdk-1.0.10.tgz#e24bb8956a92150b092667b522f61528750d295e"
-  integrity sha512-cxp8SB8ZhGzhTAyNDWIe7TSiLC7wBTldHvYNvDG+tA/LzFSkVj8XuSth0V7k4XLznaVExJwHwtFVE4Q8SkC3qA==
-  dependencies:
-    eslint-plugin-jsx-a11y "6.7.1"
-    jwt-decode "3.1.2"
-    lodash.get "4.4.2"
-
 "@descope/core-js-sdk@1.0.9":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@descope/core-js-sdk/-/core-js-sdk-1.0.9.tgz#7fac60543949e56dce6a8e3a8c11bae22f75d360"
@@ -1265,13 +1256,22 @@
     jwt-decode "3.1.2"
     lodash.get "4.4.2"
 
-"@descope/node-sdk@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@descope/node-sdk/-/node-sdk-1.1.1.tgz#7432c6f6091cb74a521509379fb0d3e24d5acf74"
-  integrity sha512-AA9bhsk8pZRy6+NfRGhxaD5JDP6CpKDd6we19bmyLZdiczrkbSQ8UlP4BNdRb41NgoACJ8hJqyZp7mXYIxGPbw==
+"@descope/core-js-sdk@1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@descope/core-js-sdk/-/core-js-sdk-1.2.1.tgz#da69ccaaee08010a91edbbda1c5ba4ece02b1ae4"
+  integrity sha512-E54K0UHMFp/UM7yv6ZGmtMTyVGd5W3YiSJukR6W66anU2MpeoXjcKGAfSDjwxLS8wTQJq45/JM85AYlF62lN+w==
   dependencies:
-    "@descope/core-js-sdk" "1.0.10"
-    jose "4.13.1"
+    eslint-plugin-jsx-a11y "6.7.1"
+    jwt-decode "3.1.2"
+    lodash.get "4.4.2"
+
+"@descope/node-sdk@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@descope/node-sdk/-/node-sdk-1.5.0.tgz#30f12b34b6a07bfc6340f52ed081604ff7f5b484"
+  integrity sha512-MwPPODY6VGrmH9qkKkQ9I2y5sU53GbEx7Ez8c56PjAidktwbpMdYTbhw/E6mmj0moXjCAUhYawQURw/htOcc0Q==
+  dependencies:
+    "@descope/core-js-sdk" "1.2.1"
+    jose "4.14.1"
     node-fetch-commonjs "3.2.4"
 
 "@descope/react-sdk@^1.0.3":
@@ -6211,10 +6211,10 @@ jiti@^1.17.2:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.18.2.tgz#80c3ef3d486ebf2450d9335122b32d121f2a83cd"
   integrity sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==
 
-jose@4.13.1:
-  version "4.13.1"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-4.13.1.tgz#449111bb5ab171db85c03f1bd2cb1647ca06db1c"
-  integrity sha512-MSJQC5vXco5Br38mzaQKiq9mwt7lwj2eXpgpRyQYNHYt2lq1PjkWa7DLXX0WVcQLE9HhMh3jPiufS7fhJf+CLQ==
+jose@4.14.1:
+  version "4.14.1"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.14.1.tgz#74f12a621ea2ef850bf0dd8405e2ee4041aea934"
+  integrity sha512-SgjXLpP7jhQkUNKL6RpowoR/IF4QKE+WjLDMpNnh2vmhiFs67NftrNpvFtgbwpvRdtueFliahYYWz9E+XZZQlg==
 
 js-cookie@3.0.1:
   version "3.0.1"
