@@ -1247,10 +1247,10 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.6.0.tgz#53fa5fe9c34faee89469e48f91d51a3766108bc8"
   integrity sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==
 
-"@descope/core-js-sdk@1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@descope/core-js-sdk/-/core-js-sdk-1.0.10.tgz#e24bb8956a92150b092667b522f61528750d295e"
-  integrity sha512-cxp8SB8ZhGzhTAyNDWIe7TSiLC7wBTldHvYNvDG+tA/LzFSkVj8XuSth0V7k4XLznaVExJwHwtFVE4Q8SkC3qA==
+"@descope/core-js-sdk@1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@descope/core-js-sdk/-/core-js-sdk-1.0.7.tgz#3fb31cb187de347b60fc9acbf4babb5be5921294"
+  integrity sha512-6gmAWalvfGRmWaahoLCPRUhYOzOMpnQfmM4E+C01ehOlUOwDQImp4ClHKl7dceZqKqf0K68QZXPL5J2yB/ULKw==
   dependencies:
     eslint-plugin-jsx-a11y "6.7.1"
     jwt-decode "3.1.2"
@@ -1265,12 +1265,12 @@
     jwt-decode "3.1.2"
     lodash.get "4.4.2"
 
-"@descope/node-sdk@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@descope/node-sdk/-/node-sdk-1.1.1.tgz#7432c6f6091cb74a521509379fb0d3e24d5acf74"
-  integrity sha512-AA9bhsk8pZRy6+NfRGhxaD5JDP6CpKDd6we19bmyLZdiczrkbSQ8UlP4BNdRb41NgoACJ8hJqyZp7mXYIxGPbw==
+"@descope/node-sdk@^0.0.0-next-e5caa045-20230606":
+  version "0.0.0-next-ffa234ef-20230322"
+  resolved "https://registry.yarnpkg.com/@descope/node-sdk/-/node-sdk-0.0.0-next-ffa234ef-20230322.tgz#7fdab75ab6ca25118ffcf821c58c7fce623ebf5a"
+  integrity sha512-BIiEAtH5Y97iA+4B37ywogCzS7qKFDGVKjNFE3eiy85Yl+w7NJTPB26jcA+fGmZfMDffGMvyrXBXrmu9+DmMqA==
   dependencies:
-    "@descope/core-js-sdk" "1.0.10"
+    "@descope/core-js-sdk" "1.0.7"
     jose "4.13.1"
     node-fetch-commonjs "3.2.4"
 
