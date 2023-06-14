@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
-    "@descope/node-sdk": "^0.0.0-next-e0361769-20230612",
+    "@descope/node-sdk": "^0.0.0-next-176dfdd5-20230614",
     "@descope/react-sdk": "^0.0.0-next-4ee3f596-20230613",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
