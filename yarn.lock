@@ -1264,7 +1264,7 @@
     jwt-decode "3.1.2"
     lodash.get "4.4.2"
 
-"@descope/node-sdk@^0.0.0-next-e0361769-20230612":
+"@descope/node-sdk@^0.0.0-next-176dfdd5-20230614":
   version "0.0.0-next-ffa234ef-20230322"
   resolved "https://registry.yarnpkg.com/@descope/node-sdk/-/node-sdk-0.0.0-next-ffa234ef-20230322.tgz#7fdab75ab6ca25118ffcf821c58c7fce623ebf5a"
   integrity sha512-BIiEAtH5Y97iA+4B37ywogCzS7qKFDGVKjNFE3eiy85Yl+w7NJTPB26jcA+fGmZfMDffGMvyrXBXrmu9+DmMqA==
