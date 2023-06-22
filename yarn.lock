@@ -1273,7 +1273,7 @@
     jose "4.13.1"
     node-fetch-commonjs "3.2.4"
 
-"@descope/react-sdk@^0.0.0-next-46817918-20230617":
+"@descope/react-sdk@^0.0.0-next-374ec0e5-20230622":
   version "0.0.0-next-ffddc746-20230130"
   resolved "https://registry.yarnpkg.com/@descope/react-sdk/-/react-sdk-0.0.0-next-ffddc746-20230130.tgz#980bb9f695a921589d78f97f58a312a5eeb06473"
   integrity sha512-Vngq3vZG/EOyhvpDQpwT17JojU791OA/FWD5r0TLFQll81KoG5ETO5K5sgOijvqxCBIa3jKyiwnEnSUW7inPog==
