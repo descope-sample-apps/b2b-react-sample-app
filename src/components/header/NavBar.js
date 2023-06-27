@@ -45,7 +45,7 @@ const NavBar = ({ handleClick, brandText }) => {
   //   setOpen(newOpen);
   // };
 
-  const  logoutUser = async () => {
+  const logoutUser = async () => {
     let res = await logout();
     if (res.ok) {
       navigate("auth/sign-in");
@@ -121,7 +121,7 @@ const NavBar = ({ handleClick, brandText }) => {
               <div className="ham-icon">
                 <img src={hamburger} alt="hamburger" onClick={showDrawer} />
               </div>
-              <div className="bell-icon">
+              {/* <div className="bell-icon">
                 <Popover
                   content={<NotificationPopover />}
                   trigger="click"
@@ -129,12 +129,12 @@ const NavBar = ({ handleClick, brandText }) => {
                 >
                   <BellOutlined style={{ color: "#a3aed0" }} />
                 </Popover>
-              </div>
-              <div className="info-icon">
+              </div> */}
+              {/* <div className="info-icon">
                 <Popover content={<InfoPopover />} trigger="click">
                   <InfoCircleOutlined style={{ color: "#a3aed0" }} />
                 </Popover>
-              </div>
+              </div> */}
               {/* <div className="moon-icon">
                 <CloudUploadOutlined onClick={handleClick} />
               </div> */}
