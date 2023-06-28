@@ -20,6 +20,6 @@ describe('Descope', function () {
   it('shows revenue information on rev dashboard', function () {
     cy.visit('/')
     cy.get('.ant-typography').contains('Your Rev Dashboard');
-    // Add check for revenue components check
+    // If desired, add more assertions.
   })
 })
