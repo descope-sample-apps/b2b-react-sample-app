@@ -61,19 +61,9 @@ const DataTables = () => {
   }
   return (
     <div className="data-table-wrapper">
-      <AdminExperiences />
       {
         authenticationFlow ?
           <div style={{ margin: 'auto', maxWidth: '450px', borderRadius: "10px", overflow: "hidden", width: "100%" }}>
-            {/* <Descope
-              flowId="step-up"
-              onSuccess={(e) => {
-                console.log('success => ', e)
-                navigate("admin/data-tables");
-
-              }}
-              onError={(e) => console.log("Error!")}
-            />
             <Descope
               flowId="step-up"
               onSuccess={(e) => {
@@ -82,13 +72,7 @@ const DataTables = () => {
 
               }}
               onError={(e) => console.log("Error!")}
-              // debug={process.env.DESCOPE_DEBUG_MODE === 'true'}
-              // theme={process.env.DESCOPE_THEME as any}
-              // redirectUrl={process.env.DESCOPE_REDIRECT_URL}
-              // tenant={process.env.DESCOPE_TENANT_ID}
-              tenant="T2NeoU7GXkZ5H31ATU3GAfw4cM3m"
-            // telemetryKey={process.env.DESCOPE_TELEMETRY_KEY}
-            /> */}
+            />
           </div>
           :
           <>
@@ -126,6 +110,7 @@ const DataTables = () => {
             </Space>
           </>
       }
+      <AdminExperiences />
     </div>
   );
 };
