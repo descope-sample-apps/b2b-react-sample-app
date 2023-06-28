@@ -9,6 +9,6 @@ describe('Descope', function () {
     cy.get('.ant-avatar-string').click();
     cy.get('.ant-popover-inner').contains('Hey');
     cy.get('a > p').click();
-    cy.contains('Sign in').should('be.visible')
+    cy.get('descope-wc').should('be.visible');
   })
 })
