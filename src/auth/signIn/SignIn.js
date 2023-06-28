@@ -13,7 +13,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/admin");
+      navigate("/");
     }
   }, [isAuthenticated, navigate]);
   return (
@@ -31,7 +31,7 @@ const SignIn = () => {
                   name: e.detail.user.name, //user trait
                   email: e.detail.user.email, //user trait
                 });
-                navigate("/admin");
+                navigate("/");
                 console.log("Logged in!");
               }}
               onError={(e) => console.log("Error!")}

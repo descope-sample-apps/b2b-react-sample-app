@@ -12,9 +12,9 @@ const getItem = (label, key, icon) => {
   };
 };
 const items = [
-  getItem("Your Rev Dashboard", "/admin", <MdHome style={{fontSize:'1.2em'}}/>),
-  getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{fontSize:'1.5em'}}/>),
-  getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{fontSize:'1.5em'}}/>),
+  getItem("Your Rev Dashboard", "/", <MdHome style={{ fontSize: '1.2em' }} />),
+  getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{ fontSize: '1.5em' }} />),
+  getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{ fontSize: '1.5em' }} />),
 ];
 
 
@@ -31,8 +31,8 @@ const Sidebar = () => {
         onClick={({ key }) => {
           navigate(key, { state: items.find((elm) => elm.key === key).label });
         }}
-        defaultSelectedKeys={["/admin"]}
         items={items}
+        selectedKeys={[window.location.pathname]}
       />
     </section>
   );
