@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .data-table-wrapper {
   background: #f4f7fe;
 
@@ -15,6 +16,7 @@
     border-radius: 23px;
     height: 100%;
   }
+
   .first-row {
     width: 100%;
 
@@ -22,6 +24,7 @@
       overflow-x: scroll;
     }
   }
+
   .sec-row {
     width: 100%;
     margin-top: 14px;
@@ -36,23 +39,21 @@
     }
   }
 }
-.ant-table-wrapper .ant-table-thead > tr > th {
+
+.ant-table-wrapper .ant-table-thead>tr>th {
   background: white;
 }
-.ant-table-wrapper .ant-table-thead > tr > th {
+
+.ant-table-wrapper .ant-table-thead>tr>th {
   color: #a0aec0;
 }
 
-.ant-table-wrapper .ant-table-tbody > tr > td {
+.ant-table-wrapper .ant-table-tbody>tr>td {
   font-weight: 700;
   color: #3d4672;
 }
-.ant-table-wrapper
-  .ant-table-thead
-  > tr
-  > th:not(:last-child):not(.ant-table-selection-column):not(
-    .ant-table-row-expand-icon-cell
-  ):not([colspan])::before {
+
+.ant-table-wrapper .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
   position: inherit;
 }
 
@@ -61,8 +62,10 @@
   @media screen and (max-width: 600px) {
     overflow-x: scroll;
   }
+
   @media screen and (min-width: 600px) and (max-width: 1200px) {
     overflow-x: scroll;
   }
 }
+
 //Revenue end

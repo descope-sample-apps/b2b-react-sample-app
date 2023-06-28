@@ -6,17 +6,15 @@ import { Descope } from '@descope/react-sdk';
 const SsoSetup = () => {
   return (
     <div className="data-table-wrapper">
-      <div style={{margin:'auto', width:'50%'}}>
-            <Descope
-              flowId="saml-config"
-              onSuccess={(e) => {
-                console.log('success => ', e)
-              }}
-              onError={(e) => console.log("Error!")}
-              // theme={colorMode}
-            />
-          </div>
-      {/* <AdminExperiences /> */}
+      <div style={{ margin: 'auto', maxWidth: '450px', borderRadius: "10px", overflow: "hidden", width: "100%" }}>
+        <Descope
+          flowId="saml-config"
+          onSuccess={(e) => {
+            console.log('success => ', e)
+          }}
+          onError={(e) => console.log("Error!")}
+        />
+      </div>
     </div>
   );
 };

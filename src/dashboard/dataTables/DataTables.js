@@ -60,16 +60,16 @@ const DataTables = () => {
     <div className="data-table-wrapper">
       {
         authenticationFlow ?
-          <div style={{margin:'auto', width:'50%'}}>
+          <div style={{ margin: 'auto', maxWidth: '450px', borderRadius: "10px", overflow: "hidden", width: "100%" }}>
             <Descope
               flowId="step-up"
               onSuccess={(e) => {
                 console.log('success => ', e)
                 navigate("admin/data-tables");
-              
+
               }}
               onError={(e) => console.log("Error!")}
-              // theme={colorMode}
+            // theme={colorMode}
             />
           </div>
           :
@@ -108,6 +108,7 @@ const DataTables = () => {
             </Space>
           </>
       }
+      <br />
 
 
       <AdminExperiences />
