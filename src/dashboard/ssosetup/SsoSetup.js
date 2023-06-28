@@ -12,7 +12,7 @@ const SsoSetup = () => {
           onSuccess={(e) => {
             console.log('success => ', e)
           }}
-          onError={(e) => console.log("Error!")}
+          onError={(e) => console.log("Error:")}
         />
       </div>
     </div>

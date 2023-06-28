@@ -31,8 +31,8 @@ const Sidebar = () => {
         onClick={({ key }) => {
           navigate(key, { state: items.find((elm) => elm.key === key).label });
         }}
-        defaultSelectedKeys={["/"]}
         items={items}
+        selectedKeys={[window.location.pathname]}
       />
     </section>
   );

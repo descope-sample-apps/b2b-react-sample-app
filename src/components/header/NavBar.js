@@ -86,7 +86,7 @@ const NavBar = ({ handleClick, brandText }) => {
         <Row className="header-row">
           <Col span={8} className="header-col">
             <div>
-              <Link to="admin">
+              <Link to="/">
                 <Breadcrumb style={{ color: token.colorTextBase }}>
                   <Breadcrumb.Item>Pages</Breadcrumb.Item>
                   <Breadcrumb.Item>
