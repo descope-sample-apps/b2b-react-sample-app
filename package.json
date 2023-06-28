@@ -50,5 +50,8 @@
   "resolutions": {
     "nth-check": ">=2.0.1"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "devDependencies": {
+    "cypress": "^12.16.0"
+  }
 }
