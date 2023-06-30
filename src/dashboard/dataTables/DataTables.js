@@ -13,6 +13,8 @@ import ColumnsTable from "./component/ColumnsTable";
 import ComplexTable from "./component/ComplexTable";
 import AdminExperiences from "../../components/adminExperiences/AdminExperiences";
 import { getSessionToken, Descope } from '@descope/react-sdk';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 // export default DataTables;
 export default function DataTables() {
@@ -65,7 +67,20 @@ export default function DataTables() {
     }
   }, [data.loaded, projectId, sessionToken])
   if (isLoading) {
-    return <></>
+    return <div style={{ padding: '20px', height: "87vh" }}>
+      <Skeleton
+        height="200px"
+      />
+      <br />
+      <Skeleton
+        height="200px"
+      />
+      <br />
+      <Skeleton
+        height="200px"
+      />
+      <br />
+    </div>
   }
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
