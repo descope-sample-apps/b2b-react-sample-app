@@ -15,6 +15,7 @@ import AdminExperiences from "../../components/adminExperiences/AdminExperiences
 import { getSessionToken, Descope } from '@descope/react-sdk';
 import { useNavigate } from "react-router-dom";
 
+
 const DataTables = () => {
   const [data, setData] = useState({
     check: [],
@@ -46,6 +47,7 @@ const DataTables = () => {
           setAuthenticationFlow(false);
           return response.json();
         }
+
       })
       .then((res) => {
         if (res) {
@@ -55,21 +57,21 @@ const DataTables = () => {
         }
       })
       .catch((err) => console.log('err => ', err));
+
   }
   return (
     <div className="data-table-wrapper">
       {
         authenticationFlow ?
-          <div style={{margin:'auto', width:'50%'}}>
+          <div style={{ margin: 'auto', maxWidth: '450px', borderRadius: "10px", overflow: "hidden", width: "100%" }}>
             <Descope
               flowId="step-up"
               onSuccess={(e) => {
                 console.log('success => ', e)
                 navigate("admin/data-tables");
-              
+
               }}
               onError={(e) => console.log("Error!")}
-              // theme={colorMode}
             />
           </div>
           :
@@ -108,8 +110,6 @@ const DataTables = () => {
             </Space>
           </>
       }
-
-
       <AdminExperiences />
     </div>
   );
