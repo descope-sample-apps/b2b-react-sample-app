@@ -91,7 +91,7 @@ export default function DataTables() {
       >
         {authenticationFlow ?
           (
-            <Box margin={'auto'} width='50%'>
+            <Box margin={'auto'} width='50%' minHeight="500px">
               <Descope
                 flowId="step-up"
                 onSuccess={(e) => {
