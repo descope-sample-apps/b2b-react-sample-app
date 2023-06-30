@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
-    "@descope/node-sdk": "^0.0.0-next-c5ca11e9-20230625",
-    "@descope/react-sdk": "^0.0.0-next-1a9b2b87-20230628",
+    "@descope/node-sdk": "^1.5.3",
+    "@descope/react-sdk": "^1.0.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -50,5 +50,8 @@
   "resolutions": {
     "nth-check": ">=2.0.1"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "devDependencies": {
+    "cypress": "^12.16.0"
+  }
 }
