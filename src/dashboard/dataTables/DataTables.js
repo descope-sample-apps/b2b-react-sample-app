@@ -1,5 +1,5 @@
 import { Box, SimpleGrid, useColorMode } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DevelopmentTables from "./component/DevelopmentTables";
 import {
   columnsDataDevelopment,
@@ -28,35 +28,45 @@ export default function DataTables() {
   const [authenticationFlow, setAuthenticationFlow] = useState(false);
   const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
   const sessionToken = getSessionToken();
+  const [isLoading, setIsLoading] = useState(false);
 
-  if (!data.loaded) {
-    fetch("/api/data", {
-      method: "get",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-        "x-project-id": projectId,
-        Authorization: `Bearer ${sessionToken}`,
-      },
-    })
-      .then((response) => {
-        if (response.status === 401) {
-          setAuthenticationFlow(true);
-        } else {
-          setAuthenticationFlow(false);
-          return response.json();
-        }
+  useEffect(() => {
+    if (!data.loaded) {
+      setIsLoading(true);
+      fetch("/api/data", {
+        method: "get",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "x-project-id": projectId,
+          Authorization: `Bearer ${sessionToken}`,
+        },
       })
-      .then((res) => {
-        if (res) {
-          res.body.loaded = true;
-          setData(res.body);
-          setAuthenticationFlow(false);
-        }
-      })
-      .catch((err) => console.log('err => ', err));
+        .then((response) => {
+          if (response.status === 401) {
+            setAuthenticationFlow(true);
+            setIsLoading(false);
+          } else {
+            setAuthenticationFlow(false);
+            setIsLoading(false);
+            return response.json();
+          }
+
+        })
+        .then((res) => {
+          if (res) {
+            res.body.loaded = true;
+            setData(res.body);
+            setAuthenticationFlow(false);
+            setIsLoading(false);
+          }
+        })
+        .catch((err) => console.log('err => ', err));
+    }
+  }, [data.loaded, projectId, sessionToken])
+  if (isLoading) {
+    return <></>
   }
-
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
       <SimpleGrid
