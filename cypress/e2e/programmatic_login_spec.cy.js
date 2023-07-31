@@ -4,14 +4,6 @@ describe('Descope', function () {
     cy.loginViaDescopeAPI()
   })
 
-  // it('shows welcome page after log out', function () {
-  //   cy.visit('/')
-  //   cy.get('.ant-avatar-string').click();
-  //   cy.get('.ant-popover-inner').contains('Hey');
-  //   cy.get('a > p').click();
-  //   cy.get('descope-wc').should('be.visible');
-  // })
-
   it('shows step up page and collapsable', function () {
     cy.visit('/admin/data-tables')
     cy.get('.ant-collapse-header-text').click();
