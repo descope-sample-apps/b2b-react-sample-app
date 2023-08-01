@@ -9,7 +9,7 @@ import {
   theme,
   Typography,
 } from "antd";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import hamburger from "../../assets/hamburger.svg";
 import Sidebar from "../sidebar/Sidebar";
 import {
@@ -44,14 +44,9 @@ const NavBar = ({ handleClick, brandText }) => {
   // const handleOpenChange = (newOpen) => {
   //   setOpen(newOpen);
   // };
-
-  const logoutUser = async () => {
-    let res = await logout();
-    if (res.ok) {
-      navigate("auth/sign-in");
-
-    }
-  }
+  const logoutUser = useCallback(async () => {
+    logout();
+  }, [logout]);
 
   const getInitials = (fullName) => {
     if (fullName.length > 1) {
@@ -66,11 +61,9 @@ const NavBar = ({ handleClick, brandText }) => {
     <div>
       <Typography.Title level={5}>Hey, {getDisplayName(user)}</Typography.Title>
       <Divider />
-      <Link to="auth/sign-in">
-        <p style={{ color: "red" }} onClick={logoutUser}>
-          Log out
-        </p>
-      </Link>
+      <p style={{ color: "red", cursor: "pointer" }} onClick={logoutUser}>
+        Log out
+      </p>
     </div>
   );
 
