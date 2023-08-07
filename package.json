@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^5.0.1",
+    "@ant-design/icons": "^5.2.5",
     "@chakra-ui/react": "2.8.0",
     "@chakra-ui/system": "^2.6.0",
     "@descope/node-sdk": "^1.5.3",
