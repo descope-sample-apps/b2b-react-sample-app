@@ -10,6 +10,7 @@ const SsoSetup = () => {
         <Descope
           flowId="saml-config"
           onSuccess={(e) => {
+            navigate("/");
             console.log('success => ', e)
           }}
           onError={(e) => console.log("Error:")}

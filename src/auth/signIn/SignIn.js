@@ -27,10 +27,6 @@ const SignIn = () => {
                 process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-up-or-in"
               }
               onSuccess={(e) => {
-                window.analytics.identify(e.detail.user.userId, {
-                  name: e.detail.user.name, //user trait
-                  email: e.detail.user.email, //user trait
-                });
                 navigate("/");
                 console.log("Logged in!");
               }}
