@@ -2184,10 +2184,10 @@
     jwt-decode "3.1.2"
     lodash.get "4.4.2"
 
-"@descope/node-sdk@^1.5.3":
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/@descope/node-sdk/-/node-sdk-1.5.5.tgz#555e3e911521fdd1e00ea9cd9ef81623dd1b317a"
-  integrity sha512-lNOlXuxoMAolTAjBuMs7lDjOgvGDC6Q14f64+5cu8zJ8lbR8lovKYadiH3mSW2yTkLJRqJ3Bc5Hj//m9PsE9Ow==
+"@descope/node-sdk@^1.5.6":
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/@descope/node-sdk/-/node-sdk-1.5.6.tgz#f017d1171eb7a7de7b0c39e0d520464cc4b0778f"
+  integrity sha512-A7kmIFD8Wslo9ZkI7xG+aMK6dnDs4nAfvrrDAo5PtjyDvwbLTGrIxDKFd+yK7xcOSK+Oh4/N8XH6lRUHlJgoJw==
   dependencies:
     "@descope/core-js-sdk" "1.4.6"
     jose "4.14.4"
