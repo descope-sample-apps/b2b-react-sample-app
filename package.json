@@ -58,6 +58,6 @@
   },
   "packageManager": "yarn@1.22.19",
   "devDependencies": {
-    "cypress": "^12.16.0"
+    "cypress": "^12.17.4"
   }
 }
