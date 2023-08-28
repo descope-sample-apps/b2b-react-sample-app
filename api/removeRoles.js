@@ -29,7 +29,10 @@ export default async function handler(request, response) {
 
 
         response.status(200).json({
-            body: resp,
+            body: {
+                resp: resp,
+                loginId: loginId
+            },
             query: request.query,
             cookies: request.cookies,
         });
