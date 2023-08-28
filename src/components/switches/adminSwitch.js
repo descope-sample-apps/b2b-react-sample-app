@@ -2,10 +2,11 @@ import { getSessionToken } from '@descope/react-sdk';
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 
+export default function AdminSwitch(props) {
 
-export default function AdminSwitch() {
 
-    const [checked, setChecked] = useState(null);
+
+    const [checked, setChecked] = useState(props.isTenantAdmin);
     const [isLoading, setIsLoading] = useState(false);
     const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
     const sessionToken = getSessionToken();
@@ -24,6 +25,8 @@ export default function AdminSwitch() {
             },
         })
             .then((response) => {
+                console.log("Fetched");
+                console.log(response);
                 if (response.status === 401) {
                 } else {
                     return response.json();
@@ -47,7 +50,8 @@ export default function AdminSwitch() {
                     role is assigned to your account.
                 </p>
             </div>
-            <Switch onChange={handleChange} checked={checked} />
+            <Switch
+                disabled={isLoading} onChange={handleChange} checked={checked} />
         </label>
     );
 

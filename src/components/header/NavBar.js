@@ -20,7 +20,7 @@ import {
 import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { getDisplayName } from "../../utils/user";
-import { useUser, useDescope } from "@descope/react-sdk";
+import { useUser, useDescope, getSessionToken, getJwtRoles } from "@descope/react-sdk";
 import InfoPopover from "../popupScreens/InfoPopover";
 import NotificationPopover from "../popupScreens/NotificationPopover";
 import { useNavigate } from "react-router-dom";
@@ -35,6 +35,12 @@ const NavBar = ({ handleClick, brandText }) => {
   const fullName = getDisplayName(user).split(" ");
   const { logout } = useDescope();
   const navigate = useNavigate();
+
+  const isTenantAdmin = () => {
+    const sessionToken = getSessionToken();
+    const roles = getJwtRoles(sessionToken);
+    return roles !== undefined && roles.includes("Tenant Admin");
+  }
 
   const showDrawer = () => {
     setOpen(true);
@@ -62,7 +68,9 @@ const NavBar = ({ handleClick, brandText }) => {
     <div>
       <Typography.Title level={5}>Hey, {getDisplayName(user)}</Typography.Title>
       <Divider />
-      <AdminSwitch />
+      <AdminSwitch
+        isTenantAdmin={isTenantAdmin()}
+      />
       <Divider />
       <p style={{ color: "red", cursor: "pointer" }} onClick={logoutUser}>
         Log out
