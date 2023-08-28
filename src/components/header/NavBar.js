@@ -24,6 +24,7 @@ import { useUser, useDescope } from "@descope/react-sdk";
 import InfoPopover from "../popupScreens/InfoPopover";
 import NotificationPopover from "../popupScreens/NotificationPopover";
 import { useNavigate } from "react-router-dom";
+import AdminSwitch from "../switches/adminSwitch";
 
 const NavBar = ({ handleClick, brandText }) => {
   const [open, setOpen] = useState(false);
@@ -60,6 +61,8 @@ const NavBar = ({ handleClick, brandText }) => {
   const content = (
     <div>
       <Typography.Title level={5}>Hey, {getDisplayName(user)}</Typography.Title>
+      <Divider />
+      <AdminSwitch />
       <Divider />
       <p style={{ color: "red", cursor: "pointer" }} onClick={logoutUser}>
         Log out
