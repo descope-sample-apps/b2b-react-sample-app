@@ -3,6 +3,7 @@ import logo_Dolrr from "../../assets/logo_dolrr.svg";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.scss";
 import { MdBarChart, MdHome, MdKey } from "react-icons/md";
+import { getSessionToken, getJwtRoles } from '@descope/react-sdk'
 
 const getItem = (label, key, icon) => {
   return {
@@ -16,6 +17,16 @@ const items = [
   getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{ fontSize: '1.5em' }} />),
   getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{ fontSize: '1.5em' }} />),
 ];
+
+const getItems = () => {
+  return items.filter(item => item.label !== "Admin Dashboard" || isTenantAdmin());
+}
+
+const isTenantAdmin = () => {
+  const sessionToken = getSessionToken();
+  const roles = getJwtRoles(sessionToken);
+  return roles !== undefined && roles.includes("Tenant Admin");
+}
 
 
 const Sidebar = () => {
@@ -31,7 +42,7 @@ const Sidebar = () => {
         onClick={({ key }) => {
           navigate(key, { state: items.find((elm) => elm.key === key).label });
         }}
-        items={items}
+        items={getItems()}
         selectedKeys={[window.location.pathname]}
       />
     </section>

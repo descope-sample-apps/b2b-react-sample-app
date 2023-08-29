@@ -20,20 +20,27 @@ import {
 import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { getDisplayName } from "../../utils/user";
-import { useUser, useDescope } from "@descope/react-sdk";
+import { useUser, useDescope, getSessionToken, getJwtRoles } from "@descope/react-sdk";
 import InfoPopover from "../popupScreens/InfoPopover";
 import NotificationPopover from "../popupScreens/NotificationPopover";
 import { useNavigate } from "react-router-dom";
+import AdminSwitch from "../switches/adminSwitch";
 
 const NavBar = ({ handleClick, brandText }) => {
   const [open, setOpen] = useState(false);
   const { useToken } = theme;
   const { token } = useToken();
   const location = useLocation();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
   const fullName = getDisplayName(user).split(" ");
   const { logout } = useDescope();
   const navigate = useNavigate();
+
+  const isTenantAdmin = () => {
+    const sessionToken = getSessionToken();
+    const roles = getJwtRoles(sessionToken);
+    return roles !== undefined && roles.includes("Tenant Admin");
+  }
 
   const showDrawer = () => {
     setOpen(true);
@@ -56,10 +63,18 @@ const NavBar = ({ handleClick, brandText }) => {
       return "Profile";
     }
   };
+  if (isUserLoading) {
+    return <></>
+  }
 
   const content = (
     <div>
       <Typography.Title level={5}>Hey, {getDisplayName(user)}</Typography.Title>
+      <Divider />
+      <AdminSwitch
+        isTenantAdmin={isTenantAdmin()}
+        loginId={user.loginIds[0]}
+      />
       <Divider />
       <p style={{ color: "red", cursor: "pointer" }} onClick={logoutUser}>
         Log out
