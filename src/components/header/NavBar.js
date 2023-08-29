@@ -31,7 +31,7 @@ const NavBar = ({ handleClick, brandText }) => {
   const { useToken } = theme;
   const { token } = useToken();
   const location = useLocation();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
   const fullName = getDisplayName(user).split(" ");
   const { logout } = useDescope();
   const navigate = useNavigate();
@@ -63,6 +63,9 @@ const NavBar = ({ handleClick, brandText }) => {
       return "Profile";
     }
   };
+  if (isUserLoading) {
+    return <></>
+  }
 
   const content = (
     <div>
@@ -70,6 +73,7 @@ const NavBar = ({ handleClick, brandText }) => {
       <Divider />
       <AdminSwitch
         isTenantAdmin={isTenantAdmin()}
+        loginId={user.loginIds[0]}
       />
       <Divider />
       <p style={{ color: "red", cursor: "pointer" }} onClick={logoutUser}>

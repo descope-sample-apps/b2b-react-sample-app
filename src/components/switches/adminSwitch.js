@@ -14,6 +14,7 @@ export default function AdminSwitch(props) {
 
     const handleChange = async (checked) => {
         console.log("Toggle");
+        console.log(props.loginId);
         setIsLoading(true);
         const apiRoute = checked ? "/api/addRoles" : "/api/removeRoles";
         await fetch(apiRoute, {
@@ -23,6 +24,7 @@ export default function AdminSwitch(props) {
                 "Content-Type": "application/json",
                 "x-project-id": projectId,
                 "x-management-key": managementKey,
+                "x-login-id": props.loginId,
                 Authorization: `Bearer ${sessionToken}`,
             },
         })
