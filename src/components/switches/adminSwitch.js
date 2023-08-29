@@ -26,9 +26,12 @@ export default function AdminSwitch(props) {
                 Authorization: `Bearer ${sessionToken}`,
             },
         })
-            .then((response) => {
+            .then(async (response) => {
                 console.log("Fetched");
+                const awaitedResponse = await response.json();
                 console.log(response);
+                console.log(response.body);
+                console.log(awaitedResponse);
                 if (response.status === 401) {
                 } else {
                     return response.json();
