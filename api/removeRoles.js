@@ -16,7 +16,8 @@ export default async function handler(request, response) {
 
     const descopeClient = DescopeClient({
         projectId: projectId,
-        baseUrl: process.env.DESCOPE_BASE_URL
+        baseUrl: process.env.DESCOPE_BASE_URL,
+        managementKey: process.env.DESCOPE_MANAGEMENT_KEY
     });
 
     try {
