@@ -5,7 +5,7 @@ dotenv.config();
 
 export default async function handler(request, response) {
     const projectId = request.headers['x-project-id'] || process.env.REACT_APP_DESCOPE_PROJECT_ID;
-    const managementKey = request.headers['x-management-key'];
+    // const managementKey = request.headers['x-management-key'];
     const loginId = request.headers['x-login-id'];
 
     // when using cookies
@@ -19,7 +19,7 @@ export default async function handler(request, response) {
     const descopeClient = DescopeClient({
         projectId: projectId,
         baseUrl: process.env.DESCOPE_BASE_URL,
-        managementKey: managementKey
+        managementKey: process.env.DESCOPE_MANAGEMENT_KEY
     });
 
     try {
