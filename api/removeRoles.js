@@ -5,6 +5,7 @@ dotenv.config();
 
 export default async function handler(request, response) {
     const projectId = request.headers['x-project-id'] || process.env.REACT_APP_DESCOPE_PROJECT_ID;
+    const loginId = request.headers['x-login-id'];
 
     // when using cookies
     // const cookies = request.cookies;
@@ -21,9 +22,8 @@ export default async function handler(request, response) {
     });
 
     try {
-        const jwt = await descopeClient.validateSession(session_token);
+        await descopeClient.validateSession(session_token);
 
-        const loginId = jwt.token.loginId;
         const roleNames = ["Tenant Admin"]
 
         let resp = await descopeClient.management.user.removeRoles(loginId, roleNames)

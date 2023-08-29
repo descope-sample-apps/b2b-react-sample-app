@@ -9,12 +9,9 @@ export default function AdminSwitch(props) {
     const [checked, setChecked] = useState(props.isTenantAdmin);
     const [isLoading, setIsLoading] = useState(false);
     const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
-    const managementKey = process.env.DESCOPE_MANAGEMENT_KEY;
     const sessionToken = getSessionToken();
 
     const handleChange = async (checked) => {
-        console.log("Toggle");
-        console.log(props.loginId);
         setIsLoading(true);
         const apiRoute = checked ? "/api/addRoles" : "/api/removeRoles";
         await fetch(apiRoute, {
@@ -23,17 +20,11 @@ export default function AdminSwitch(props) {
                 Accept: "application/json, text/plain, */*",
                 "Content-Type": "application/json",
                 "x-project-id": projectId,
-                "x-management-key": managementKey,
                 "x-login-id": props.loginId,
                 Authorization: `Bearer ${sessionToken}`,
             },
         })
-            .then(async (response) => {
-                console.log("Fetched");
-                const awaitedResponse = await response.json();
-                console.log(response);
-                console.log(response.body);
-                console.log(awaitedResponse);
+            .then((response) => {
                 if (response.status === 401) {
                 } else {
                     return response.json();
