@@ -9,6 +9,7 @@ export default function AdminSwitch(props) {
     const [checked, setChecked] = useState(props.isTenantAdmin);
     const [isLoading, setIsLoading] = useState(false);
     const projectId = localStorage.getItem('projectId') || process.env.REACT_APP_DESCOPE_PROJECT_ID;
+    const managementKey = process.env.DESCOPE_MANAGEMENT_KEY;
     const sessionToken = getSessionToken();
 
     const handleChange = async (checked) => {
@@ -21,6 +22,7 @@ export default function AdminSwitch(props) {
                 Accept: "application/json, text/plain, */*",
                 "Content-Type": "application/json",
                 "x-project-id": projectId,
+                "x-management-key": managementKey,
                 Authorization: `Bearer ${sessionToken}`,
             },
         })
