@@ -4,7 +4,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 import { darkTheme, lightTheme } from "../theme/Theme";
 import "./projectLayout.scss";
 import { useState } from "react";
-import { useSession } from "@descope/react-sdk";
+import { useSession } from "@descope-int/react-dynamic-sdk";
 import SignIn from "../auth/signIn/SignIn";
 
 const { Header, Sider, Content } = Layout;

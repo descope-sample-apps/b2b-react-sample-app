@@ -1,6 +1,6 @@
 import Container from "./containers";
 import React from "react";
-import { AuthProvider } from "@descope/react-sdk";
+import { AuthProvider } from "@descope-int/react-dynamic-sdk";
 import { useSearchParams } from "react-router-dom";
 
 const AppRoot = () => {

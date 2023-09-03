@@ -12,7 +12,7 @@ import CheckTable from "./component/CheckTable";
 import ColumnsTable from "./component/ColumnsTable";
 import ComplexTable from "./component/ComplexTable";
 import AdminExperiences from "../../components/adminExperiences/AdminExperiences";
-import { getSessionToken, Descope } from '@descope/react-sdk';
+import { getSessionToken, Descope } from '@descope-int/react-dynamic-sdk';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 

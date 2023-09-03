@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { Descope, useSession } from "@descope/react-sdk";
+import { Descope, useSession } from "@descope-int/react-dynamic-sdk";
 import app_login from "../../assets/app_login.svg";
 import LoginExperiences from "../../components/loginExperiences/LoginExperiences";
 import { useNavigate } from "react-router-dom";

@@ -1,4 +1,4 @@
-import { getSessionToken } from '@descope/react-sdk';
+import { getSessionToken } from '@descope-int/react-dynamic-sdk';
 import React, { useState } from 'react';
 import Switch from 'react-switch';
 

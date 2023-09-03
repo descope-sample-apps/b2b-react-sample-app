@@ -20,7 +20,7 @@ import {
 import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { getDisplayName } from "../../utils/user";
-import { useUser, useDescope, getSessionToken, getJwtRoles } from "@descope/react-sdk";
+import { useUser, useDescope, getSessionToken, getJwtRoles } from "@descope-int/react-dynamic-sdk";
 import InfoPopover from "../popupScreens/InfoPopover";
 import NotificationPopover from "../popupScreens/NotificationPopover";
 import { useNavigate } from "react-router-dom";

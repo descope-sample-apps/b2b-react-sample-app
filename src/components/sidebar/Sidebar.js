@@ -3,7 +3,7 @@ import logo_Dolrr from "../../assets/logo_dolrr.svg";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.scss";
 import { MdBarChart, MdHome, MdKey } from "react-icons/md";
-import { getSessionToken, getJwtRoles } from '@descope/react-sdk'
+import { getSessionToken, getJwtRoles } from '@descope-int/react-dynamic-sdk'
 
 const getItem = (label, key, icon) => {
   return {
