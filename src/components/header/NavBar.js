@@ -63,6 +63,9 @@ const NavBar = ({ handleClick, brandText }) => {
       return "Profile";
     }
   };
+  const showAdminSwitch = () => {
+    return localStorage.getItem("projectId") === null;
+  }
   if (isUserLoading) {
     return <></>
   }
@@ -71,10 +74,10 @@ const NavBar = ({ handleClick, brandText }) => {
     <div>
       <Typography.Title level={5}>Hey, {getDisplayName(user)}</Typography.Title>
       <Divider />
-      <AdminSwitch
+      {showAdminSwitch() && <AdminSwitch
         isTenantAdmin={isTenantAdmin()}
         loginId={user.loginIds[0]}
-      />
+      />}
       <Divider />
       <p style={{ color: "red", cursor: "pointer" }} onClick={logoutUser}>
         Log out
