@@ -44,7 +44,7 @@ const Invitation = () => {
 					!token && 'This page is not accessible without a token'
 				}
 				{
-					verifyError ?
+					token && verifyError ?
 						'oops! something went wrong' : 'verifying...'
 				}
     </div>
