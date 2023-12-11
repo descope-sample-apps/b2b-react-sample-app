@@ -5,7 +5,6 @@ import Invitation from '../auth/invitation/Invitation';
 import Dashboard from "../dashboard/Dashboard";
 import DataTables from "../dashboard/dataTables/DataTables";
 import SsoSetup from "../dashboard/ssosetup/SsoSetup";
-
 import ProjectLayout from "../layout/ProjectLayout";
 
 const Container = () => {
