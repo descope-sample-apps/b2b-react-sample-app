@@ -2159,13 +2159,13 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@descope-int/react-dynamic-sdk@1.0.23":
-  version "1.0.23"
-  resolved "https://registry.npmjs.org/@descope-int/react-dynamic-sdk/-/react-dynamic-sdk-1.0.23.tgz"
-  integrity sha512-exKcWe0VHQ9SovXL0ZkQhz99W2yyZqH0AOpPspluQsi1qc/AmmGv2KYjiwfxSvTsvKU+tdUFZU7E5D4I2+Tr0g==
+"@descope-int/react-dynamic-sdk@1.0.24":
+  version "1.0.24"
+  resolved "https://registry.npmjs.org/@descope-int/react-dynamic-sdk/-/react-dynamic-sdk-1.0.24.tgz"
+  integrity sha512-jXZ43QNDQe0fNShnm3yozM1zdMK3BJTQQqEp27bnsskuHkUVlE8aQ7yAa0pGt5E9A1YdPlnq2ZjUdcjsZH1HTg==
   dependencies:
     "@descope/react-sdk" "^1.0.14"
-    "@webcomponents/scoped-custom-element-registry" "^0.0.9"
+    element-internals-polyfill "^1.3.9"
 
 "@descope/core-js-sdk@1.4.6":
   version "1.4.6"
@@ -3653,11 +3653,6 @@
   dependencies:
     "@webassemblyjs/ast" "1.11.6"
     "@xtuc/long" "4.2.2"
-
-"@webcomponents/scoped-custom-element-registry@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.npmjs.org/@webcomponents/scoped-custom-element-registry/-/scoped-custom-element-registry-0.0.9.tgz"
-  integrity sha512-4RVHwN9oIp23mhrxeDbP9/0wvdcrB0d/MFMqIStShIgfzsqXZXf1OdU5kvqjgdMYavQ5Zm8C6BuBcAjzNwAetQ==
 
 "@wojtekmaj/date-utils@^1.1.3":
   version "1.5.0"
@@ -5489,6 +5484,11 @@ electron-to-chromium@^1.4.477:
   version "1.4.504"
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.504.tgz"
   integrity sha512-cSMwIAd8yUh54VwitVRVvHK66QqHWE39C3DRj8SWiXitEpVSY3wNPD9y1pxQtLIi4w3UdzF9klLsmuPshz09DQ==
+
+element-internals-polyfill@^1.3.9:
+  version "1.3.9"
+  resolved "https://registry.npmjs.org/element-internals-polyfill/-/element-internals-polyfill-1.3.9.tgz"
+  integrity sha512-ti2fHL8rXbz5/pu50Nu45EXvORWtx1g1xWUQuZORkszbvCxosPEeHDeGzfvaaooXJNXNblogMP4atl680r9WyQ==
 
 emittery@^0.10.2:
   version "0.10.2"
