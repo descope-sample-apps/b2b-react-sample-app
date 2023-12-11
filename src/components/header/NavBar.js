@@ -76,7 +76,7 @@ const NavBar = ({ handleClick, brandText }) => {
       <Divider />
       {showAdminSwitch() && <AdminSwitch
         isTenantAdmin={isTenantAdmin()}
-        loginId={user.loginIds[0]}
+        loginId={user?.loginIds[0]}
       />}
       <Divider />
       <p style={{ color: "red", cursor: "pointer" }} onClick={logoutUser}>

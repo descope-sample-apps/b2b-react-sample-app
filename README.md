@@ -37,8 +37,14 @@ yarn start
 ```
 
 #### 5. Open the app
-Browse to `https://localhost:3000`
+Browse to `http://localhost:3000`
 
+
+##### User invitation with Magic Link
+This app contains a user invitation route that uses a magic link.
+To use it, go to your [project configuration](https://app.descope.com/settings/project) and do the following
+ - Set the "User Invitation Redirect URL" to a URL with the path of `auth/invitation` (e.g. `http://localhost:3000/auth/invitation`)
+ - Check the Add a "Magic Link token to the invitation link" checkbox, so that the token is sent in the invitation email
 
 ## Testing
 To run Cypress E2E tests:
