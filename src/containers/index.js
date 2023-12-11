@@ -4,7 +4,6 @@ import SignIn from "../auth/signIn/SignIn";
 import Dashboard from "../dashboard/Dashboard";
 import DataTables from "../dashboard/dataTables/DataTables";
 import SsoSetup from "../dashboard/ssosetup/SsoSetup";
-
 import ProjectLayout from "../layout/ProjectLayout";
 
 const Container = () => {
