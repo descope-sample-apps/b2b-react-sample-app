@@ -6,6 +6,7 @@ import "./projectLayout.scss";
 import { useState } from "react";
 import { useSession } from "@descope/react-sdk";
 import SignIn from "../auth/signIn/SignIn";
+import { Outlet } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 
@@ -55,7 +56,7 @@ const ProjectLayout = ({ children }) => {
                 className="content-style"
                 // style={{ backgroundColor:  }}
               >
-                {children}
+                <Outlet/>
               </Content>
             </Layout>
           </Layout>
