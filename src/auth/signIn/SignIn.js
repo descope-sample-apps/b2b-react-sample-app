@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { Descope, useSession } from "@descope/react-sdk";
+import { Descope, useSession, useUser } from "@descope/react-sdk";
 import app_login from "../../assets/app_login.svg";
 import LoginExperiences from "../../components/loginExperiences/LoginExperiences";
 import { useNavigate } from "react-router-dom";
@@ -8,14 +8,26 @@ import { useEffect } from "react";
 import WelcomeModal from "../../components/welcomeModal/WelcomeModal";
 
 const SignIn = () => {
-  const { isAuthenticated } = useSession();
+  const { isAuthenticated, isSessionLoading } = useSession();
+	const { user, isUserLoading } = useUser();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
+	useEffect(() => {
+		console.log('data here', {
+			isAuthenticated,
+			isSessionLoading,
+			user,
+			isUserLoading
+		});
+	}, [isAuthenticated, isSessionLoading, user, isUserLoading])
+
+	useEffect(() => {
+		if (!isUserLoading && isAuthenticated) {
+			console.log('Navigating to home page');
+			navigate("/");
+		}
+	});
+
   return (
     <div style={{ height: "99vh" }}>
       <WelcomeModal />
@@ -27,8 +39,7 @@ const SignIn = () => {
                 process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-up-or-in"
               }
               onSuccess={(e) => {
-                navigate("/");
-                console.log("Logged in!");
+                console.log("Logged in!", e.detail.user);
               }}
               onError={(e) => console.log("Error!")}
             />
