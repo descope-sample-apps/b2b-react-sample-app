@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "5.0.1",
+    "@chakra-ui/react": "^2.8.2",
     "@descope/node-sdk": "1.5.3",
     "@descope/react-sdk": "2.0.5",
     "@emotion/react": "11.4.1",
