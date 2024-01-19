@@ -80,6 +80,58 @@ Cypress.Commands.add('loginViaDescopeAPI', () => {
         })
 })
 
+Cypress.Commands.add('loginViaDescopeUI', () => {
+    cy.request({
+        method: 'POST',
+        url: `${descopeApiBaseURL}/mgmt/user/create`,
+        headers: authHeader,
+        body: testUser,
+    })
+        .then(({ body }) => {
+            const loginId = body["user"]["loginIds"][0];
+            cy.request({
+                method: 'POST',
+                url: `${descopeApiBaseURL}/mgmt/tests/generate/enchantedlink`,
+                headers: authHeader,
+                body: {
+                    "loginId": loginId,
+                    "deliveryMethod": "email"
+                }
+            })
+                .then(({ body }) => {
+                    const token = body["link"].split('t=')[1]
+                    const pendingRef = body["pendingRef"]
+                    cy.log(pendingRef)
+                    cy.log(token)
+
+
+                    // Get the host, execution ID, and step ID from manually going through the flow in your browser
+                    // http://localhost:3000/?descope-login-flow=sign-up-or-in%7C%23%7C2bBtkd7nNhiEWbDLaMLyMMKLgz7_14.end-2bBtkZSoriDJyqk6GVAee7MGSKJ&t=eb58e881ab2e22d3b534ae498c012699f11e2c3a3989e564e7d641c117141bdc
+
+                    const executionId = "sign-up-or-in%7C%23%7C2bBtkd7nNhiEWbDLaMLyMMKLgz7"
+                    const stepId = "14.end"
+
+                    const host = 'http://localhost:3000/'
+                    const enchantedLink = host + '?descope-login-flow=' + executionId + "_" + stepId + "-" + pendingRef + '&t=' + token;
+              
+                    cy.visit('/')
+
+                    // Close modal
+                    cy.get('.ant-modal-close').click()
+
+                    cy.get('descope-wc')
+                        .find('input')
+                        .type(loginId)
+                                            
+                    cy.get('descope-wc')
+                        .find('.descope-button').contains('Sign in with email').click()
+
+
+                    cy.visit(enchantedLink)
+                })
+        })
+})
+
 
 // Add the deleteAllTestUsers command
 Cypress.Commands.add('deleteAllTestUsers', () => {
@@ -89,3 +141,4 @@ Cypress.Commands.add('deleteAllTestUsers', () => {
         headers: authHeader,
     })
 })
+
