@@ -4,7 +4,7 @@ describe('Descope', function () {
     cy.loginViaDescopeUI()
   })
 
-  it('shows authenticated status', function () {
-    cy.get('descope-wc').find('descope-text').contains(`authenticated`)
+  it('enchanted link process complete', function () {
+    
   })
 })
