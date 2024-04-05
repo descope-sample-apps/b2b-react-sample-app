@@ -52,6 +52,13 @@ To run Cypress E2E tests:
 yarn run cypress open
 ```
 
+## Other Configuration
+
+### Management Widgets & SSO Setup
+
+To test `Management Widgets` or `SSO Setup` functionality, you'll need to have a user configured with a tenant and the `Tenant Admin` role assigned.
+
+
 ## Learn More
 To learn more please see the [Descope Documentation and API reference page](https://docs.descope.com/).
 

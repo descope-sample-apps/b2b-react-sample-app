@@ -16,6 +16,7 @@ const items = [
   getItem("Your Rev Dashboard", "/", <MdHome style={{ fontSize: '1.2em' }} />),
   getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{ fontSize: '1.5em' }} />),
   getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{ fontSize: '1.5em' }} />),
+  getItem("Management Widgets", "/admin/widgets", <MdKey style={{ fontSize: '1.5em' }} />),
 ];
 
 const getItems = () => {
