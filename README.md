@@ -46,17 +46,18 @@ To use it, go to your [project configuration](https://app.descope.com/settings/p
  - Set the "User Invitation Redirect URL" to a URL with the path of `auth/invitation` (e.g. `http://localhost:3000/auth/invitation`)
  - Check the Add a "Magic Link token to the invitation link" checkbox, so that the token is sent in the invitation email
 
+## Testing
+To run Cypress E2E tests:
+```
+yarn run cypress open
+```
+
 ## Other Configuration
 
 ### Management Widgets & SSO Setup
 
 To test `Management Widgets` or `SSO Setup` functionality, you'll need to have a user configured with a tenant and the `Tenant Admin` role assigned.
 
-## Testing
-To run Cypress E2E tests:
-```
-yarn run cypress open
-```
 
 ## Learn More
 To learn more please see the [Descope Documentation and API reference page](https://docs.descope.com/).
