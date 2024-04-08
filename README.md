@@ -7,7 +7,7 @@ In order to launch this app:
 
 #### 1. Clone the repo 
 ```
-git clone git@github.com:descope-sample-apps/b2c-retail-sample-app.git
+git clone git@github.com:descope-sample-apps/b2b-react-sample-app.git
 ```
 
 #### 2. Set up Descope environment variables in `.env` file
