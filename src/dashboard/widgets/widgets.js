@@ -42,7 +42,7 @@ const Widgets = () => {
     },
   });
 
-  if (isUserLoading) {
+  if (isUserLoading || selectedTenantId === '') {
     return <div>Loading...</div>;
   }
 
