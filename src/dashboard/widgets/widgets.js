@@ -1,6 +1,5 @@
 import './widgets.scss';
-import { Descope, UserManagement, RoleManagement, AccessKeyManagement, useUser } from '@descope/react-sdk';
-import { useNavigate } from 'react-router-dom';
+import { UserManagement, RoleManagement, AccessKeyManagement, useUser } from '@descope/react-sdk';
 import React, { useState, useEffect } from 'react';
 
 const Widgets = () => {
