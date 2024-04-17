@@ -2,8 +2,8 @@ import { Divider, Menu } from "antd";
 import logo_Dolrr from "../../assets/logo_dolrr.svg";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.scss";
-import { MdBarChart, MdHome, MdKey } from "react-icons/md";
-import { getSessionToken, getJwtRoles, useUser, useSession } from '@descope/react-sdk'
+import { MdBarChart, MdManageAccounts, MdVerifiedUser, MdHome, MdKey } from "react-icons/md";
+import { useUser, useSession } from '@descope/react-sdk'
 
 
 const getItem = (label, key, icon) => {
@@ -20,7 +20,8 @@ const items = [
   getItem("Your Rev Dashboard", "/", <MdHome style={{ fontSize: '1.2em'}} />),
   getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{ fontSize: '1.5em' }} />),
   getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{ fontSize: '1.5em' }} />),
-  getItem("Management Widgets", "/admin/widgets", <MdKey style={{ fontSize: '1.5em' }} />),
+  getItem("Management", "/admin/widgets", <MdManageAccounts style={{ fontSize: '1.5em' }} />),
+  getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />)
 ];
 
 
@@ -63,7 +64,7 @@ const Sidebar = () => {
           if (label === "Admin Dashboard" && !isTopLevelTenantAdmin()) {
             item.disabled = true
           } 
-          if ((label === "SSO Setup" || label === "Management Widgets") && !isTenantAdmin()) {
+          if ((label === "SSO Setup" || label === "Management" || label === "Audit") && !isTenantAdmin()) {
             item.disabled = true;
           }
           return item;
