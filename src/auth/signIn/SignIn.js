@@ -7,7 +7,7 @@ import "./sign.scss";
 import { useEffect } from "react";
 import WelcomeModal from "../../components/welcomeModal/WelcomeModal";
 
-const SignIn = () => { 
+const SignIn = () => {
   const { isAuthenticated } = useSession();
   const navigate = useNavigate();
 
