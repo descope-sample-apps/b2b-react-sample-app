@@ -14,8 +14,10 @@ const DevelopmentTables = (props) => {
       </div>
 
       <Table
+        rowKey={(record) => record.uid}
         columns={columnsData}
         dataSource={tableData}
+        pagination={false}
       />
     </Card>
   );
