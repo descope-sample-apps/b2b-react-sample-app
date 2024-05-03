@@ -3,7 +3,7 @@ import React from "react";
 import MainMenus from "../../../components/menu/MainMenus";
 
 const ComplexTable = (props) => {
-  const { columnsDataComplex, tableDataComplex } = props;
+  const { columnsData, tableData } = props;
   return (
     <Card className="priority-data-revenue">
       <div className="dev-table-container">
@@ -12,8 +12,8 @@ const ComplexTable = (props) => {
       </div>
       <Table
         rowKey={(record) => record.uid}
-        columns={columnsDataComplex}
-        dataSource={tableDataComplex}
+        columns={columnsData}
+        dataSource={tableData}
         pagination={false}
       />
     </Card>

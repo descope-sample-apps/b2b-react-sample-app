@@ -3,11 +3,8 @@ import Typography from "antd/es/typography/Typography";
 import React from "react";
 import MainMenus from "../../../components/menu/MainMenus";
 
-// import { columnsDataDevelopment } from "../../dataTables/variables/DataColumns";
-// import tableDataDevlopment from "../variables/tableDataDevelopment.json";
-
 const DevelopmentTables = (props) => {
-  const { columnsDataDevelopment, tableDataDevlopment } = props;
+  const { columnsData, tableData } = props;
 
   return (
     <Card className="data-revenue">
@@ -17,10 +14,8 @@ const DevelopmentTables = (props) => {
       </div>
 
       <Table
-        rowKey={(record) => record.uid}
-        columns={columnsDataDevelopment}
-        dataSource={tableDataDevlopment}
-        pagination={false}
+        columns={columnsData}
+        dataSource={tableData}
       />
     </Card>
   );

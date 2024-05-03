@@ -2,7 +2,7 @@ import { Card, Table, Typography } from "antd";
 import MainMenus from "../../../components/menu/MainMenus";
 
 const ColumnsTable = (props) => {
-  const { columnsDataColumns, tableDataColumns } = props;
+  const { columnsData, tableData } = props;
   return (
     <Card className="column-data">
       <div className="dev-table-container">
@@ -11,8 +11,8 @@ const ColumnsTable = (props) => {
       </div>
       <Table
         rowKey={(record) => record.uid}
-        columns={columnsDataColumns}
-        dataSource={tableDataColumns}
+        columns={columnsData}
+        dataSource={tableData}
         pagination={false}
       />
     </Card>
