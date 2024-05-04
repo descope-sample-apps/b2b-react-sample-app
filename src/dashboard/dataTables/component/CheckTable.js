@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import MainMenus from "../../../components/menu/MainMenus";
 
 const CheckTable = (props) => {
-  const { columnsDataCheck, tableDataCheck } = props;
+  const { columnsData, tableData } = props;
   const [selectionType] = useState("checkbox");
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -31,8 +31,8 @@ const CheckTable = (props) => {
           type: selectionType,
           ...rowSelection,
         }}
-        columns={columnsDataCheck}
-        dataSource={tableDataCheck}
+        columns={columnsData}
+        dataSource={tableData}
         pagination={false}
       />
     </Card>
