@@ -21,7 +21,8 @@ const items = [
   getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{ fontSize: '1.5em' }} />),
   getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{ fontSize: '1.5em' }} />),
   getItem("Management", "/admin/widgets", <MdManageAccounts style={{ fontSize: '1.5em' }} />),
-  getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />)
+  getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />),
+  getItem("My Profile", "/user/profile", <MdVerifiedUser style={{ fontSize: '1.5em' }} />)
 ];
 
 

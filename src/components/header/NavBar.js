@@ -21,9 +21,6 @@ import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 import { getDisplayName } from "../../utils/user";
 import { useUser, useDescope, getSessionToken, getJwtRoles } from "@descope/react-sdk";
-import InfoPopover from "../popupScreens/InfoPopover";
-import NotificationPopover from "../popupScreens/NotificationPopover";
-import { useNavigate } from "react-router-dom";
 import AdminSwitch from "../switches/adminSwitch";
 
 const NavBar = ({ handleClick, brandText }) => {
@@ -34,7 +31,6 @@ const NavBar = ({ handleClick, brandText }) => {
   const { user, isUserLoading } = useUser();
   const fullName = getDisplayName(user).split(" ");
   const { logout } = useDescope();
-  const navigate = useNavigate();
 
   const isTenantAdmin = () => {
     const sessionToken = getSessionToken();

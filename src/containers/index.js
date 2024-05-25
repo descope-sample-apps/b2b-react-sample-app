@@ -8,6 +8,7 @@ import SsoSetup from "../dashboard/ssosetup/SsoSetup";
 import Widgets from "../dashboard/widgets/widgets";
 import Audit from "../dashboard/audit/audit";
 import ProjectLayout from "../layout/ProjectLayout";
+import Profile from "../dashboard/profile/profile";
 
 const Container = () => {
   return (
@@ -19,6 +20,7 @@ const Container = () => {
         <Route path="admin/sso-setup" element={<SsoSetup />} />
         <Route path="admin/widgets" element={<Widgets />} />
         <Route path="admin/audit" element={<Audit />} />
+        <Route path="user/profile" element={<Profile />} />
       </Route>
 
       {/* Routes without ProjectLayout */}
