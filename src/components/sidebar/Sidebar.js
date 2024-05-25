@@ -2,7 +2,7 @@ import { Divider, Menu } from "antd";
 import logo_Dolrr from "../../assets/logo_dolrr.svg";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.scss";
-import { MdBarChart, MdManageAccounts, MdVerifiedUser, MdHome, MdKey } from "react-icons/md";
+import { MdBarChart, MdAccountTree, MdManageAccounts, MdVerifiedUser, MdHome, MdKey } from "react-icons/md";
 import { useUser, useSession } from '@descope/react-sdk'
 
 
@@ -20,8 +20,9 @@ const items = [
   getItem("Your Rev Dashboard", "/", <MdHome style={{ fontSize: '1.2em'}} />),
   getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{ fontSize: '1.5em' }} />),
   getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{ fontSize: '1.5em' }} />),
-  getItem("Management", "/admin/widgets", <MdManageAccounts style={{ fontSize: '1.5em' }} />),
-  getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />)
+  getItem("Management", "/admin/widgets", <MdAccountTree style={{ fontSize: '1.5em' }} />),
+  getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />),
+  getItem("My Profile", "/user/profile", <MdManageAccounts style={{ fontSize: '1.5em' }} />)
 ];
 
 

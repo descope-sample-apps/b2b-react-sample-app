@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./ssoSetup.scss";
-import AdminExperiences from "../../components/adminExperiences/AdminExperiences";
-import { Descope, useSession, useUser, getJwtPermissions, getSessionToken } from '@descope/react-sdk';
+import { Descope } from '@descope/react-sdk';
 import { useNavigate } from "react-router-dom";
 
 const SsoSetup = () => {
