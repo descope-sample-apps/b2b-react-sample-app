@@ -11,14 +11,12 @@ const Profile = () => {
 
   return (
     <div className="data-table-wrapper">
-      <div style={{ margin: 'auto', maxWidth: '450px', borderRadius: "10px", overflow: "hidden", width: "100%" }}>
-        <div className='profile'>
+        <div className="profile">
         {<UserProfile
           widgetId="user-profile-widget"
           onLogout={logoutUser}/>}
         </div>
       </div>
-    </div>
   );
 };
 
