@@ -19,14 +19,12 @@ const AppRoot = () => {
     const { isAuthenticated, isSessionLoading } = useSession();
 
     const startOneTap = useCallback(async () => {
+      // eslint-disable-next-line
       if (oneTapInitialized) return;
 
-      try {
-        await sdk.fedcm.oneTap('google');
-        oneTapInitialized = true;
-      } catch (error) {
-        console.error('Error during oneTap initialization:', error);
-      }
+      await sdk.fedcm.oneTap('google');
+
+      oneTapInitialized = true;
     }, [sdk]);
 
     useEffect(() => {
@@ -34,9 +32,9 @@ const AppRoot = () => {
         startOneTap();
       }
     }, [isAuthenticated, isSessionLoading, startOneTap]);
-
     return null;
   };
+  
 
   return (
     <AuthProvider projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}>
