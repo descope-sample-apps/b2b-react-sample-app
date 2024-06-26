@@ -19,12 +19,14 @@ const AppRoot = () => {
     const { isAuthenticated, isSessionLoading } = useSession();
 
     const startOneTap = useCallback(async () => {
-      // eslint-disable-next-line
       if (oneTapInitialized) return;
 
-      await sdk.fedcm.oneTap('google');
-
-      oneTapInitialized = true;
+      try {
+        await sdk.fedcm.oneTap('google');
+        oneTapInitialized = true;
+      } catch (error) {
+        console.error('Error during oneTap initialization:', error);
+      }
     }, [sdk]);
 
     useEffect(() => {
@@ -33,14 +35,11 @@ const AppRoot = () => {
       }
     }, [isAuthenticated, isSessionLoading, startOneTap]);
 
-    // Return some JSX here. For example, return null if there's nothing to render:
     return null;
   };
 
   return (
-    <AuthProvider
-      projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}
-    >
+    <AuthProvider projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}>
       <OneTapComp />
       <App />
     </AuthProvider>
