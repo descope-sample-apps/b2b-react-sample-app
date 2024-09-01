@@ -4,16 +4,20 @@ import React, { useState, useEffect } from 'react';
 
 const Widgets = () => {
   const { user, isUserLoading } = useUser();
+
+  const tenantAdminRelatedTenants = user.userTenants.filter((tenant)=> {
+      if (tenant.roleNames.includes("Tenant Admin")) return tenant
+  })
   
   const [activeTab, setActiveTab] = useState('tab1');
   // Initialize selectedTenantId as empty and will set it based on user's tenants
   const [selectedTenantId, setSelectedTenantId] = useState('');
 
   useEffect(() => {
-    if (user && user.userTenants) {
+    if (user && tenantAdminRelatedTenants) {
       if (user.userTenants.length >= 1) {
         // Automatically select the first tenant if there's more than one
-        setSelectedTenantId(user.userTenants[0].tenantId);
+        setSelectedTenantId(tenantAdminRelatedTenants[0].tenantId);
       }
     }
   }, [user]); // Depend on user to auto-select the first tenant on load
@@ -54,7 +58,7 @@ const Widgets = () => {
             <label htmlFor="tenantSelect">Select Tenant: </label>
             <select id="tenantSelect" value={selectedTenantId} onChange={handleTenantChange}>
               {/* Map through all tenants for selection options */}
-              {user.userTenants.map((tenant) => (
+              {tenantAdminRelatedTenants.map((tenant) => (
                 <option key={tenant.tenantId} value={tenant.tenantId}>
                   {tenant.tenantName}
                 </option>
