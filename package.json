@@ -54,7 +54,7 @@
     ]
   },
   "resolutions": {
-    "nth-check": ">=2.0.1"
+    "nth-check": ">=2.1.0"
   },
   "packageManager": "yarn@1.22.21",
   "devDependencies": {
