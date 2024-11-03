@@ -9,6 +9,7 @@ import Widgets from "../dashboard/widgets/widgets";
 import Audit from "../dashboard/audit/audit";
 import ProjectLayout from "../layout/ProjectLayout";
 import Profile from "../dashboard/profile/profile";
+import Apps from "../dashboard/apps/apps";
 
 const Container = () => {
   return (
@@ -21,6 +22,7 @@ const Container = () => {
         <Route path="admin/widgets" element={<Widgets />} />
         <Route path="admin/audit" element={<Audit />} />
         <Route path="user/profile" element={<Profile />} />
+        <Route path="user/apps" element={<Apps />} />
       </Route>
 
       {/* Routes without ProjectLayout */}

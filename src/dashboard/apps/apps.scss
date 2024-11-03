@@ -1,0 +1,77 @@
+.dev-table-container {
+  align-items: center;
+  display: jus;
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-table-wrapper {
+  background: transparent;
+  padding: 10px 0 50px 0;
+  height: 90vh;
+
+  .ant-space-item {
+    width: 100%;
+  }
+
+  .ant-card-bordered {
+    border-radius: 23px;
+    height: 100%;
+  }
+
+  .first-row {
+    width: 100%;
+
+    .product-data-revenue {
+      overflow-x: scroll;
+    }
+  }
+
+  .sec-row {
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom: 16px;
+
+    .column-data {
+      overflow-x: scroll;
+    }
+
+    .priority-data-revenue {
+      overflow-x: scroll;
+    }
+  }
+}
+
+.ant-table-wrapper .ant-table-thead>tr>th {
+  background: white;
+}
+
+.ant-table-wrapper .ant-table-thead>tr>th {
+  color: #a0aec0;
+}
+
+.ant-table-wrapper .ant-table-tbody>tr>td {
+  font-weight: 700;
+  color: #3d4672;
+}
+
+.ant-table-wrapper .ant-table-thead>tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+  position: inherit;
+}
+
+//Revenue
+.data-revenue {
+  @media screen and (max-width: 600px) {
+    overflow-x: scroll;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 1200px) {
+    overflow-x: scroll;
+  }
+}
+//Revenue end
+//Apps
+.apps {
+  max-width: 600px;
+  margin: 0 auto;
+}
