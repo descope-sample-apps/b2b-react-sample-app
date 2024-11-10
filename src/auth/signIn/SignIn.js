@@ -10,7 +10,7 @@ import WelcomeModal from "../../components/welcomeModal/WelcomeModal";
 const SignIn = () => {
   const { isAuthenticated } = useSession();
   const navigate = useNavigate();
-  const flow = localStorage.getItem('flow') || process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-up-or-in";
+  const flowId = localStorage.getItem('flowId') || process.env.REACT_APP_DESCOPE_SIGN_IN_FLOW_ID || "sign-up-or-in";
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,7 +24,7 @@ const SignIn = () => {
         <Col flex="1 1 200px" className="left-container">
           <div className="sign-in-container">
             <Descope
-              flowId={flow}
+              flowId={flowId}
               onSuccess={(e) => {
                 navigate("/");
                 console.log("Logged in!");

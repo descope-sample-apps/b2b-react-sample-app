@@ -6,15 +6,15 @@ import { useSearchParams } from "react-router-dom";
 const AppRoot = () => {
   const [searchParams] = useSearchParams();
   const projectId = searchParams.get("project") || localStorage.getItem("projectId");
-  const flow = searchParams.get("flow") || localStorage.getItem('flow');
+  const flowId = searchParams.get("flow") || localStorage.getItem('flowId');
 
   if (projectId !== localStorage.getItem("projectId")) {
     localStorage.removeItem("DSR");
     localStorage.removeItem("DS");
     localStorage.setItem("projectId", projectId);
   }
-  if (flow !== localStorage.getItem('flow')) {
-    localStorage.setItem('flow', flow);
+  if (flowId !== localStorage.getItem('flowId')) {
+    localStorage.setItem('flowId', flow);
   }
 
   return (
