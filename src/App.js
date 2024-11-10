@@ -14,7 +14,7 @@ const AppRoot = () => {
     localStorage.setItem("projectId", projectId);
   }
   if (flowId !== localStorage.getItem('flowId')) {
-    localStorage.setItem('flowId', flow);
+    localStorage.setItem('flowId', flowId);
   }
 
   return (
