@@ -42,11 +42,11 @@ const LoginExperiences = () => {
               <br />
               The Dolrr app is open source and available on GitHub here:
               <a
-                href="https://github.com/descope/b2b-sample-app"
+                href="https://github.com/descope-sample-apps/b2b-react-sample-app"
                 target="_blank"
                 rel=" noreferrer noopener"
               >
-                &nbsp;https://github.com/descope/b2b-sample-app
+                &nbsp;https://github.com/descope-sample-apps/b2b-react-sample-app
               </a>
             </Typography>
           </div>
