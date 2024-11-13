@@ -7,6 +7,7 @@ const AppRoot = () => {
   const [searchParams] = useSearchParams();
   const projectId = searchParams.get("project") || localStorage.getItem("projectId");
   const flowId = searchParams.get("flow") || localStorage.getItem('flowId');
+  const baseUrl = searchParams.get("baseUrl") || localStorage.getItem('baseUrl');
 
   if (projectId !== localStorage.getItem("projectId")) {
     localStorage.removeItem("DSR");
@@ -16,11 +17,17 @@ const AppRoot = () => {
   if (flowId !== localStorage.getItem('flowId')) {
     localStorage.setItem('flowId', flowId);
   }
+  if (baseUrl !== localStorage.getItem('baseUrl')) {
+    localStorage.removeItem("DSR");
+    localStorage.removeItem("DS");
+    localStorage.setItem('baseUrl', baseUrl);
+    
+  }
 
   return (
     <AuthProvider
       projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}
-      baseUrl = {process.env.REACT_APP_DESCOPE_BASE_URL}
+      baseUrl = {baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL}
     >
       <App />
     </AuthProvider>
