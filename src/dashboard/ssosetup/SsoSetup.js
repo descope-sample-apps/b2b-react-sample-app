@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const SsoSetup = () => {
   const navigate = useNavigate();
-
   return (
     <div className="data-table-wrapper">
       <div style={{ margin: 'auto', maxWidth: '450px', borderRadius: "10px", overflow: "hidden", width: "100%" }}>
         <Descope
-          flowId="saml-config"
+          flowId="sso-config"
           onSuccess={(e) => {
             console.log('success => ', e)
             navigate("/");
