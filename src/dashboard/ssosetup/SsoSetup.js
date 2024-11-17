@@ -11,7 +11,7 @@ const SsoSetup = () => {
       <div style={{ margin: 'auto', maxWidth: '450px', borderRadius: "10px", overflow: "hidden", width: "100%" }}>
         <Descope
           flowId="sso-config"
-          form={nonClosable}
+          form
           onSuccess={(e) => {
             console.log('success => ', e)
             navigate("/");
