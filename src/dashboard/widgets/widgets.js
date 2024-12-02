@@ -1,13 +1,17 @@
 import './widgets.scss';
-import { UserManagement, RoleManagement, AccessKeyManagement, useUser } from '@descope/react-sdk';
-import React, { useState, useEffect } from 'react';
+import { UserManagement, RoleManagement, AccessKeyManagement, useUser, useSession } from '@descope/react-sdk';
+import React, { useState, useEffect, useMemo } from 'react';
 
 const Widgets = () => {
   const { user, isUserLoading } = useUser();
+  const { isSessionLoading } = useSession();
 
-  const tenantAdminRelatedTenants = user.userTenants.filter((tenant)=> {
+
+  const tenantAdminRelatedTenants = useMemo(() => {
+    return user?.userTenants.filter((tenant)=> {
       if (tenant.roleNames.includes("Tenant Admin")) return tenant
   })
+  }, [user?.userTenants])
   
   const [activeTab, setActiveTab] = useState('tab1');
   // Initialize selectedTenantId as empty and will set it based on user's tenants
@@ -21,6 +25,11 @@ const Widgets = () => {
       }
     }
   }, [user]); // Depend on user to auto-select the first tenant on load
+
+
+  if (isUserLoading || isSessionLoading) {
+    return null;
+  }
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
