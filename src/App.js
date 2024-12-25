@@ -27,7 +27,7 @@ const AppRoot = () => {
   return (
     <AuthProvider
       projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}
-      baseUrl = {baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL}
+      baseUrl = {baseUrl}
     >
       <App />
     </AuthProvider>
