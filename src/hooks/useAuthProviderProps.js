@@ -16,7 +16,7 @@ export default function useAuthProviderProps() {
     Array.from(searchParams.entries()).filter(([key]) =>
       key.toLocaleLowerCase().startsWith(authProviderPrefix)
     ).map(([key]) => {
-        // remove the "authProvider." prefix and make it camelCase
+        // remove the "auth-provider." prefix and make it camelCase
         const k =  kebabCaseToCamelCase(key.slice(authProviderPrefix.length))
         const v = searchParams.get(key)
         return [
