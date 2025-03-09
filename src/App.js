@@ -2,6 +2,7 @@ import Container from "./containers";
 import React from "react";
 import { AuthProvider } from "@descope/react-sdk";
 import { useSearchParams } from "react-router-dom";
+import useAuthProviderProps from "./hooks/useAuthProviderProps";
 
 const AppRoot = () => {
   const [searchParams] = useSearchParams();
@@ -21,13 +22,15 @@ const AppRoot = () => {
     localStorage.removeItem("DSR");
     localStorage.removeItem("DS");
     localStorage.setItem('baseUrl', baseUrl);
-    
   }
+
+  const authProviderProps = useAuthProviderProps();
 
   return (
     <AuthProvider
       projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}
-      baseUrl = {baseUrl}
+      baseUrl = {baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL}
+      {...authProviderProps}
     >
       <App />
     </AuthProvider>

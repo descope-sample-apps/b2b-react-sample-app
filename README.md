@@ -39,6 +39,25 @@ yarn start
 #### 5. Open the app
 Browse to `http://localhost:3000`
 
+#### Pass attributes from URL search params
+1. pass project id, base url, and flow id as search params in the URL
+```
+// You can pass one or more of the following search params
+// project: YOUR_PROJECT_ID
+// baseUrl: YOUR_BASE_URL
+// flow: YOUR_FLOW_ID
+http://localhost:3000/?project=YOUR_PROJECT_ID&baseUrl=YOUR_BASE_URL&flow=YOUR_FLOW_ID
+```
+
+2. Pass `AuthProvider` props as search params in the URL 
+```
+// prefix the prop name with `auth-provider.`
+// it will convert prop from kebab-case to camelCase
+// e.g. `auth-provider.refresh-cookie-name` will be converted to `refreshCookieName`
+// e.g. `auth-provider.persist-tokens` will be converted to `persistTokens`
+
+http://localhost:3000/?auth-provider.refresh-cookie-name=DSR1&auth-provider.persist-tokens=false
+```
 
 ##### User invitation with Magic Link
 This app contains a user invitation route that uses a magic link.
