@@ -23,7 +23,8 @@ const items = [
   getItem("Management", "/admin/widgets", <MdAccountTree style={{ fontSize: '1.5em' }} />),
   getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />),
   getItem("My Profile", "/user/profile", <MdManageAccounts style={{ fontSize: '1.5em' }} />),
-  getItem("My Applications", "/user/apps", <MdApps style={{ fontSize: '1.5em' }} />)
+  getItem("My Applications", "/user/apps", <MdApps style={{ fontSize: '1.5em' }} />),
+  getItem("My Access Keys", '/user/keys', <MdKey style={{ fontSize: '1.5em' }} />)
 ];
 
 
@@ -68,6 +69,9 @@ const Sidebar = () => {
           } 
           if ((label === "SSO Setup" || label === "Management" || label === "Audit") && !isTenantAdmin()) {
             item.disabled = true;
+            item.onMouseEnter = function(){
+
+            };
           }
           return item;
         })}
