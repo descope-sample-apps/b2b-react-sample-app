@@ -10,6 +10,8 @@ import Audit from "../dashboard/audit/audit";
 import ProjectLayout from "../layout/ProjectLayout";
 import Profile from "../dashboard/profile/profile";
 import Apps from "../dashboard/apps/apps";
+import AccessKeys from "../dashboard/access-keys/accesskeys";
+
 
 const Container = () => {
   return (
@@ -23,6 +25,7 @@ const Container = () => {
         <Route path="admin/audit" element={<Audit />} />
         <Route path="user/profile" element={<Profile />} />
         <Route path="user/apps" element={<Apps />} />
+        <Route path="user/keys" element={<AccessKeys/>} />
       </Route>
 
       {/* Routes without ProjectLayout */}
