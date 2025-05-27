@@ -42,14 +42,14 @@ const Dashboard = () => {
           <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <CardData
               icon={<MdAttachMoney />}
-              name="Pipleline"
+              name="Pipeline"
               value="$642.39"
               className="data-style"
             />
           </Col>
           <Col xs={24} sm={24} md={12} lg={8} xxl={4}>
             <DataTable
-              name="New Pipleline"
+              name="New Pipeline"
               value="$574.34"
               className="data-style"
               growth="+23%"
