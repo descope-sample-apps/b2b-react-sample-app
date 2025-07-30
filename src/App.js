@@ -6,32 +6,35 @@ import useAuthProviderProps from "./hooks/useAuthProviderProps";
 
 const AppRoot = () => {
   const [searchParams] = useSearchParams();
-  const projectId = searchParams.get("project") || localStorage.getItem("projectId");
-  const flowId = searchParams.get("flow") || localStorage.getItem('flowId');
-  const baseUrl = searchParams.get("baseUrl") || localStorage.getItem('baseUrl');
+  const projectId =
+    searchParams.get("project") || localStorage.getItem("projectId");
+  const flowId = searchParams.get("flow") || localStorage.getItem("flowId");
+  const baseUrl =
+    searchParams.get("baseUrl") || localStorage.getItem("baseUrl");
 
   if (projectId !== localStorage.getItem("projectId")) {
     localStorage.removeItem("DSR");
     localStorage.removeItem("DS");
     localStorage.setItem("projectId", projectId);
   }
-  if (flowId !== localStorage.getItem('flowId')) {
-    localStorage.setItem('flowId', flowId);
+  if (flowId !== localStorage.getItem("flowId")) {
+    localStorage.setItem("flowId", flowId);
   }
-  if (baseUrl !== localStorage.getItem('baseUrl')) {
+  if (baseUrl !== localStorage.getItem("baseUrl")) {
     localStorage.removeItem("DSR");
     localStorage.removeItem("DS");
-    localStorage.setItem('baseUrl', baseUrl);
+    localStorage.setItem("baseUrl", baseUrl);
   }
 
   const authProviderProps = useAuthProviderProps();
-  const descopeProjectId = projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID
-  const descopeBaseUrl = baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL
-  const descopeStaticBaseUrl = `${descopeBaseUrl}/pages`
+  const descopeProjectId =
+    projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID;
+  const descopeBaseUrl = baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL;
+  const descopeStaticBaseUrl = baseUrl ? `${descopeBaseUrl}/pages` : undefined;
   return (
     <AuthProvider
       projectId={descopeProjectId}
-      baseUrl = {descopeBaseUrl}
+      baseUrl={descopeBaseUrl}
       baseStaticUrl={descopeStaticBaseUrl}
       {...authProviderProps}
     >
