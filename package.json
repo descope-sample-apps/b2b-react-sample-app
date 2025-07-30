@@ -5,8 +5,8 @@
   "dependencies": {
     "@ant-design/icons": "5.0.1",
     "@chakra-ui/react": "^2.8.2",
-    "@descope/node-sdk": "1.6.8",
-    "@descope/react-sdk": "^2.14.20",
+    "@descope/node-sdk": "1.7.9",
+    "@descope/react-sdk": "^2.16.2",
     "@emotion/react": "11.11.3",
     "@emotion/styled": "11.11.0",
     "@testing-library/jest-dom": "5.16.5",
