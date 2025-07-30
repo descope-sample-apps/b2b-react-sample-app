@@ -30,7 +30,8 @@ const AppRoot = () => {
   const descopeProjectId =
     projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID;
   const descopeBaseUrl = baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL;
-  const descopeStaticBaseUrl = baseUrl ? `${descopeBaseUrl}/pages` : undefined;
+  const descopeStaticBaseUrl = descopeBaseUrl ? `${descopeBaseUrl}/pages` : undefined;
+
   return (
     <AuthProvider
       projectId={descopeProjectId}
