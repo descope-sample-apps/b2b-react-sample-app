@@ -25,11 +25,14 @@ const AppRoot = () => {
   }
 
   const authProviderProps = useAuthProviderProps();
-
+  const descopeProjectId = projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID
+  const descopeBaseUrl = baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL
+  const descopeStaticBaseUrl = `${descopeBaseUrl}/pages`
   return (
     <AuthProvider
-      projectId={projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID}
-      baseUrl = {baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL}
+      projectId={descopeProjectId}
+      baseUrl = {descopeBaseUrl}
+      baseStaticUrl={descopeStaticBaseUrl}
       {...authProviderProps}
     >
       <App />
