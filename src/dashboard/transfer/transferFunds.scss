@@ -1,0 +1,55 @@
+.transfer-funds-container {
+  max-width: 420px;
+  margin: 48px auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.transfer-funds-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.transfer-funds-stepup {
+  margin-bottom: 24px;
+}
+
+.transfer-funds-form {
+  margin-top: 24px;
+  .ant-input {
+    border: 1.5px solid #b0bad7;
+    background: #f4f7fe;
+    color: #1b254b;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: none;
+    transition: border-color 0.2s;
+    &:focus, &:hover {
+      border-color: #6412e9;
+      background: #fff;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(100,18,233,0.08);
+    }
+  }
+}
+
+.transfer-funds-success {
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.descope-button-selection-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.descope-button-selection-group-item {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+} 
