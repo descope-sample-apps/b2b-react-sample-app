@@ -19,7 +19,6 @@ const getItem = (label, key, icon) => {
 const items = [
   getItem("Your Rev Dashboard", "/", <MdHome style={{ fontSize: '1.2em'}} />),
   getItem("Admin Dashboard", "/admin/data-tables", <MdBarChart style={{ fontSize: '1.5em' }} />),
-  //getItem("SSO Setup", "/admin/sso-setup", <MdKey style={{ fontSize: '1.5em' }} />),
   getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />),
   getItem("My Profile", "/user/profile", <MdManageAccounts style={{ fontSize: '1.5em' }} />),
   getItem("My Applications", "/user/apps", <MdApps style={{ fontSize: '1.5em' }} />),
