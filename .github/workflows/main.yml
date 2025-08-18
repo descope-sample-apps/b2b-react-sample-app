@@ -11,6 +11,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Install serve
+        run: yarn global add serve
+
       - name: Build
         env:
           CI: false
@@ -22,7 +25,7 @@ jobs:
           REACT_APP_DESCOPE_PROJECT_ID: ${{ secrets.REACT_APP_DESCOPE_PROJECT_ID }}
           REACT_APP_DESCOPE_MANAGEMENT_KEY: ${{ secrets.REACT_APP_DESCOPE_MANAGEMENT_KEY }}
         with:
-          start: yarn start
+          start: serve -s build -l 3000
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
