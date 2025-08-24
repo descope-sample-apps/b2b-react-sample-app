@@ -2,7 +2,7 @@ import { Divider, Menu } from "antd";
 import logo_Dolrr from "../../assets/logo_dolrr.svg";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.scss";
-import { MdBarChart, MdAccountTree, MdManageAccounts, MdApps, MdVerifiedUser, MdHome, MdKey } from "react-icons/md";
+import { MdBarChart, MdAccountTree, MdManageAccounts, MdApps, MdVerifiedUser, MdHome, MdKey, MdAttachMoney } from "react-icons/md";
 import { useUser, useSession } from '@descope/react-sdk'
 
 
@@ -24,7 +24,8 @@ const items = [
   getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />),
   getItem("My Profile", "/user/profile", <MdManageAccounts style={{ fontSize: '1.5em' }} />),
   getItem("My Applications", "/user/apps", <MdApps style={{ fontSize: '1.5em' }} />),
-  getItem("My Access Keys", '/user/keys', <MdKey style={{ fontSize: '1.5em' }} />)
+  getItem("My Access Keys", '/user/keys', <MdKey style={{ fontSize: '1.5em' }} />),
+  getItem("Transfer Funds", "/user/transfer-funds", <MdAttachMoney style={{ fontSize: '1.5em' }} />)
 ];
 
 
