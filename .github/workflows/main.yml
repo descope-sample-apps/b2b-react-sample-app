@@ -4,6 +4,10 @@ jobs:
   cypress-run:
     name: Cypress E2E Tests
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_DESCOPE_PROJECT_ID: ${{ secrets.REACT_APP_DESCOPE_PROJECT_ID }}
+      REACT_APP_DESCOPE_MANAGEMENT_KEY: ${{ secrets.REACT_APP_DESCOPE_MANAGEMENT_KEY }}
+      CI: false
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -11,18 +15,19 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Debug Environment Variables
+        run: |
+          echo "Checking if variables are set (should not be empty):"
+          echo "REACT_APP_DESCOPE_PROJECT_ID is set: $([[ ! -z "$REACT_APP_DESCOPE_PROJECT_ID" ]] && echo 'yes' || echo 'no')"
+          echo "REACT_APP_DESCOPE_MANAGEMENT_KEY is set: $([[ ! -z "$REACT_APP_DESCOPE_MANAGEMENT_KEY" ]] && echo 'yes' || echo 'no')"
+
       - name: Build
-        env:
-          CI: false
-        run:  yarn build
+        run: yarn build
 
       - name: Cypress run
         uses: cypress-io/github-action@v5
-        env:
-          REACT_APP_DESCOPE_PROJECT_ID: ${{ secrets.REACT_APP_DESCOPE_PROJECT_ID }}
-          REACT_APP_DESCOPE_MANAGEMENT_KEY: ${{ secrets.REACT_APP_DESCOPE_MANAGEMENT_KEY }}
         with:
           start: yarn start
-          wait-on: "http://localhost:3000"
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
