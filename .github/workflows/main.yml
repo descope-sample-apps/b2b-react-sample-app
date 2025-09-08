@@ -15,12 +15,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Debug Environment Variables
-        run: |
-          echo "Checking if variables are set (should not be empty):"
-          echo "REACT_APP_DESCOPE_PROJECT_ID is set: $([[ ! -z "$REACT_APP_DESCOPE_PROJECT_ID" ]] && echo 'yes' || echo 'no')"
-          echo "REACT_APP_DESCOPE_MANAGEMENT_KEY is set: $([[ ! -z "$REACT_APP_DESCOPE_MANAGEMENT_KEY" ]] && echo 'yes' || echo 'no')"
-
       - name: Build
         run: yarn build
 
@@ -28,6 +22,6 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
