@@ -1,8 +1,9 @@
 import { Divider, Menu } from "antd";
-import logo_Dolrr from "../../assets/logo_dolrr.svg";
+import logo from "../../assets/logo.webp";
 import { useNavigate } from "react-router-dom";
 import "./sidebar.scss";
-import { MdBarChart, MdAccountTree, MdManageAccounts, MdApps, MdVerifiedUser, MdHome, MdKey } from "react-icons/md";
+import { MdBarChart, MdAccountTree, MdManageAccounts, MdApps, MdVerifiedUser, MdHome, MdKey, MdAttachMoney } from "react-icons/md";
+import { RiUserAddLine } from "react-icons/ri";
 import { useUser, useSession } from '@descope/react-sdk'
 
 
@@ -24,7 +25,9 @@ const items = [
   getItem("Audit", "/admin/audit", <MdVerifiedUser style={{ fontSize: '1.5em' }} />),
   getItem("My Profile", "/user/profile", <MdManageAccounts style={{ fontSize: '1.5em' }} />),
   getItem("My Applications", "/user/apps", <MdApps style={{ fontSize: '1.5em' }} />),
-  getItem("My Access Keys", '/user/keys', <MdKey style={{ fontSize: '1.5em' }} />)
+  getItem("My Access Keys", '/user/keys', <MdKey style={{ fontSize: '1.5em' }} />),
+  getItem("Transfer Funds", "/user/transfer-funds", <MdAttachMoney style={{ fontSize: '1.5em' }} />),
+  getItem("Onboarding", "/user/onboarding", <RiUserAddLine style={{ fontSize: '1.5em' }} />)
 ];
 
 
@@ -55,7 +58,7 @@ const Sidebar = () => {
   return (
     <section className="sidebar-container">
       <div>
-        <img src={logo_Dolrr} alt="dolrr-logo" className="img-dolrr" />
+        <img src={logo} alt="dolrr-logo" className="img-dolrr" />
       </div>
       <Divider className="divider" />
       <Menu

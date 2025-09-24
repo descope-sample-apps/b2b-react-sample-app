@@ -11,6 +11,8 @@ import ProjectLayout from "../layout/ProjectLayout";
 import Profile from "../dashboard/profile/profile";
 import Apps from "../dashboard/apps/apps";
 import AccessKeys from "../dashboard/access-keys/accesskeys";
+import TransferFunds from "../dashboard/transfer/TransferFunds";
+import Onboarding from "../dashboard/onboarding/Onboarding";
 
 
 const Container = () => {
@@ -26,6 +28,9 @@ const Container = () => {
         <Route path="user/profile" element={<Profile />} />
         <Route path="user/apps" element={<Apps />} />
         <Route path="user/keys" element={<AccessKeys/>} />
+        <Route path="user/transfer-funds" element={<TransferFunds />} />
+        <Route path="user/onboarding" element={<Onboarding />} />
+
       </Route>
 
       {/* Routes without ProjectLayout */}

@@ -1,11 +1,10 @@
 import { Col, Row } from "antd";
 import { Descope, useSession } from "@descope/react-sdk";
-import app_login from "../../assets/app_login.svg";
+import app_login from "../../assets/app_login.jpg";
 import LoginExperiences from "../../components/loginExperiences/LoginExperiences";
 import { useNavigate } from "react-router-dom";
 import "./sign.scss";
 import { useEffect } from "react";
-import WelcomeModal from "../../components/welcomeModal/WelcomeModal";
 
 const SignIn = () => {
   const { isAuthenticated } = useSession();
@@ -19,7 +18,6 @@ const SignIn = () => {
   }, [isAuthenticated, navigate]);
   return (
     <div style={{ height: "99vh" }}>
-      <WelcomeModal />
       <Row className="main-row">
         <Col flex="1 1 200px" className="left-container">
           <div className="sign-in-container">
