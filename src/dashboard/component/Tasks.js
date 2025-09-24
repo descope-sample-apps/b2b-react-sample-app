@@ -1,5 +1,5 @@
 import { Card, Checkbox, Dropdown, Space, Typography } from "antd";
-import { CheckSquareFilled, DragOutlined } from "@ant-design/icons";
+import { CheckSquareFilled } from "@ant-design/icons";
 import { UserOutlined, BulbOutlined, SettingOutlined } from "@ant-design/icons";
 import { MdOutlineDragIndicator } from "react-icons/md";
 

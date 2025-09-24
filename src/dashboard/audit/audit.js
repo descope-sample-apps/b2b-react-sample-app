@@ -19,7 +19,7 @@ const Audit = () => {
         setSelectedTenantId(tenantAdminRelatedTenants[0].tenantId);
       }
     }
-  }, [user]); // Depend on user to auto-select the first tenant on load
+  }, [user, tenantAdminRelatedTenants]); // Depend on user to auto-select the first tenant on load
 
   const handleTenantChange = (event) => {
     setSelectedTenantId(event.target.value);

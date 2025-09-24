@@ -4,8 +4,8 @@ import { Dropdown, Space, theme } from "antd";
 import "./mainMenu.scss";
 
 const MainMenus = () => {
-  const { useToken } = theme;
-  const { token } = useToken();
+  // const { useToken } = theme;
+  // const { token } = useToken();
   const items = [
     {
       key: "1",
