@@ -1,5 +1,5 @@
 import { UserOutlined, BulbOutlined, SettingOutlined } from "@ant-design/icons";
-import { Dropdown, Space, theme } from "antd";
+import { Dropdown, Space } from "antd";
 
 import "./mainMenu.scss";
 

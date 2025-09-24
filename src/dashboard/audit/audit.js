@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 const Audit = () => {
   const { user, isUserLoading } = useUser();
 
-  const tenantAdminRelatedTenants = user.userTenants.filter((tenant)=> {
-    if (tenant.roleNames.includes("Tenant Admin")) return tenant
+  const tenantAdminRelatedTenants = user.userTenants.filter((tenant) => {
+    return tenant.roleNames.includes("Tenant Admin");
 })
   
   // Initialize selectedTenantId as empty and will set it based on user's tenants
