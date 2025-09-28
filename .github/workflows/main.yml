@@ -1,24 +1,13 @@
 name: E2E Tests
 on: [push]
 jobs:
-  chrome:
-    runs-on: ubuntu-24.04
-    name: E2E on Chrome for Testing
-    steps:
-      - uses: actions/checkout@v4
-      - uses: browser-actions/setup-chrome@v2
-        with:
-          chrome-version: 140
-      - uses: cypress-io/github-action@v6
-        with:
-          browser: chrome-for-testing
   cypress-run:
     name: Cypress E2E Tests
     runs-on: ubuntu-latest
     env:
       REACT_APP_DESCOPE_PROJECT_ID: ${{ secrets.REACT_APP_DESCOPE_PROJECT_ID }}
       REACT_APP_DESCOPE_MANAGEMENT_KEY: ${{ secrets.REACT_APP_DESCOPE_MANAGEMENT_KEY }}
-      # CI: false
+      CI: false
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -26,13 +15,16 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      # - name: Build
-      #   run: yarn build
+      - name: Verify Chrome installation
+        run: |
+          google-chrome --version
+          google-chrome --headless --disable-gpu --dump-dom https://www.google.com > /dev/null
 
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           start: yarn start
           wait-on: "http://localhost:3000"
-          wait-on-timeout: 240
+          wait-on-timeout: 120
           browser: chrome
+          headless: true
