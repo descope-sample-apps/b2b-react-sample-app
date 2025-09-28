@@ -1,6 +1,17 @@
 name: E2E Tests
 on: [push]
 jobs:
+  chrome:
+    runs-on: ubuntu-24.04
+    name: E2E on Chrome for Testing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 140
+      - uses: cypress-io/github-action@v6
+        with:
+          browser: chrome-for-testing
   cypress-run:
     name: Cypress E2E Tests
     runs-on: ubuntu-latest
