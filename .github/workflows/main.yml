@@ -30,3 +30,4 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 240
           browser: chrome
+          node-version: 22
