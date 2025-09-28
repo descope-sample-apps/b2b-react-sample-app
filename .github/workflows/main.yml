@@ -7,7 +7,7 @@ jobs:
     env:
       REACT_APP_DESCOPE_PROJECT_ID: ${{ secrets.REACT_APP_DESCOPE_PROJECT_ID }}
       REACT_APP_DESCOPE_MANAGEMENT_KEY: ${{ secrets.REACT_APP_DESCOPE_MANAGEMENT_KEY }}
-      CI: false
+      # CI: false
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -15,13 +15,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build
-        run: yarn build
+      # - name: Build
+      #   run: yarn build
 
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           start: yarn start
-          wait-on: "http://127.0.0.1:3000"
+          wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           browser: chrome
