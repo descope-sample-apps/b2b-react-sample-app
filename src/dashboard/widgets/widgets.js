@@ -8,10 +8,10 @@ const Widgets = () => {
 
 
   const tenantAdminRelatedTenants = useMemo(() => {
-    return user?.userTenants.filter((tenant)=> {
-      if (tenant.roleNames.includes("Tenant Admin")) return tenant
-  })
-  }, [user?.userTenants])
+    return user?.userTenants.filter((tenant) => {
+      return tenant.roleNames.includes("Tenant Admin");
+    });
+  }, [user?.userTenants]);
   
   const [activeTab, setActiveTab] = useState('tab1');
   // Initialize selectedTenantId as empty and will set it based on user's tenants
@@ -24,7 +24,7 @@ const Widgets = () => {
         setSelectedTenantId(tenantAdminRelatedTenants[0].tenantId);
       }
     }
-  }, [user]); // Depend on user to auto-select the first tenant on load
+  }, [user, tenantAdminRelatedTenants]); // Depend on user & filtered tenants to auto-select the first tenant on load
 
 
   if (isUserLoading || isSessionLoading) {

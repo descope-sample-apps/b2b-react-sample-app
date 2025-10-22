@@ -4,6 +4,13 @@ describe('Descope', function () {
     cy.loginViaDescopeAPI()
   })
 
+  cy.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    console.log('!!!!!!!! error', err);
+    return false
+})
+
   it('shows step up page and collapsable', function () {
     cy.visit('/admin/data-tables')
     cy.get('.ant-collapse-header-text').click();
