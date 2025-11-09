@@ -14,8 +14,6 @@ import hamburger from "../../assets/hamburger.svg";
 import Sidebar from "../sidebar/Sidebar";
 import {
   SearchOutlined,
-  BellOutlined,
-  InfoCircleOutlined,
 } from "@ant-design/icons";
 import "./navbar.scss";
 import { Link, useLocation } from "react-router-dom";

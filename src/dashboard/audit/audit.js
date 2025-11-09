@@ -6,8 +6,9 @@ const Audit = () => {
   const { user, isUserLoading } = useUser();
 
   const tenantAdminRelatedTenants = user.userTenants.filter((tenant)=> {
-    if (tenant.roleNames.includes("Tenant Admin")) return tenant
-})
+    if (tenant.roleNames.includes("Tenant Admin")) return tenant;
+    return null;
+  });
   
   // Initialize selectedTenantId as empty and will set it based on user's tenants
   const [selectedTenantId, setSelectedTenantId] = useState('');
@@ -19,7 +20,7 @@ const Audit = () => {
         setSelectedTenantId(tenantAdminRelatedTenants[0].tenantId);
       }
     }
-  }, [user]); // Depend on user to auto-select the first tenant on load
+  }, [user, tenantAdminRelatedTenants]); // Depend on user to auto-select the first tenant on load
 
   const handleTenantChange = (event) => {
     setSelectedTenantId(event.target.value);
