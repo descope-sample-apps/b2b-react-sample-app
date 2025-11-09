@@ -1,11 +1,9 @@
 import { UserOutlined, BulbOutlined, SettingOutlined } from "@ant-design/icons";
-import { Dropdown, Space, theme } from "antd";
+import { Dropdown, Space } from "antd";
 
 import "./mainMenu.scss";
 
 const MainMenus = () => {
-  const { useToken } = theme;
-  const { token } = useToken();
   const items = [
     {
       key: "1",
