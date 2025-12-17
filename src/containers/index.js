@@ -11,7 +11,7 @@ import ProjectLayout from "../layout/ProjectLayout";
 import Profile from "../dashboard/profile/profile";
 import Apps from "../dashboard/apps/apps";
 import AccessKeys from "../dashboard/access-keys/accesskeys";
-
+import TestIframe, { SilentCallback, ProtectedPage, ProtectedRoute } from "../components/TestIframe";
 
 const Container = () => {
   return (
@@ -31,6 +31,9 @@ const Container = () => {
       {/* Routes without ProjectLayout */}
       <Route path="auth/sign-in" element={<SignIn />} />
       <Route path="auth/invitation" element={<Invitation />} />
+      <Route path="testiframe" element={<TestIframe />} />
+      <Route path="silent-callback" element={<SilentCallback />} />
+      <Route path="protected" element={<ProtectedRoute><ProtectedPage /></ProtectedRoute>} />
     </Routes>
   );
 };
