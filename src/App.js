@@ -28,8 +28,8 @@ const AppRoot = () => {
 
   const authProviderProps = useAuthProviderProps();
   const descopeProjectId =
-    projectId || process.env.REACT_APP_DESCOPE_PROJECT_ID;
-  const descopeBaseUrl = baseUrl || process.env.REACT_APP_DESCOPE_BASE_URL;
+    "Puse136yK1TiyR4tmmaVToRDQs9icEIl" || process.env.REACT_APP_DESCOPE_PROJECT_ID;
+  const descopeBaseUrl = "https://auth.reuven.descope.org" || process.env.REACT_APP_DESCOPE_BASE_URL;
   const descopeStaticBaseUrl = descopeBaseUrl ? `${descopeBaseUrl}/pages` : undefined;
 
   return (
