@@ -140,7 +140,7 @@ function TestIframe() {
         iframe.id = 'silent-auth-iframe';
         
         const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
-        const customDomain = 'https://auth.reuven.descope.org';
+        const customDomain = 'https://auth.reuven.dolrr.biz';
         const redirectUri = `${window.location.origin}/silent-callback`;
         
         // Use simple dummy state value
