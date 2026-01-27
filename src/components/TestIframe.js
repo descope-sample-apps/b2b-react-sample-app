@@ -151,6 +151,7 @@ function TestIframe() {
           `response_type=code` +
           `&client_id=${projectId}` +
           `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+          `&oidc_error_redirect_uri=${encodeURIComponent(redirectUri)}` +
           `&state=${state}` +
           `&prompt=none` +
           `&scope=openid profile email`;
