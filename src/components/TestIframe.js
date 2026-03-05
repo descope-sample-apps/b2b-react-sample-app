@@ -139,8 +139,8 @@ function TestIframe() {
         iframe.style.display = 'none';
         iframe.id = 'silent-auth-iframe';
         
-        const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
-        const customDomain = 'https://auth.reuven.dolrr.biz';
+        const projectId = 'Peuc136x19wGku2xBOxnDtSlhmaG9uz5';
+        const customDomain = 'https://dev-auth.hyperbound.eu';
         const redirectUri = `${window.location.origin}/silent-callback`;
         
         // Use simple dummy state value
