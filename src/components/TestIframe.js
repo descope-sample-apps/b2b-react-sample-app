@@ -2,7 +2,7 @@ import logo from '../logo.svg';
 import '../App.scss';
 import { useDescope, Descope, useSession, useUser } from '@descope/react-sdk';
 import { Navigate, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated, isSessionLoading } = useSession();
@@ -79,10 +79,32 @@ function SilentCallback() {
   return null; // Return null instead of div to avoid any rendering issues
 }
 
+function generateCodeVerifier() {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+  const charactersLength = characters.length;
+  for (let i = 0; i < 128; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+function generateCodeChallenge(verifier) {
+  return crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier))
+    .then(arrayBuffer => {
+      const base64Url = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)))
+        .replace(/=/g, '')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_');
+      return base64Url;
+    });
+}
+
 function TestIframe() {
   const sdk = useDescope();
   const { isAuthenticated, isSessionLoading } = useSession();
   const [silentAuthChecked, setSilentAuthChecked] = useState(false);
+  const silentAuthCheckedRef = useRef(false);
   const [silentAuthStatus, setSilentAuthStatus] = useState(null);
 
   // Silent authentication check using iframe for OIDC federation
@@ -90,32 +112,47 @@ function TestIframe() {
     const checkSilentAuth = async () => {
       try {
         console.log('Starting silent authentication check with iframe...');
-        
+
+        const codeVerifier = generateCodeVerifier();
+        const codeChallenge = await generateCodeChallenge(codeVerifier);
+        const state = generateCodeVerifier();
+        sessionStorage.setItem('silent-auth-verifier', codeVerifier);
+        sessionStorage.setItem('silent-auth-state', state);
+
         // Set up message listener for iframe response BEFORE creating iframe
         const messageHandler = async (event) => {
           console.log('Message received:', event.data, 'from origin:', event.origin);
-          
+
           if (event.origin !== window.location.origin) {
             console.log('Ignoring message from different origin');
             return;
           }
-          
+
           if (event.data.type === 'silent-auth-result') {
             console.log('Silent auth result received:', event.data);
-            
+
+            const expectedState = sessionStorage.getItem('silent-auth-state');
+            sessionStorage.removeItem('silent-auth-state');
+            if (event.data.state !== expectedState) {
+              console.log('State mismatch — ignoring response');
+              return;
+            }
+
             // Clean up
             const iframe = document.getElementById('silent-auth-iframe');
             if (iframe && iframe.parentNode) {
               document.body.removeChild(iframe);
             }
             window.removeEventListener('message', messageHandler);
-            
+            silentAuthCheckedRef.current = true;
+
             if (event.data.code) {
               // Exchange code for token using Descope SDK
               try {
                 console.log('Exchanging code for token...');
-                // Use Descope's OAuth exchange method
-                await sdk.oauth.exchange(event.data.code);
+                const storedVerifier = sessionStorage.getItem('silent-auth-verifier');
+                sessionStorage.removeItem('silent-auth-verifier');
+                await sdk.oauth.exchange(event.data.code, storedVerifier);
                 setSilentAuthStatus('User authenticated via custom domain');
                 console.log('Silent auth successful - user is logged in');
               } catch (error) {
@@ -126,33 +163,33 @@ function TestIframe() {
               console.log('Silent auth returned error:', event.data.error);
               setSilentAuthStatus('No existing session found');
             }
-            
+
+            silentAuthCheckedRef.current = true;
             setSilentAuthChecked(true);
           }
         };
-        
+
         window.addEventListener('message', messageHandler);
         console.log('Message listener added');
-        
+
         // Create hidden iframe for silent auth
         const iframe = document.createElement('iframe');
         iframe.style.display = 'none';
         iframe.id = 'silent-auth-iframe';
-        
-        const projectId = 'Peuc136x19wGku2xBOxnDtSlhmaG9uz5';
-        const customDomain = 'https://dev-auth.hyperbound.eu';
+
+        const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
+        const customDomain = 'https://auth.reuven.descope.org';
         const redirectUri = `${window.location.origin}/silent-callback`;
-        
-        // Use simple dummy state value
-        const state = 'silent-auth-state';
-        
-        // Construct OIDC authorization URL with prompt=none for silent auth
+
+        // Construct OIDC authorization URL with PKCE and prompt=none for silent auth
         const authUrl = `${customDomain}/oauth2/v1/authorize?` +
           `response_type=code` +
           `&client_id=${projectId}` +
           `&redirect_uri=${encodeURIComponent(redirectUri)}` +
           `&oidc_error_redirect_uri=${encodeURIComponent(redirectUri)}` +
           `&state=${state}` +
+          `&code_challenge=${codeChallenge}` +
+          `&code_challenge_method=S256` +
           `&prompt=none` +
           `&scope=openid profile email`;
         
@@ -160,17 +197,18 @@ function TestIframe() {
         
         // Set timeout in case iframe doesn't respond
         setTimeout(() => {
-          if (!silentAuthChecked) {
+          if (!silentAuthCheckedRef.current) {
             console.log('Silent auth timed out');
             window.removeEventListener('message', messageHandler);
             const iframe = document.getElementById('silent-auth-iframe');
             if (iframe && iframe.parentNode) {
               document.body.removeChild(iframe);
             }
+            silentAuthCheckedRef.current = true;
             setSilentAuthStatus('Silent auth timeout');
             setSilentAuthChecked(true);
           }
-        }, 10000); // 10 seconds timeout
+        }, 10000);
         
         // Add iframe to page and start silent auth
         document.body.appendChild(iframe);
