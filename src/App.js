@@ -38,6 +38,7 @@ const AppRoot = () => {
       baseUrl={descopeBaseUrl}
       baseStaticUrl={descopeStaticBaseUrl}
       autoRefresh={false}
+      persistTokens={false}
       {...authProviderProps}
     >
       <App />
