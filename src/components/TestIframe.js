@@ -108,16 +108,26 @@ function TestIframe() {
     }
 
     if (silentAuthCheckedRef.current) return;
+    silentAuthCheckedRef.current = true;
+
+    let activeMessageHandler = null;
+
+    const cleanup = () => {
+      if (activeMessageHandler) {
+        window.removeEventListener('message', activeMessageHandler);
+        activeMessageHandler = null;
+      }
+      const iframe = document.getElementById('silent-auth-iframe');
+      if (iframe && iframe.parentNode) document.body.removeChild(iframe);
+      sessionStorage.removeItem('silent-auth-state');
+    };
 
     const checkSilentAuth = async () => {
       const state = generateCodeVerifier();
       sessionStorage.setItem('silent-auth-state', state);
 
       const done = (status) => {
-        const iframe = document.getElementById('silent-auth-iframe');
-        if (iframe && iframe.parentNode) document.body.removeChild(iframe);
-        window.removeEventListener('message', messageHandler);
-        silentAuthCheckedRef.current = true;
+        cleanup();
         setSilentAuthStatus(status);
         setSilentAuthChecked(true);
       };
@@ -146,6 +156,7 @@ function TestIframe() {
         }
       };
 
+      activeMessageHandler = messageHandler;
       window.addEventListener('message', messageHandler);
 
       const iframe = document.createElement('iframe');
@@ -168,16 +179,18 @@ function TestIframe() {
       document.body.appendChild(iframe);
 
       setTimeout(() => {
-        if (!silentAuthCheckedRef.current) done('Silent auth timeout');
+        if (activeMessageHandler) done('Silent auth timeout');
       }, 10000);
     };
 
     checkSilentAuth().catch((err) => {
       console.error('Silent auth error:', err);
-      silentAuthCheckedRef.current = true;
+      cleanup();
       setSilentAuthStatus('Silent auth failed');
       setSilentAuthChecked(true);
     });
+
+    return cleanup;
   }, [sdk, isSessionLoading, isAuthenticated]);
 
   const runSSO = async () => {
