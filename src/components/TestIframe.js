@@ -92,10 +92,16 @@ function generateCodeVerifier() {
 
 function TestIframe() {
   const sdk = useDescope();
-  const { isAuthenticated, isSessionLoading } = useSession();
+  const { isAuthenticated, isSessionLoading, sessionToken } = useSession();
   const [silentAuthChecked, setSilentAuthChecked] = useState(false);
   const silentAuthCheckedRef = useRef(false);
   const [silentAuthStatus, setSilentAuthStatus] = useState(null);
+
+  useEffect(() => {
+    if (!isSessionLoading) {
+      console.log('[try-refresh result]', { isAuthenticated, hasSessionToken: !!sessionToken, sessionToken });
+    }
+  }, [isSessionLoading, isAuthenticated, sessionToken]);
 
   useEffect(() => {
     if (isSessionLoading) return;
@@ -145,10 +151,17 @@ function TestIframe() {
 
         if (event.data.code) {
           try {
-            await sdk.oauth.exchange(event.data.code);
-            done('Authenticated via custom domain');
+            // The Descope flow already consumed the code server-side.
+            // Refresh to pick up the session tokens stored in localStorage by the flow.
+            const result = await sdk.refresh();
+            console.log('[silent auth] refresh result:', result);
+            if (result?.data?.sessionJwt) {
+              done('Authenticated via custom domain');
+            } else {
+              done('No existing session');
+            }
           } catch (err) {
-            console.log('Silent auth: exchange failed', err);
+            console.log('Silent auth: refresh failed', err);
             done('No existing session');
           }
         } else {
