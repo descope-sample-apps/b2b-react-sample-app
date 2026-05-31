@@ -89,16 +89,6 @@ function generateCodeVerifier() {
   return result;
 }
 
-function generateCodeChallenge(verifier) {
-  return crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier))
-    .then(arrayBuffer => {
-      const base64Url = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)))
-        .replace(/=/g, '')
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_');
-      return base64Url;
-    });
-}
 
 function TestIframe() {
   const sdk = useDescope();
@@ -107,131 +97,88 @@ function TestIframe() {
   const silentAuthCheckedRef = useRef(false);
   const [silentAuthStatus, setSilentAuthStatus] = useState(null);
 
-  // Silent authentication check using iframe for OIDC federation
   useEffect(() => {
+    if (isSessionLoading) return;
+
+    if (isAuthenticated) {
+      silentAuthCheckedRef.current = true;
+      setSilentAuthChecked(true);
+      setSilentAuthStatus('User already authenticated');
+      return;
+    }
+
+    if (silentAuthCheckedRef.current) return;
+
     const checkSilentAuth = async () => {
-      try {
-        console.log('Starting silent authentication check with iframe...');
+      const state = generateCodeVerifier();
+      sessionStorage.setItem('silent-auth-state', state);
 
-        const codeVerifier = generateCodeVerifier();
-        const codeChallenge = await generateCodeChallenge(codeVerifier);
-        const state = generateCodeVerifier();
-        sessionStorage.setItem('silent-auth-verifier', codeVerifier);
-        sessionStorage.setItem('silent-auth-state', state);
-
-        // Set up message listener for iframe response BEFORE creating iframe
-        const messageHandler = async (event) => {
-          console.log('Message received:', event.data, 'from origin:', event.origin);
-
-          if (event.origin !== window.location.origin) {
-            console.log('Ignoring message from different origin');
-            return;
-          }
-
-          if (event.data.type === 'silent-auth-result') {
-            console.log('Silent auth result received:', event.data);
-
-            const expectedState = sessionStorage.getItem('silent-auth-state');
-            sessionStorage.removeItem('silent-auth-state');
-            if (event.data.state !== expectedState) {
-              console.log('State mismatch — ignoring response');
-              return;
-            }
-
-            // Clean up
-            const iframe = document.getElementById('silent-auth-iframe');
-            if (iframe && iframe.parentNode) {
-              document.body.removeChild(iframe);
-            }
-            window.removeEventListener('message', messageHandler);
-            silentAuthCheckedRef.current = true;
-
-            if (event.data.code) {
-              // Exchange code for token using Descope SDK
-              try {
-                console.log('Exchanging code for token...');
-                const storedVerifier = sessionStorage.getItem('silent-auth-verifier');
-                sessionStorage.removeItem('silent-auth-verifier');
-                await sdk.oauth.exchange(event.data.code, storedVerifier);
-                setSilentAuthStatus('User authenticated via custom domain');
-                console.log('Silent auth successful - user is logged in');
-              } catch (error) {
-                console.log('Failed to exchange code:', error);
-                setSilentAuthStatus('No existing session found');
-              }
-            } else if (event.data.error) {
-              console.log('Silent auth returned error:', event.data.error);
-              setSilentAuthStatus('No existing session found');
-            }
-
-            silentAuthCheckedRef.current = true;
-            setSilentAuthChecked(true);
-          }
-        };
-
-        window.addEventListener('message', messageHandler);
-        console.log('Message listener added');
-
-        // Create hidden iframe for silent auth
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.id = 'silent-auth-iframe';
-
-        const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
-        const customDomain = 'https://auth.reuven.descope.org';
-        const redirectUri = `${window.location.origin}/silent-callback`;
-
-        // Construct OIDC authorization URL with PKCE and prompt=none for silent auth
-        const authUrl = `${customDomain}/oauth2/v1/authorize?` +
-          `response_type=code` +
-          `&client_id=${projectId}` +
-          `&redirect_uri=${encodeURIComponent(redirectUri)}` +
-          `&oidc_error_redirect_uri=${encodeURIComponent(redirectUri)}` +
-          `&state=${state}` +
-          `&code_challenge=${codeChallenge}` +
-          `&code_challenge_method=S256` +
-          `&prompt=none` +
-          `&scope=openid profile email`;
-        
-        console.log('Silent auth URL:', authUrl);
-        
-        // Set timeout in case iframe doesn't respond
-        setTimeout(() => {
-          if (!silentAuthCheckedRef.current) {
-            console.log('Silent auth timed out');
-            window.removeEventListener('message', messageHandler);
-            const iframe = document.getElementById('silent-auth-iframe');
-            if (iframe && iframe.parentNode) {
-              document.body.removeChild(iframe);
-            }
-            silentAuthCheckedRef.current = true;
-            setSilentAuthStatus('Silent auth timeout');
-            setSilentAuthChecked(true);
-          }
-        }, 10000);
-        
-        // Add iframe to page and start silent auth
-        document.body.appendChild(iframe);
-        console.log('Iframe added to page, loading URL...');
-        iframe.src = authUrl;
-        
-      } catch (error) {
-        console.error('Silent auth error:', error);
-        setSilentAuthStatus('Silent auth failed');
+      const done = (status) => {
+        const iframe = document.getElementById('silent-auth-iframe');
+        if (iframe && iframe.parentNode) document.body.removeChild(iframe);
+        window.removeEventListener('message', messageHandler);
+        silentAuthCheckedRef.current = true;
+        setSilentAuthStatus(status);
         setSilentAuthChecked(true);
-      }
+      };
+
+      const messageHandler = async (event) => {
+        if (event.origin !== window.location.origin) return;
+        if (event.data.type !== 'silent-auth-result') return;
+
+        const expectedState = sessionStorage.getItem('silent-auth-state');
+        sessionStorage.removeItem('silent-auth-state');
+        if (event.data.state !== expectedState) {
+          console.log('Silent auth: state mismatch, ignoring');
+          return;
+        }
+
+        if (event.data.code) {
+          try {
+            await sdk.oauth.exchange(event.data.code);
+            done('Authenticated via custom domain');
+          } catch (err) {
+            console.log('Silent auth: exchange failed', err);
+            done('No existing session');
+          }
+        } else {
+          done('No existing session');
+        }
+      };
+
+      window.addEventListener('message', messageHandler);
+
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.id = 'silent-auth-iframe';
+
+      const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
+      const customDomain = 'https://auth.reuven.descope.org';
+      const redirectUri = `${window.location.origin}/silent-callback`;
+
+      iframe.src = `${customDomain}/oauth2/v1/authorize?` +
+        `response_type=code` +
+        `&client_id=${projectId}` +
+        `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+        `&oidc_error_redirect_uri=${encodeURIComponent(redirectUri)}` +
+        `&state=${state}` +
+        `&prompt=none` +
+        `&scope=openid profile email`;
+
+      document.body.appendChild(iframe);
+
+      setTimeout(() => {
+        if (!silentAuthCheckedRef.current) done('Silent auth timeout');
+      }, 10000);
     };
 
-    // Only run silent auth check once on mount and if not already authenticated
-    if (!isSessionLoading && !silentAuthChecked && !isAuthenticated) {
-      checkSilentAuth();
-    } else if (!isSessionLoading && (isAuthenticated || silentAuthChecked)) {
+    checkSilentAuth().catch((err) => {
+      console.error('Silent auth error:', err);
+      silentAuthCheckedRef.current = true;
+      setSilentAuthStatus('Silent auth failed');
       setSilentAuthChecked(true);
-      if (isAuthenticated) {
-        setSilentAuthStatus('User already authenticated');
-      }
-    }
-  }, [sdk, isSessionLoading, silentAuthChecked, isAuthenticated]);
+    });
+  }, [sdk, isSessionLoading, isAuthenticated]);
 
   const runSSO = async () => {
     const d = await sdk.saml.start('descope.com', 'http://localhost:3000');
