@@ -92,27 +92,12 @@ function generateCodeVerifier() {
 
 function TestIframe() {
   const sdk = useDescope();
-  const { isAuthenticated, isSessionLoading, sessionToken } = useSession();
   const [silentAuthChecked, setSilentAuthChecked] = useState(false);
   const silentAuthCheckedRef = useRef(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [silentAuthStatus, setSilentAuthStatus] = useState(null);
 
   useEffect(() => {
-    if (!isSessionLoading) {
-      console.log('[try-refresh result]', { isAuthenticated, hasSessionToken: !!sessionToken, sessionToken });
-    }
-  }, [isSessionLoading, isAuthenticated, sessionToken]);
-
-  useEffect(() => {
-    if (isSessionLoading) return;
-
-    if (isAuthenticated) {
-      silentAuthCheckedRef.current = true;
-      setSilentAuthChecked(true);
-      setSilentAuthStatus('User already authenticated');
-      return;
-    }
-
     if (silentAuthCheckedRef.current) return;
     silentAuthCheckedRef.current = true;
 
@@ -132,8 +117,9 @@ function TestIframe() {
       const state = generateCodeVerifier();
       sessionStorage.setItem('silent-auth-state', state);
 
-      const done = (status) => {
+      const done = (status, authenticated = false) => {
         cleanup();
+        setIsAuthenticated(authenticated);
         setSilentAuthStatus(status);
         setSilentAuthChecked(true);
       };
@@ -151,17 +137,10 @@ function TestIframe() {
 
         if (event.data.code) {
           try {
-            // The Descope flow already consumed the code server-side.
-            // Refresh to pick up the session tokens stored in localStorage by the flow.
-            const result = await sdk.refresh();
-            console.log('[silent auth] refresh result:', result);
-            if (result?.data?.sessionJwt) {
-              done('Authenticated via custom domain');
-            } else {
-              done('No existing session');
-            }
+            await sdk.oauth.exchange(event.data.code);
+            done('Authenticated via custom domain', true);
           } catch (err) {
-            console.log('Silent auth: refresh failed', err);
+            console.log('Silent auth: exchange failed', err);
             done('No existing session');
           }
         } else {
@@ -204,7 +183,7 @@ function TestIframe() {
     });
 
     return cleanup;
-  }, [sdk, isSessionLoading, isAuthenticated]);
+  }, [sdk]);
 
   const runSSO = async () => {
     const d = await sdk.saml.start('descope.com', 'http://localhost:3000');
