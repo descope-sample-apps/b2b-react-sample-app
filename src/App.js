@@ -37,6 +37,7 @@ const AppRoot = () => {
       projectId={descopeProjectId}
       baseUrl={descopeBaseUrl}
       baseStaticUrl={descopeStaticBaseUrl}
+      autoRefresh={false}
       {...authProviderProps}
     >
       <App />
