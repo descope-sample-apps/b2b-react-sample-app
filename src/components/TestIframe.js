@@ -86,12 +86,6 @@ function generateCodeVerifier() {
     .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
 }
 
-async function generateCodeChallenge(verifier) {
-  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
-  return btoa(String.fromCharCode(...new Uint8Array(digest)))
-    .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
-}
-
 
 function TestIframe() {
   const sdk = useDescope();
@@ -114,15 +108,11 @@ function TestIframe() {
       const iframe = document.getElementById('silent-auth-iframe');
       if (iframe && iframe.parentNode) document.body.removeChild(iframe);
       sessionStorage.removeItem('silent-auth-state');
-      sessionStorage.removeItem('silent-auth-verifier');
     };
 
     const checkSilentAuth = async () => {
-      const codeVerifier = generateCodeVerifier();
-      const codeChallenge = await generateCodeChallenge(codeVerifier);
       const state = generateCodeVerifier();
       sessionStorage.setItem('silent-auth-state', state);
-      sessionStorage.setItem('silent-auth-verifier', codeVerifier);
 
       const done = (status, authenticated = false) => {
         cleanup();
@@ -144,24 +134,11 @@ function TestIframe() {
 
         if (event.data.code) {
           try {
-            const verifier = sessionStorage.getItem('silent-auth-verifier');
-            sessionStorage.removeItem('silent-auth-verifier');
-            const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
-            const customDomain = 'https://auth.reuven.descope.org';
-            const res = await fetch(`${customDomain}/v1/auth/oauth/exchange`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${projectId}`,
-              },
-              body: JSON.stringify({ code: event.data.code, codeVerifier: verifier }),
-              credentials: 'include',
-            });
+            const res = await sdk.oauth.exchange(event.data.code);
             if (res.ok) {
               done('Authenticated via custom domain', true);
             } else {
-              const body = await res.text();
-              console.log('Silent auth: exchange failed', res.status, body);
+              console.log('Silent auth: exchange failed', res.error);
               done('No existing session');
             }
           } catch (err) {
@@ -190,8 +167,6 @@ function TestIframe() {
         `&redirect_uri=${encodeURIComponent(redirectUri)}` +
         `&oidc_error_redirect_uri=${encodeURIComponent(redirectUri)}` +
         `&state=${state}` +
-        `&code_challenge=${codeChallenge}` +
-        `&code_challenge_method=S256` +
         `&prompt=none` +
         `&scope=openid profile email`;
 
