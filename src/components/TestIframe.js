@@ -148,11 +148,13 @@ function TestIframe() {
             sessionStorage.removeItem('silent-auth-verifier');
             const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
             const customDomain = 'https://auth.reuven.descope.org';
-            const redirectUri = `${window.location.origin}/silent-callback`;
             const res = await fetch(`${customDomain}/v1/auth/oauth/exchange`, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ code: event.data.code, codeVerifier: verifier, clientId: projectId, redirectUri }),
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${projectId}`,
+              },
+              body: JSON.stringify({ code: event.data.code, codeVerifier: verifier }),
               credentials: 'include',
             });
             if (res.ok) {
