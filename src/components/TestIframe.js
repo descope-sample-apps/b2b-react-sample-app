@@ -121,6 +121,9 @@ function TestIframe() {
         setSilentAuthChecked(true);
       };
 
+      const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
+      const customDomain = 'https://auth.reuven.descope.org';
+
       const messageHandler = async (event) => {
         if (event.origin !== window.location.origin) return;
         if (event.data.type !== 'silent-auth-result') return;
@@ -134,11 +137,24 @@ function TestIframe() {
 
         if (event.data.code) {
           try {
-            const res = await sdk.oauth.exchange(event.data.code);
+            const tokenUrl = `${customDomain}/oauth2/v1/token`;
+            const tokenData = {
+              grant_type: 'authorization_code',
+              code: event.data.code,
+              client_id: projectId,
+              code_verifier: expectedState,
+            };
+            const res = await fetch(tokenUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(tokenData),
+            });
+            const data = await res.json();
             if (res.ok) {
+              console.log('Silent auth: exchange success', data);
               done('Authenticated via custom domain', true);
             } else {
-              console.log('Silent auth: exchange failed', res.error);
+              console.log('Silent auth: exchange failed', res.status, data);
               done('No existing session');
             }
           } catch (err) {
@@ -156,9 +172,6 @@ function TestIframe() {
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
       iframe.id = 'silent-auth-iframe';
-
-      const projectId = 'Puse136yK1TiyR4tmmaVToRDQs9icEIl';
-      const customDomain = 'https://auth.reuven.descope.org';
       const redirectUri = `${window.location.origin}/silent-callback`;
 
       iframe.src = `${customDomain}/oauth2/v1/authorize?` +
