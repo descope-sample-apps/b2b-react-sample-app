@@ -86,6 +86,13 @@ function generateCodeVerifier() {
     .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
 }
 
+async function generateCodeChallenge(verifier) {
+  const data = new TextEncoder().encode(verifier);
+  const digest = await crypto.subtle.digest('SHA-256', data);
+  return btoa(String.fromCharCode(...new Uint8Array(digest)))
+    .replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
+}
+
 
 function TestIframe() {
   const sdk = useDescope();
@@ -112,6 +119,7 @@ function TestIframe() {
 
     const checkSilentAuth = async () => {
       const state = generateCodeVerifier();
+      const codeChallenge = await generateCodeChallenge(state);
       sessionStorage.setItem('silent-auth-state', state);
 
       const done = (status, authenticated = false) => {
@@ -180,6 +188,8 @@ function TestIframe() {
         `&redirect_uri=${encodeURIComponent(redirectUri)}` +
         `&oidc_error_redirect_uri=${encodeURIComponent(redirectUri)}` +
         `&state=${state}` +
+        `&code_challenge=${codeChallenge}` +
+        `&code_challenge_method=S256` +
         `&prompt=none` +
         `&scope=openid profile email`;
 
