@@ -21,6 +21,7 @@ const SignIn = () => {
     }
   }, [isAuthenticated, navigate]);
 
+  // Show the flow once it's ready, or when it fails so its error is shown instead of an endless loader
   const onReady = useCallback(() => setIsFlowReady(true), []);
 
   // Once the flow has rendered, offer Google One Tap as a faster alternative.
@@ -61,7 +62,10 @@ const SignIn = () => {
                   navigate("/");
                   console.log("Logged in!");
                 }}
-                onError={(e) => console.log("Error!")}
+                onError={(e) => {
+                  setIsFlowReady(true);
+                  console.log("Error!");
+                }}
               />
             </div>
           </div>

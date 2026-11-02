@@ -27,8 +27,9 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <!-- Google One Tap client. Loaded up front (before Osano is injected on window load)
-      so the cookie manager doesn't block it; the Descope SDK reuses it via this id -->
+    <!-- Google One Tap client, used by the sign in page. Loaded here, before Osano is injected on
+      window load, because Osano blocks it when the SDK injects it later (so it loads on every page).
+      The Descope SDK reuses it via this id -->
     <script id="google-gsi-client-script" src="https://accounts.google.com/gsi/client" async defer></script>
     <title>Dolrr - Descope Sample App</title>
   </head>

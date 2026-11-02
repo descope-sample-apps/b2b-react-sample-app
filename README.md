@@ -16,7 +16,8 @@ Copy `.env.example` to `.env` and set your Descope project ID. The rest are opti
 REACT_APP_DESCOPE_PROJECT_ID="YOUR PROJECT ID" // Required for Descope authentication
 REACT_APP_DESCOPE_SIGN_IN_FLOW_ID="sign-up-or-in" // Optional, if you would like to use a flow other than sign-up-or-in
 REACT_APP_DESCOPE_MANAGEMENT_KEY="YOUR MANAGEMENT KEY" // Optional, if you would like to run E2E tests
-REACT_APP_DESCOPE_BASE_URL="http://localhost:8000" // Optional, if you would like to use a different base URL
+REACT_APP_DESCOPE_BASE_URL="http://localhost:8000" // Optional, if you would like to use a different base URL (used by the app)
+DESCOPE_BASE_URL="http://localhost:8000" // Optional, the same base URL for the API functions in `api/`
 ```
 _You can get your project-id [here](https://app.descope.com/settings/project)_.
 _You can get this flow-id from the Flows page [here](https://app.descope.com/flows)_.
