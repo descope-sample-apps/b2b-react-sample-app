@@ -2,21 +2,19 @@
 // cypress/support/commands.js
 //
 
-const projectId = Cypress.env('descope_project_id')
-const managementKey = Cypress.env('descope_management_key')
-let descopeAPIDomain = "api.descope.com"
-if (projectId.length >= 32) {
-    const localURL = projectId.substring(1, 5)
-    descopeAPIDomain = [descopeAPIDomain.slice(0, 4), localURL, ".", descopeAPIDomain.slice(4)].join('')
-}
-
-// Define the authorization header
-const authHeader = {
-    'Authorization': `Bearer ${projectId}:${managementKey}`,
-}
-
-// Define the base URL for Descope API
-const descopeApiBaseURL = `https://${descopeAPIDomain}/v1`;
+// Cypress 16 removed Cypress.env(); cy.env() is a chainable, so config is resolved per command.
+const withDescope = (fn) =>
+    cy.env(['descope_project_id', 'descope_management_key']).then(({ descope_project_id: projectId, descope_management_key: managementKey }) => {
+        let descopeAPIDomain = "api.descope.com"
+        if (projectId.length >= 32) {
+            const localURL = projectId.substring(1, 5)
+            descopeAPIDomain = [descopeAPIDomain.slice(0, 4), localURL, ".", descopeAPIDomain.slice(4)].join('')
+        }
+        return fn({
+            authHeader: { 'Authorization': `Bearer ${projectId}:${managementKey}` },
+            descopeApiBaseURL: `https://${descopeAPIDomain}/v1`,
+        })
+    })
 
 const testUserLoginId = "testUser" + Math.floor(1000 + Math.random() * 9000) + "@gmail.com"; // Must match email to pass validation
 
@@ -32,7 +30,7 @@ const testUser = {
 }
 
 // Add the loginViaDescopeAPI command
-Cypress.Commands.add('loginViaDescopeAPI', () => {
+Cypress.Commands.add('loginViaDescopeAPI', () => withDescope(({ authHeader, descopeApiBaseURL }) => {
     cy.request({
         method: 'POST',
         url: `${descopeApiBaseURL}/mgmt/user/create`,
@@ -82,14 +80,14 @@ Cypress.Commands.add('loginViaDescopeAPI', () => {
                         })
                 })
         })
-})
+}))
 
 
 // Add the deleteAllTestUsers command
-Cypress.Commands.add('deleteAllTestUsers', () => {
+Cypress.Commands.add('deleteAllTestUsers', () => withDescope(({ authHeader, descopeApiBaseURL }) => {
     cy.request({
         method: 'DELETE',
         url: `${descopeApiBaseURL}/mgmt/user/test/delete/all`,
         headers: authHeader,
     })
-})
+}))
