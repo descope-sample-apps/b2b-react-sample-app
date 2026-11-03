@@ -57,6 +57,9 @@ Cypress.Commands.add('loginViaDescopeAPI', () => withDescope(({ authHeader, desc
                         .then(({ body }) => {
                             const sessionJwt = body["sessionJwt"]
                             const refreshJwt = body["refreshJwt"]
+                            // Fails clearly if the project returns tokens as cookies instead of in the body
+                            expect(sessionJwt, 'sessionJwt in OTP verify response').to.be.a('string')
+                            expect(refreshJwt, 'refreshJwt in OTP verify response').to.be.a('string')
 
                             /** Default name for the session cookie name / local storage key */
                             const SESSION_TOKEN_KEY = 'DS';
