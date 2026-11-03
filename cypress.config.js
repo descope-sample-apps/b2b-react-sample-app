@@ -14,6 +14,8 @@ module.exports = defineConfig({
   },
   env: {
     descope_project_id: process.env.REACT_APP_DESCOPE_PROJECT_ID,
-    descope_management_key: process.env.REACT_APP_DESCOPE_MANAGEMENT_KEY
+    descope_management_key: process.env.REACT_APP_DESCOPE_MANAGEMENT_KEY,
+    // Management API host for the tests (not the app's custom domain); defaults to production
+    descope_base_url: process.env.DESCOPE_BASE_URL
   },
 });

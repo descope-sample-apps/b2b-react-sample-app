@@ -2,21 +2,14 @@
 // cypress/support/commands.js
 //
 
-const projectId = Cypress.env('descope_project_id')
-const managementKey = Cypress.env('descope_management_key')
-let descopeAPIDomain = "api.descope.com"
-if (projectId.length >= 32) {
-    const localURL = projectId.substring(1, 5)
-    descopeAPIDomain = [descopeAPIDomain.slice(0, 4), localURL, ".", descopeAPIDomain.slice(4)].join('')
-}
-
-// Define the authorization header
-const authHeader = {
-    'Authorization': `Bearer ${projectId}:${managementKey}`,
-}
-
-// Define the base URL for Descope API
-const descopeApiBaseURL = `https://${descopeAPIDomain}/v1`;
+// Cypress 16 removed Cypress.env(); cy.env() is a chainable, so config is resolved per command.
+const withDescope = (fn) =>
+    cy.env(['descope_project_id', 'descope_management_key', 'descope_base_url']).then(({ descope_project_id: projectId, descope_management_key: managementKey, descope_base_url: baseUrl }) =>
+        fn({
+            authHeader: { 'Authorization': `Bearer ${projectId}:${managementKey}` },
+            descopeApiBaseURL: `${baseUrl || (projectId.length >= 32 ? `https://api.${projectId.substring(1, 5)}.descope.com` : 'https://api.descope.com')}/v1`,
+        })
+    )
 
 const testUserLoginId = "testUser" + Math.floor(1000 + Math.random() * 9000) + "@gmail.com"; // Must match email to pass validation
 
@@ -32,7 +25,7 @@ const testUser = {
 }
 
 // Add the loginViaDescopeAPI command
-Cypress.Commands.add('loginViaDescopeAPI', () => {
+Cypress.Commands.add('loginViaDescopeAPI', () => withDescope(({ authHeader, descopeApiBaseURL }) => {
     cy.request({
         method: 'POST',
         url: `${descopeApiBaseURL}/mgmt/user/create`,
@@ -64,32 +57,37 @@ Cypress.Commands.add('loginViaDescopeAPI', () => {
                         .then(({ body }) => {
                             const sessionJwt = body["sessionJwt"]
                             const refreshJwt = body["refreshJwt"]
+                            // Fails clearly if the project returns tokens as cookies instead of in the body
+                            expect(sessionJwt, 'sessionJwt in OTP verify response').to.be.a('string')
+                            expect(refreshJwt, 'refreshJwt in OTP verify response').to.be.a('string')
 
                             /** Default name for the session cookie name / local storage key */
                             const SESSION_TOKEN_KEY = 'DS';
                             /** Default name for the refresh local storage key */
                             const REFRESH_TOKEN_KEY = 'DSR';
 
-                            // // Store the JWT in the browser's local storage.
-                            cy.window().then((win) => {
-                                win.localStorage.setItem(SESSION_TOKEN_KEY, sessionJwt);
-                                win.localStorage.setItem(REFRESH_TOKEN_KEY, refreshJwt);
-                            });
-
-                            // // Now navigate to the root URL of your application.
-                            cy.visit('/')
+                            // Store the JWTs in the app's origin before it boots; cy.window() here is
+                            // still about:blank under test isolation, so storage set there is lost
+                            cy.visit('/', {
+                                onBeforeLoad(win) {
+                                    win.localStorage.setItem(SESSION_TOKEN_KEY, sessionJwt);
+                                    win.localStorage.setItem(REFRESH_TOKEN_KEY, refreshJwt);
+                                    // Login indicator: without it the SDK skips the session refresh on load
+                                    win.localStorage.setItem('DSLI', String(body["sessionExpiration"] || 1));
+                                },
+                            })
 
                         })
                 })
         })
-})
+}))
 
 
 // Add the deleteAllTestUsers command
-Cypress.Commands.add('deleteAllTestUsers', () => {
+Cypress.Commands.add('deleteAllTestUsers', () => withDescope(({ authHeader, descopeApiBaseURL }) => {
     cy.request({
         method: 'DELETE',
         url: `${descopeApiBaseURL}/mgmt/user/test/delete/all`,
         headers: authHeader,
     })
-})
+}))

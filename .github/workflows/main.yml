@@ -23,11 +23,23 @@ jobs:
       # - name: Build
       #   run: yarn build
 
+      # ponytail: the action's built-in wait-on aborts on the first refused
+      # connection ("Socket closed before the connection was established"),
+      # so start the server and poll it ourselves.
+      - name: Start app
+        run: |
+          BROWSER=none yarn start &
+          timeout 240 bash -c 'until curl -sf http://localhost:3000 >/dev/null; do sleep 2; done'
+
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v7
         with:
-          start: yarn start
-          wait-on: "http://localhost:3000"
-          wait-on-timeout: 240
+          install: false
           browser: chrome
-          node-version: 22
+
+      - name: Upload screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
