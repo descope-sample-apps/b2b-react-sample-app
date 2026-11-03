@@ -32,7 +32,7 @@ jobs:
           timeout 240 bash -c 'until curl -sf http://localhost:3000 >/dev/null; do sleep 2; done'
 
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           install: false
           browser: chrome
