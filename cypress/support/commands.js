@@ -7,7 +7,7 @@ const withDescope = (fn) =>
     cy.env(['descope_project_id', 'descope_management_key', 'descope_base_url']).then(({ descope_project_id: projectId, descope_management_key: managementKey, descope_base_url: baseUrl }) =>
         fn({
             authHeader: { 'Authorization': `Bearer ${projectId}:${managementKey}` },
-            descopeApiBaseURL: `${baseUrl || 'https://api.descope.com'}/v1`,
+            descopeApiBaseURL: `${baseUrl || (projectId.length >= 32 ? `https://api.${projectId.substring(1, 5)}.descope.com` : 'https://api.descope.com')}/v1`,
         })
     )
 
