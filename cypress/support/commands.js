@@ -4,17 +4,12 @@
 
 // Cypress 16 removed Cypress.env(); cy.env() is a chainable, so config is resolved per command.
 const withDescope = (fn) =>
-    cy.env(['descope_project_id', 'descope_management_key']).then(({ descope_project_id: projectId, descope_management_key: managementKey }) => {
-        let descopeAPIDomain = "api.descope.com"
-        if (projectId.length >= 32) {
-            const localURL = projectId.substring(1, 5)
-            descopeAPIDomain = [descopeAPIDomain.slice(0, 4), localURL, ".", descopeAPIDomain.slice(4)].join('')
-        }
-        return fn({
+    cy.env(['descope_project_id', 'descope_management_key', 'descope_base_url']).then(({ descope_project_id: projectId, descope_management_key: managementKey, descope_base_url: baseUrl }) =>
+        fn({
             authHeader: { 'Authorization': `Bearer ${projectId}:${managementKey}` },
-            descopeApiBaseURL: `https://${descopeAPIDomain}/v1`,
+            descopeApiBaseURL: `${baseUrl || 'https://api.descope.com'}/v1`,
         })
-    })
+    )
 
 const testUserLoginId = "testUser" + Math.floor(1000 + Math.random() * 9000) + "@gmail.com"; // Must match email to pass validation
 
@@ -68,14 +63,14 @@ Cypress.Commands.add('loginViaDescopeAPI', () => withDescope(({ authHeader, desc
                             /** Default name for the refresh local storage key */
                             const REFRESH_TOKEN_KEY = 'DSR';
 
-                            // // Store the JWT in the browser's local storage.
-                            cy.window().then((win) => {
-                                win.localStorage.setItem(SESSION_TOKEN_KEY, sessionJwt);
-                                win.localStorage.setItem(REFRESH_TOKEN_KEY, refreshJwt);
-                            });
-
-                            // // Now navigate to the root URL of your application.
-                            cy.visit('/')
+                            // Store the JWTs in the app's origin before it boots; cy.window() here is
+                            // still about:blank under test isolation, so storage set there is lost
+                            cy.visit('/', {
+                                onBeforeLoad(win) {
+                                    win.localStorage.setItem(SESSION_TOKEN_KEY, sessionJwt);
+                                    win.localStorage.setItem(REFRESH_TOKEN_KEY, refreshJwt);
+                                },
+                            })
 
                         })
                 })
