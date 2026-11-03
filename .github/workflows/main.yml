@@ -24,10 +24,10 @@ jobs:
       #   run: yarn build
 
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           start: yarn start
-          wait-on: "http://localhost:3000"
+          wait-on: "http://127.0.0.1:3000"
           wait-on-timeout: 240
           browser: chrome
           node-version: 22
