@@ -72,6 +72,8 @@ Cypress.Commands.add('loginViaDescopeAPI', () => withDescope(({ authHeader, desc
                                 onBeforeLoad(win) {
                                     win.localStorage.setItem(SESSION_TOKEN_KEY, sessionJwt);
                                     win.localStorage.setItem(REFRESH_TOKEN_KEY, refreshJwt);
+                                    // Login indicator: without it the SDK skips the session refresh on load
+                                    win.localStorage.setItem('DSLI', String(body["sessionExpiration"] || 1));
                                 },
                             })
 
