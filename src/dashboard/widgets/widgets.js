@@ -80,6 +80,7 @@ const Widgets = () => {
           <button style={getTabButtonStyle('tab1')} onClick={() => handleTabChange('tab1')}>User Management</button>
           <button style={getTabButtonStyle('tab2')} onClick={() => handleTabChange('tab2')}>Role Management</button>
           <button style={getTabButtonStyle('tab3')} onClick={() => handleTabChange('tab3')}>Access Key Management</button>
+          <button style={getTabButtonStyle('tab4')} onClick={() => handleTabChange('tab4')}>Tenant Profile Widget</button>
         </div>
 
         {/* Keying the tab content with selectedTenantId to force re-render upon tenant change */}
@@ -91,6 +92,9 @@ const Widgets = () => {
         )}
         {activeTab === 'tab3' && (
           <AccessKeyManagement key={selectedTenantId} widgetId="access-key-management-widget" tenant={selectedTenantId} />
+        )}
+        {activeTab === 'tab4' && (
+          <AccessKeyManagement key={selectedTenantId} widgetId="tenant-profile-widget" tenant={selectedTenantId} />
         )}
       </div>
     </div>
